@@ -368,7 +368,7 @@ rdf:type owl:NamedIndividual ,
 
 :DeviceShape rdf:type owl:NamedIndividual ,
                       sh:NodeShape ;
-              sh:property [sh:class d3f:NetworkSegment ;
+              sh:property [sh:class :NetworkSegment ;
                             sh:path s223:cnx ;
                             sh:minCount 1 ;
                             ] ;
