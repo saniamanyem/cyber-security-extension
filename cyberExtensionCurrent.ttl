@@ -150,7 +150,7 @@ rdfs:label ":EnterpriseNetwork" .
 #################################################################
 
 :hosts rdf:type owl:NamedIndividual , s223:Relation ; 
-       rdfs:label :":hosts" . 
+       rdfs:label ":hosts" . 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
 :affectedBy rdf:type owl:NamedIndividual ,
