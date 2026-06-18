@@ -1,0 +1,468 @@
+@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix s223: <http://data.ashrae.org/standard223#> .
+@base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+
+<http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> rdf:type owl:Ontology ;
+                                                                     owl:imports <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
+                                                                                 <http://data.ashrae.org/standard223/1.0/model/all> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/ns/shacl#class
+sh:class rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#path
+sh:path rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#property
+sh:property rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#targetClass
+sh:targetClass rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://d3fend.mitre.org/ontologies/d3fend.owl#AuthenticationService
+d3f:AuthenticationService rdfs:subClassOf s223:Equipment .
+
+
+###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
+d3f:Database rdfs:subClassOf :Asset .
+
+
+###  http://data.ashrae.org/standard223#Equipment
+s223:Equipment rdfs:subClassOf :Asset .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
+:Asset rdf:type owl:Class ;
+rdfs:label ":Asset" .
+
+:AccessDecision rdf:type owl:Class ;
+rdfs:label ":AccessDecision" . 
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Condition
+:Condition rdf:type owl:Class ;
+rdfs:label ":Condition" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
+:EnforcementPoint rdf:type owl:Class ;
+rdfs:subclassOf :Asset ;
+rdfs:label ":EnforcementPoint " .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Permission
+:Permission rdf:type s223:EnumerationKind ;
+rdfs:label ":Permission" .
+
+:OverrideDoorLocks rdf:type :Permission ;
+rdfs:label ":OverrideDoorLocks " .
+
+:ViewCameraFeeds rdf:type :Permission ;
+rdfs:label ":ViewCameraFeeds " .
+
+:ModifySetpoints rdf:type :Permission ;
+rdfs:label ":ModifySetpoints " .
+
+:ControlAlarms rdf:type :Permission ;
+rdfs:label ":ControlAlarms " .
+
+:ConfigureControllers rdf:type :Permission ;
+rdfs:label ":ConfigureControllers " .
+
+:MonitorBuildingServer rdf:type :Permission ;
+rdfs:label ":MonitorBuildingServer " .
+
+:ViewSensorData rdf:type :Permission ;
+rdfs:label ":ViewSensorData " .
+
+:ApplySoftwareUpdates rdf:type :Permission ;
+rdfs:label ":ApplySoftwareUpdates " .
+
+:ModifyAccountDetails rdf:type :Permission ;
+rdfs:label ":ModifyAccountDetails " .
+
+:EmergencyOverride rdf:type :Permission ;
+rdfs:label ":EmergencyOverride " .
+
+:ViewLogs rdf:type :Permission ;
+rdfs:label ":ViewLogs " .
+
+
+:EmergencyResponder rdf:type owl:Class ;
+                    rdfs:subclassOf d3f:User ;
+                    rdfs:label ":EmergencyResponder" ;
+                    :authorizedFor :Control .
+
+:Vendor rdf:type owl:Class ;
+                    rdfs:subclassOf d3f:User ;
+                    rdfs:label ":Vendor" ;
+                    :authorizedFor :Read .
+
+:Operator rdf:type owl:Class ;
+                    rdfs:subclassOf d3f:User ;
+                    rdfs:label ":Operator" ;
+                    :authorizedFor :Write .
+
+:NetworkSegment rdf:type owl:Class ;
+                rdfs:subClassOf d3f:Network ;
+                rdfs:label ":NetworkSegment" .
+
+
+:Device rdf:type owl:Class ;
+        rdfs:subclassOf :Equipment ;
+        rdfs:label ":Device" .
+
+
+:ControlNetwork rdf:type :NetworkSegment ;
+rdfs:label ":ControlNetwork" .
+
+:RemoteAccessNetwork rdf:type :NetworkSegment , d3f:Network ;
+rdfs:label "RemoteAccessNetwork" .
+
+:DMZNetwork rdf:type :NetworkSegment ;
+rdfs:label ":DMZNetwork" .
+
+:EnterpriseNetwork rdf:type :NetworkSegment ;
+rdfs:label ":EnterpriseNetwork" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
+:affectedBy rdf:type owl:NamedIndividual ,
+                     s223:Relation ;
+            rdfs:comment "A Permission is affected by a Condition" ;
+            rdfs:label ":affectedBy" .
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
+:allowsAction rdf:type owl:NamedIndividual ,
+                       s223:Relation ;
+              rdfs:label ":allowsAction" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo
+:appliesTo rdf:type owl:NamedIndividual ,
+                    s223:Relation ;
+                    rdfs:label ":appliesTo" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/enforcedBy
+:enforcedBy rdf:type owl:NamedIndividual ,
+                     s223:Relation ;
+            rdfs:comment "A Permission is enforced by an Enforcement Point" ;
+            rdfs:label "enforcedBy" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
+:hasCredential rdf:type owl:NamedIndividual ,
+                        s223:Relation ;
+               rdfs:domain d3f:User ;
+               rdfs:range d3f:Credential ;
+               rdfs:comment "A User has credential Credential" ;
+               rdfs:label ":hasCredential" .
+
+:hasPermission rdf:type owl:NamedIndividual ,
+                        s223:Relation ;
+               rdfs:domain d3f:User ;
+               rdfs:range :Permission ;
+               rdfs:label ":hasPermission" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/modifies
+:modifies rdf:type owl:NamedIndividual ,
+                   s223:Relation ;
+                   rdfs:label ":modifies" .
+
+:protects rdf:type owl:NamedIndividual ,
+                   s223:Relation ;
+          rdfs:label ":protects" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/requestsAccessTo
+:requestsAccessTo rdf:type owl:NamedIndividual ,
+                           s223:Relation ;
+                  rdfs:comment "A User requests access to an Asset" ;
+                  rdfs:label ":requestsAccessTo" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/validDuring
+:validDuring rdf:type owl:NamedIndividual ,
+                      s223:Relation ;
+             rdfs:comment "A Permission is valid during a Condition" ;
+             rdfs:label ":validDuring" .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/verifies
+:verifies rdf:type owl:NamedIndividual ,
+                   s223:Relation ;
+                   rdfs:label ":verifies" .
+
+
+:containsAsset rdf:type owl:NamedIndividual ,
+                      s223:Relation ;
+              rdfs:comment "A network contains an asset" ;
+              rdfs:label ":containsAsset" .
+
+              
+:usesDevice rdf:type owl:NamedIndividual ,
+                      s223:Relation ;
+              rdfs:comment "A User uses a Device" ;
+              rdfs:label ":usesDevice" .
+            
+:authorizedFor rdf:type owl:NamedIndividual ,
+                        s223:Relation ;
+                rdfs:label ":authorizedFor" .
+
+:Read rdf:type d3f:Action . 
+:Write rdf:type d3f:Action .
+:Control rdf:type d3f:Action .
+
+d3f:User rdfs:label "d3f:User" .
+d3f:Action rdfs:label "d3f:Action" .
+d3f:Credential rdfs:label "d3f:Credential" .
+d3f:Database rdfs:label "d3f:Database" .
+d3f:AuthenticationService rdfs:label "d3f:AuthenticationService" .
+d3f:Network rdfs:label "d3f:Network" .
+d3f:Action rdfs:label "d3f:Action" .
+
+s223:Controller rdfs:label "s223:Controller" .
+s223:cnx rdfs:label "s223:cnx" .
+s223:Sensor rdfs:label "s223:Sensor" .
+s223:Actuator rdfs:label "s223:Actuator" .
+
+
+
+###  http://data.ashrae.org/standard223#FunctionShape
+:FunctionShape rdf:type owl:NamedIndividual ,
+                            sh:NodeShape ;
+                   sh:property [ sh:class   s223:Property ;
+                                 sh:path :modifies
+                               ] ;
+                   sh:targetClass s223:Function .
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AssetShape
+:AssetShape rdf:type owl:NamedIndividual ,
+                     sh:NodeShape ;
+            sh:property [ sh:class d3f:Network ;
+                          sh:path s223:cnx 
+                        ] ; 
+            sh:targetClass :Asset .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AuthenticationServiceShape
+:AuthenticationServiceShape rdf:type owl:NamedIndividual ,
+                                     sh:NodeShape ;
+                            sh:property [ sh:class d3f:User ;
+                                        sh:path d3f:authenticates ;
+                                        sh:minCount 1 ;
+                                        ] ;
+                            sh:property [ sh:class d3f:Credential ;
+                                          sh:path :verifies;
+                                          sh:minCount 1 ;
+                                        ] ;
+                            sh:targetClass d3f:AuthenticationService .
+
+:AuthenticationServerShape rdf:type owl:NamedIndividual ,
+                                     sh:NodeShape ;
+                            sh:property [ sh:class d3f:Asset ;
+                                          sh:path :protects 
+                                        ] ;
+                            sh:targetClass d3f:Authentication .
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/PermissionShape
+
+
+:EnforcementPointShape rdf:type owl:NamedIndividual ,
+                                sh:NodeShape ;
+                        sh:property [ sh:class s223:Property ;
+                                      sh:path s223:hasProperty 
+                                    ] ;
+                        sh:targetClass :EnforcementPoint .         
+
+
+
+
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/UserShape
+:UserShape 
+rdf:type owl:NamedIndividual ,
+        sh:NodeShape ;
+           
+        sh:property [
+          sh:class :Asset ;
+          sh:path :requestsAccessTo ;
+        ] ;
+        sh:property [ 
+          sh:class d3f:Credential ;
+          sh:path :hasCredential ;
+          sh:minCount 1 ;
+        ] ;
+
+        sh:property [sh:class :Device ;
+          sh:path :usesDevice ;
+        ] ;
+
+
+          sh:or (
+              [sh:class :EmergencyResponder ]
+              [sh:class :Operator ]
+              [sh:class :Vendor ]
+        ) ;
+           sh:targetClass d3f:User .
+
+:NetworkShape rdf:type owl:NamedIndividual ,
+                    sh:NodeShape ; 
+            sh:property [sh:class :Asset ;
+                          sh:path :containsAsset
+                        ] ;
+            sh:targetClass d3f:Network .
+
+:FirewallShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+               sh:property [sh:class d3f:NetworkTraffic ;
+                             sh:path d3f:filters
+                           ] ;
+               sh:targetClass d3f:Firewall .
+
+:SensorShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+               sh:property [sh:hasValue :ControlNetwork ;
+                             sh:path s223:cnx ;
+                           ] ;
+               sh:targetClass s223:Sensor .
+
+:ControllerShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+               sh:property [sh:hasValue :ControlNetwork ;
+                             sh:path s223:cnx ;
+                           ] ;
+               sh:targetClass s223:Controller .
+
+:ActuatorShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+               sh:property [sh:hasValue :ControlNetwork ;
+                             sh:path s223:cnx ;
+                           ] ;
+               sh:targetClass s223:Actuator .
+
+:DeviceShape rdf:type owl:NamedIndividual ,
+                      sh:NodeShape ;
+              sh:property [sh:class d3f:NetworkSegment ;
+                            sh:path s223:cnx ;
+                            sh:minCount 1 ;
+                            ] ;
+              sh:targetClass :Device .
+
+:OperatorShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ModifySetpoints ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ControlAlarms ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :MonitorBuildingServer ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ViewSensorData ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ModifyAccountDetails ;
+                ] ;
+
+                sh:targetClass :Operator .
+
+#MUST HAVE ALL OF THESE...note in documentation
+
+:EmergencyResponderShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :OverrideDoorLocks ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ControlAlarms ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ViewSensorData ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :EmergencyOverride ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ViewCameraFeeds ;
+                ] ;
+
+                sh:targetClass :EmergencyResponder .
+
+
+:VendorShape rdf:type owl:NamedIndividual ,
+                        sh:NodeShape ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ViewCameraFeeds ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ConfigureControllers ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ViewSensorData ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ApplySoftwareUpdates ;
+                ] ;
+
+                sh:property [
+                  sh:path :hasPermission ;
+                  sh:hasValue :ViewLogs ;
+                ] ;
+                sh:targetClass :Vendor . 
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
