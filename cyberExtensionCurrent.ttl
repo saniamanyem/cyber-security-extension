@@ -280,17 +280,20 @@ s223:Actuator rdfs:label "s223:Actuator" .
                                         sh:minCount 1 ;
                                         ] ;
                             sh:property [ sh:class d3f:Credential ;
-                                          sh:path :verifies;
+                                          sh:path :validates;
                                           sh:minCount 1 ;
                                         ] ;
                             sh:targetClass d3f:AuthenticationService .
 
 :AuthenticationServerShape rdf:type owl:NamedIndividual ,
                                      sh:NodeShape ;
-                            sh:property [ sh:class d3f:Asset ;
+                            sh:property [ sh:class d3f:AuthenticationService ;
+                                          sh:path :hosts 
+                                        ] ;
+                            sh:property [ sh:class :Asset ;
                                           sh:path :protects 
                                         ] ;
-                            sh:targetClass d3f:Authentication .
+                            sh:targetClass d3f:AuthenticationServer .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/PermissionShape
