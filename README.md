@@ -26,7 +26,7 @@ Represent real-world building access scenarios as ontology concepts and relation
 4. Integrate cybersecurity concepts    
 Use MITRE D3FEND to introduce cybersecurity controls into building model     
     
-5 .Develop a cybersecurity overlay      
+5. Develop a cybersecurity overlay      
 Create extension that links cybersecurity concepts to physical building entities    
     
 6. Demonstrate value of cybersecurity knowledge graph    
