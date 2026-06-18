@@ -1,5 +1,5 @@
-**Cybersecurity for the Modern Digital Building**
-Integration of Building Systems and Cybersecurity Controls 
+**Cybersecurity for the Modern Digital Building
+**Integration of Building Systems and Cybersecurity Controls 
 
 **Overview**
 Modern digital buildings contain interconnected physical, operational, and information technology assets. While building ontologies such as ASHRAE 223 effectively model physical systems, equipment, spaces, and connectivity, they do not explicitly represent cybersecurity controls.
