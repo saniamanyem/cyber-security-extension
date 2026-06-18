@@ -215,10 +215,9 @@ rdfs:label ":EnterpriseNetwork" .
              rdfs:label ":validDuring" .
 
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/verifies
-:verifies rdf:type owl:NamedIndividual ,
+:validates rdf:type owl:NamedIndividual ,
                    s223:Relation ;
-                   rdfs:label ":verifies" .
+                   rdfs:label ":validates" .
 
 
 :containsAsset rdf:type owl:NamedIndividual ,
