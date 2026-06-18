@@ -45,13 +45,14 @@
 
 :BuildingServer
     a d3f:AuthenticationServer ;
+    :hosts :MFA ;
     :protects :Door ;
     :protects :Window ;
     :protects :Elevator .
 
 :MFA
     a d3f:AuthenticationService ;
-    :verifies :AlicePassword123 ;
+    :validates :AlicePassword123 ;
     d3f:authenticates :Alice .
 
 
