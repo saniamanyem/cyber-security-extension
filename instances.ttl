@@ -1,0 +1,60 @@
+@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
+@prefix s223: <http://data.ashrae.org/standard223#> .
+@base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+
+<http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> rdf:type owl:Ontology ;
+                                                                     owl:imports <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
+                                                                                 <http://data.ashrae.org/standard223/1.0/model/all> .
+
+
+
+:Alice
+    a :EmergencyResponder , d3f:User ;
+    :hasPermission :OverrideDoorLocks ;
+    :hasPermission :ControlAlarms ;
+    :hasPermission :ViewSensorData ;
+    :hasPermission :EmergencyOverride ;
+    :hasPermission :ViewCameraFeeds ;
+    :hasCredential :AlicePassword123 ;
+    :requestsAccessTo :Door ;
+    :usesDevice :Monitor .
+
+:DoorController 
+    a :EnforcementPoint ;
+    s223:cnx :ControlNetwork . 
+
+:Monitor 
+    a :Device ;
+    s223:cnx :RemoteAccessNetwork .
+
+:RemoteAccessNetwork 
+    a :NetworkSegment , d3f:Network .
+
+:ControlNetwork 
+    a :NetworkSegment, d3f:Network .
+
+:Door 
+    a :Asset .
+
+:Window 
+    a :Asset .
+
+:Elevator 
+    a :Asset .
+
+:BuildingServer
+    a d3f:AuthenticationServer ;
+    :protects :Door ;
+    :protects :Window ;
+    :protects :Elevator .
+
+:MFA
+    a d3f:AuthenticationService ;
+    :verifies :AlicePassword123 ;
+    d3f:authenticates :Alice .
+
+
+:AlicePassword123 
+    a d3f:Credential .
+
