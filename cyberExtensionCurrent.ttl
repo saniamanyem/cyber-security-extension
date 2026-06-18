@@ -37,8 +37,10 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#AuthenticationService
-d3f:AuthenticationService rdfs:subClassOf s223:Equipment .
+
+d3f:AuthenticationServer rdfs:subclassOf :Asset .
+
+d3f:AuthenticationService rdfs:subclassOf d3f:Action . 
 
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
