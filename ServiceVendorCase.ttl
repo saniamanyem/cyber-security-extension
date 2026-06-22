@@ -6,18 +6,26 @@
     :hasPermission :ApplySoftwareUpdates ;
     :hasPermission :ViewLogs ; 
     :hasPermission :ViewSensorData ;
-    :hasPermission :ConfigureControllers .
+    :hasPermission :ConfigureControllers ;
+    :hasPermission :ViewCameraFeeds .
 
 :Skybox 
     a :Asset . 
 
 :SkyboxMFAService
-    a :EnforcmentPoint ; 
-    s223:cnx :ControlNetwork .
+    a :EnforcementPoint , d3f:AuthenticationService ;
+    s223:cnx :ControlNetwork ;
+    :protects :Skybox ;
+    s223:hasProperty :MFARequirement ;
+    :validates :DanPassword123 ;
+    d3f:authenticates :Dan .
+
+:MFARequirement
+    a s223:Property .
 
 :Laptop
     a :Device ;
-    s223:cnx :RemoteAccessNetwork .
+    s223:cnx :DMZNetwork .
 
 :RemoteAccessNetwork 
     a :NetworkSegment , d3f:Network .
@@ -38,9 +46,5 @@
 :BuildingServer
     a d3f:AuthenticationServer ;
     :hosts :MFA ;
-    :protects :Skybox .
-
-:MFA
-    a d3f:AuthenticationService ;
-    :validates :DanPassword123 ;
-    d3f:authenticates :Dan .
+    :protects :Skybox ;
+    s223:cnx :ControlNetwork .
