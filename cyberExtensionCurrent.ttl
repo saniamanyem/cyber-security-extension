@@ -64,6 +64,15 @@ rdfs:label ":Asset" .
 :Condition rdf:type owl:Class ;
 rdfs:label ":Condition" .
 
+:EmergencyCondition rdf:type :Condition ; 
+  rdfs:label ":EmergencyCondition" . 
+
+:MaintenanceWindow rdf:type :Condition ;
+  rdfs:label ":MaintenanceWindow" . 
+
+:NormalOperations rdf:type :Condition ;
+  rdfs:label ":NormalOperations" .
+
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
 :EnforcementPoint rdf:type owl:Class ;
 rdfs:subclassOf :Asset ;
