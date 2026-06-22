@@ -40,7 +40,7 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 
 d3f:AuthenticationServer rdfs:subclassOf :Asset ;
 :hosts d3f:AuthenticationService ;
-rdfs:label ":d3f:AuthenticationServer" .
+rdfs:label "d3f:AuthenticationServer" .
 
 d3f:AuthenticationService rdfs:subclassOf d3f:Action ;
 rdfs:label "d3f:AuthenticationService" ;
