@@ -84,7 +84,8 @@ rdfs:label ":EnforcementPoint " .
 rdfs:label ":Permission" .
 
 :OverrideDoorLocks rdf:type :Permission ;
-rdfs:label ":OverrideDoorLocks " .
+rdfs:label ":OverrideDoorLocks " ;
+:validDuring :EmergencyCondition .
 
 :ViewCameraFeeds rdf:type :Permission ;
 rdfs:label ":ViewCameraFeeds " .
@@ -111,7 +112,8 @@ rdfs:label ":ApplySoftwareUpdates " .
 rdfs:label ":ModifyAccountDetails " .
 
 :EmergencyOverride rdf:type :Permission ;
-rdfs:label ":EmergencyOverride " .
+rdfs:label ":EmergencyOverride " ;
+:validDuring :EmergencyCondition .
 
 :ViewLogs rdf:type :Permission ;
 rdfs:label ":ViewLogs " .
