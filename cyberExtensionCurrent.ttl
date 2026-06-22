@@ -147,7 +147,7 @@ rdfs:label ":ViewLogs " .
 rdfs:label ":AccessRequest" .
 
 :Event rdf:type owl:Class ; 
-rdfs:label ":Event: . 
+rdfs:label ":Event" . 
 
 :ControlNetwork rdf:type :NetworkSegment ;
 rdfs:label ":ControlNetwork" .
@@ -284,25 +284,25 @@ s223:Actuator rdfs:label "s223:Actuator" .
               ] ;
               sh:property [ 
                 sh:path :generatedBy ;
-                sh:class s223:Asset ; 
+                sh:class :Asset ; 
                 sh:minCount 1;
-              ]
+              ] ;
               sh:targetClass :AuditLog .
 
-":AccessRequestShape rdf:type owl:NamedIndividual, sh:NodeShape ;
+:AccessRequestShape rdf:type owl:NamedIndividual, sh:NodeShape ;
                     sh:property [
                       sh:path :requestedAccess ;
                       sh:class :Asset ;
                       sh:minCount 1 ;
                     ] ;
                     sh:property [
-                      sh:path sh:authorizedFor ;
+                      sh:path :authorizedFor ;
                       sh:class :Permission ;
                       sh:minCount 1 ;
                     ] ;
                     sh:property [
                       sh:path :requestedBy ;
-                      sh:class :Permission ; 
+                      sh:class d3f:User ; 
                       sh:minCount 1 ;
                     ] ;
                     sh:targetClass :AccessRequest .
