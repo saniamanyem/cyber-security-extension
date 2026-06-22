@@ -48,12 +48,12 @@ rdfs:label "d3f:AuthenticationService" ;
 
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
-d3f:Database rdfs:subClassOf :Asset .
-rdfs:label "d3f:Database" ;
+d3f:Database rdfs:subClassOf :Asset ;
+rdfs:label "d3f:Database" .
 
 ###  http://data.ashrae.org/standard223#Equipment
-s223:Equipment rdfs:subClassOf :Asset .
-rdfs:label "s223:Equipment" ;
+s223:Equipment rdfs:subClassOf :Asset ;
+rdfs:label "s223:Equipment" .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
