@@ -316,6 +316,9 @@ s223:Actuator rdfs:label "s223:Actuator" .
                         sh:property [ sh:class s223:Property ;
                                       sh:path s223:hasProperty 
                                     ] ;
+                        sh:property [ sh:path :protects ;
+                                      sh:minCount 1;
+                                    ] ;
                         sh:targetClass :EnforcementPoint .         
 
 
