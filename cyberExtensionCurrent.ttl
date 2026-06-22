@@ -53,15 +53,12 @@ rdfs:label "d3f:Database" ;
 
 ###  http://data.ashrae.org/standard223#Equipment
 s223:Equipment rdfs:subClassOf :Asset .
+rdfs:label "s223:Equipment" ;
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
 :Asset rdf:type owl:Class ;
 rdfs:label ":Asset" .
-
-:AccessDecision rdf:type owl:Class ;
-rdfs:label ":AccessDecision" . 
-
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Condition
 :Condition rdf:type owl:Class ;
@@ -114,17 +111,15 @@ rdfs:label ":ViewLogs " .
 :EmergencyResponder rdf:type owl:Class ;
                     rdfs:subclassOf d3f:User ;
                     rdfs:label ":EmergencyResponder" ;
-                    :authorizedFor :Control .
 
 :Vendor rdf:type owl:Class ;
                     rdfs:subclassOf d3f:User ;
                     rdfs:label ":Vendor" ;
-                    :authorizedFor :Read .
 
 :Operator rdf:type owl:Class ;
                     rdfs:subclassOf d3f:User ;
                     rdfs:label ":Operator" ;
-                    :authorizedFor :Write .
+
 
 :NetworkSegment rdf:type owl:Class ;
                 rdfs:subClassOf d3f:Network ;
@@ -238,20 +233,15 @@ rdfs:label ":EnterpriseNetwork" .
                         s223:Relation ;
                 rdfs:label ":authorizedFor" .
 
-:Read rdf:type d3f:Action . 
-:Write rdf:type d3f:Action .
-:Control rdf:type d3f:Action .
-
 d3f:User rdfs:label "d3f:User" .
-d3f:Action rdfs:label "d3f:Action" .
 d3f:Credential rdfs:label "d3f:Credential" .
 d3f:Database rdfs:label "d3f:Database" .
 d3f:AuthenticationService rdfs:label "d3f:AuthenticationService" .
 d3f:Network rdfs:label "d3f:Network" .
 d3f:Action rdfs:label "d3f:Action" .
 
-s223:Controller rdfs:label "s223:Controller" .
 s223:cnx rdfs:label "s223:cnx" .
+s223:Controller rdfs:label "s223:Controller" .
 s223:Sensor rdfs:label "s223:Sensor" .
 s223:Actuator rdfs:label "s223:Actuator" .
 
