@@ -310,8 +310,6 @@ s223:Actuator rdfs:label "s223:Actuator" .
                             sh:targetClass d3f:AuthenticationServer .
 
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/PermissionShape
-
 
 :EnforcementPointShape rdf:type owl:NamedIndividual ,
                                 sh:NodeShape ;
