@@ -78,6 +78,9 @@ rdfs:label ":Condition" .
 rdfs:subclassOf :Asset ;
 rdfs:label ":EnforcementPoint " .
 
+:AuditLog rdf:type owl:Class ;
+rdfs:label ":AuditLog" .
+
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Permission
 :Permission rdf:type s223:EnumerationKind ;
@@ -140,6 +143,11 @@ rdfs:label ":ViewLogs " .
         rdfs:subclassOf :Equipment ;
         rdfs:label ":Device" .
 
+:AccessRequest rdf:type owl:Class ;
+rdfs:label ":AccessRequest" .
+
+:Event rdf:type owl:Class ; 
+rdfs:label ":Event: . 
 
 :ControlNetwork rdf:type :NetworkSegment ;
 rdfs:label ":ControlNetwork" .
@@ -160,6 +168,12 @@ rdfs:label ":EnterpriseNetwork" .
 :hosts rdf:type owl:NamedIndividual , s223:Relation ; 
        rdfs:label ":hosts" . 
 
+:requestedAccess rdf:type owl:NamedIndividual, s223:Relation ; 
+                 rdfs:label ":requestedAccess" .
+
+:requestedBy rdf:type owl:NamedIndividual, s223:Relation ; 
+             rdfs:label ":requestedBy" . 
+
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
 :affectedBy rdf:type owl:NamedIndividual ,
                      s223:Relation ;
@@ -171,6 +185,11 @@ rdfs:label ":EnterpriseNetwork" .
                        s223:Relation ;
               rdfs:label ":allowsAction" .
 
+:recordsEvent rdf:type owl:NamedIndividual, s223:Relation ;
+              rdfs:label ":recordsEvent" .
+
+:generatedBy rdf:type owl:NamedIndividual, s223:Relation ;
+             rdfs:label ":generatedBy" .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo
 :appliesTo rdf:type owl:NamedIndividual ,
@@ -255,6 +274,38 @@ s223:cnx rdfs:label "s223:cnx" .
 s223:Controller rdfs:label "s223:Controller" .
 s223:Sensor rdfs:label "s223:Sensor" .
 s223:Actuator rdfs:label "s223:Actuator" .
+
+
+:AuditLogShape rdf:type owl:NamedIndividual, sh:NodeShape ;
+              sh:property [ 
+                sh:path :recordsEvent ;
+                sh:class :Event ; 
+                sh:minCount 1 ;
+              ] ;
+              sh:property [ 
+                sh:path :generatedBy ;
+                sh:class s223:Asset ; 
+                sh:minCount 1;
+              ]
+              sh:targetClass :AuditLog .
+
+":AccessRequestShape rdf:type owl:NamedIndividual, sh:NodeShape ;
+                    sh:property [
+                      sh:path :requestedAccess ;
+                      sh:class :Asset ;
+                      sh:minCount 1 ;
+                    ] ;
+                    sh:property [
+                      sh:path sh:authorizedFor ;
+                      sh:class :Permission ;
+                      sh:minCount 1 ;
+                    ] ;
+                    sh:property [
+                      sh:path :requestedBy ;
+                      sh:class :Permission ; 
+                      sh:minCount 1 ;
+                    ] ;
+                    sh:targetClass :AccessRequest .
 
 
 
