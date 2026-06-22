@@ -43,7 +43,7 @@ d3f:AuthenticationServer rdfs:subclassOf :Asset ;
 rdfs:label ":d3f:AuthenticationServer" .
 
 d3f:AuthenticationService rdfs:subclassOf d3f:Action ;
-rdfs:label ":d3f:AuthenticationService" ;
+rdfs:label "d3f:AuthenticationService" ;
 :validates d3f:Credential .
 
 
