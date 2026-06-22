@@ -1,0 +1,46 @@
+:Dan
+    a d3f:User, :Vendor ;
+    :usesDevice :Laptop;
+    :hasCredential :DanPassword123 ; 
+    :requestsAccessTo :Skybox ;
+    :hasPermission :ApplySoftwareUpdates ;
+    :hasPermission :ViewLogs ; 
+    :hasPermission :ViewSensorData ;
+    :hasPermission :ConfigureControllers .
+
+:Skybox 
+    a :Asset . 
+
+:SkyboxMFAService
+    a :EnforcmentPoint ; 
+    s223:cnx :ControlNetwork .
+
+:Laptop
+    a :Device ;
+    s223:cnx :RemoteAccessNetwork .
+
+:RemoteAccessNetwork 
+    a :NetworkSegment , d3f:Network .
+
+:ControlNetwork 
+    a :NetworkSegment, d3f:Network .
+
+:DanPassword123 
+    a d3f:Credential . 
+
+:Skybox 
+    a :Asset ;
+    s223:cnx :SkyboxNetwork . 
+
+:SkyboxNetwork 
+    a d3f:Network .
+
+:BuildingServer
+    a d3f:AuthenticationServer ;
+    :hosts :MFA ;
+    :protects :Skybox .
+
+:MFA
+    a d3f:AuthenticationService ;
+    :validates :DanPassword123 ;
+    d3f:authenticates :Dan .
