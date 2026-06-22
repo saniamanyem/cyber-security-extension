@@ -282,6 +282,10 @@ s223:Actuator rdfs:label "s223:Actuator" .
                     sh:minCount 1 ;
                     sh:class :Asset ;
               ] ;
+              sh:property [
+                sh:path :validDuring ;
+                sh:class :Condition ;
+              ] ;
               sh:targetClass :Permission .
 
 
@@ -297,6 +301,10 @@ s223:Actuator rdfs:label "s223:Actuator" .
                                           sh:path :validates;
                                           sh:minCount 1 ;
                                         ] ;
+                            sh:property [
+                              sh:path [sh:inversePath :hosts ] ;
+                              sh:minCount 1 ;      
+                            ]
                             sh:targetClass d3f:AuthenticationService .
 
 :AuthenticationServerShape rdf:type owl:NamedIndividual ,
@@ -317,7 +325,8 @@ s223:Actuator rdfs:label "s223:Actuator" .
                                       sh:path s223:hasProperty 
                                     ] ;
                         sh:property [ sh:path :protects ;
-                                      sh:minCount 1;
+                                      sh:minCount 1 ;
+                                      sh:class :Asset ;
                                     ] ;
                         sh:targetClass :EnforcementPoint .         
 
@@ -489,7 +498,7 @@ rdf:type owl:NamedIndividual ,
                   sh:node [
                     sh:property [
                       sh:path s223:cnx ;
-                      sh:hasValur :DMZNetwork ;
+                      sh:hasValue :DMZNetwork ;
                     ]
                   ]
                 ] ;
