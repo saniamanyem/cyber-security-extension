@@ -263,6 +263,17 @@ s223:Actuator rdfs:label "s223:Actuator" .
                         ] ; 
             sh:targetClass :Asset .
 
+:PermissionShape rdf:type owl:NamedIndividual ,
+              sh:NodeShape ; 
+              
+              sh:property [
+                    sh:path :appliesTo ;
+                    sh:minCount 1 ;
+                    sh:class :Asset ;
+              ] ;
+              sh:targetClass :Permission .
+
+
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AuthenticationServiceShape
 :AuthenticationServiceShape rdf:type owl:NamedIndividual ,
