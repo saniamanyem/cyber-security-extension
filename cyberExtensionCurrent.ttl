@@ -304,7 +304,7 @@ s223:Actuator rdfs:label "s223:Actuator" .
                             sh:property [
                               sh:path [sh:inversePath :hosts ] ;
                               sh:minCount 1 ;      
-                            ]
+                                        ] ; 
                             sh:targetClass d3f:AuthenticationService .
 
 :AuthenticationServerShape rdf:type owl:NamedIndividual ,
