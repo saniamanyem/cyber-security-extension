@@ -124,15 +124,15 @@ rdfs:label ":ViewLogs " .
 
 :EmergencyResponder rdf:type owl:Class ;
                     rdfs:subclassOf d3f:User ;
-                    rdfs:label ":EmergencyResponder" ;
+                    rdfs:label ":EmergencyResponder" .
 
 :Vendor rdf:type owl:Class ;
                     rdfs:subclassOf d3f:User ;
-                    rdfs:label ":Vendor" ;
+                    rdfs:label ":Vendor" .
 
 :Operator rdf:type owl:Class ;
                     rdfs:subclassOf d3f:User ;
-                    rdfs:label ":Operator" ;
+                    rdfs:label ":Operator" .
 
 
 :NetworkSegment rdf:type owl:Class ;
