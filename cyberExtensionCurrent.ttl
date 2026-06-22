@@ -276,7 +276,7 @@ s223:Actuator rdfs:label "s223:Actuator" .
 
 :PermissionShape rdf:type owl:NamedIndividual ,
               sh:NodeShape ; 
-              
+
               sh:property [
                     sh:path :appliesTo ;
                     sh:minCount 1 ;
