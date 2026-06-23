@@ -8,18 +8,19 @@
                                                                                  <http://data.ashrae.org/standard223/1.0/model/all> .
 
 :Dan
-    a d3f:User, :Vendor ;
+    a d3f:User ;
+    :hasRole :Vendor ;
     :usesDevice :Laptop;
     :hasCredential :DanPassword123 ; 
-    :requestsAccessTo :Skybox ;
+    :requestsAccessTo :Skybox .
 
 :Vendor
   a :Role ;
-    :hasPermission :ApplySoftwareUpdates ;
-    :hasPermission :ViewLogs ; 
-    :hasPermission :ViewSensorData ;
-    :hasPermission :ConfigureControllers ;
-    :hasPermission :ViewCameraFeeds .
+    :grantedPermission :ApplySoftwareUpdates ;
+    :grantedPermission :ViewLogs ; 
+    :grantedPermission :ViewSensorData ;
+    :grantedPermission :ConfigureControllers ;
+    :grantedPermission :ViewCameraFeeds .
 
 :Skybox 
     a :Asset . 
