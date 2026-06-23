@@ -12,6 +12,9 @@
     :usesDevice :Laptop;
     :hasCredential :DanPassword123 ; 
     :requestsAccessTo :Skybox ;
+
+:Vendor
+  a :Role ;
     :hasPermission :ApplySoftwareUpdates ;
     :hasPermission :ViewLogs ; 
     :hasPermission :ViewSensorData ;
