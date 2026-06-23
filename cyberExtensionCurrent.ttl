@@ -144,8 +144,6 @@ rdfs:label ":ViewLogs " .
         rdfs:subclassOf :Equipment ;
         rdfs:label ":Device" .
 
-:AccessRequest rdf:type owl:Class ;
-rdfs:label ":AccessRequest" .
 
 :Event rdf:type owl:Class ; 
 rdfs:label ":Event" . 
@@ -183,7 +181,7 @@ rdfs:label ":EnterpriseNetwork" .
 
 :requestedBy rdf:type owl:NamedIndividual, s223:Relation ;
   rdfs:label ":requestedBy" ;
-  rdfs:domain :AccessRequest ; 
+  rdfs:domain :Permission ; 
   rdfs:range d3f:User . 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
@@ -253,7 +251,7 @@ rdfs:label ":EnterpriseNetwork" .
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/requestsAccessTo
 :requestsAccessTo rdf:type owl:NamedIndividual ,
                            s223:Relation ;
-                  rdfs:domain :AccessRequest ;
+                  rdfs:domain d3f:User ;
                   rdfs:range: :Asset ;
                   rdfs:comment "A User requests access to an Asset" ;
                   rdfs:label ":requestsAccessTo" .
@@ -316,24 +314,6 @@ s223:Actuator rdfs:label "s223:Actuator" .
                 sh:minCount 1;
               ] ;
               sh:targetClass :AuditLog .
-
-:AccessRequestShape rdf:type owl:NamedIndividual, sh:NodeShape ;
-                    sh:property [
-                      sh:path :requestsAccessTo ;
-                      sh:class :Asset ;
-                      sh:minCount 1 ;
-                    ] ;
-                    sh:property [
-                      sh:path :authorizedFor ;
-                      sh:class :Permission ;
-                      sh:minCount 1 ;
-                    ] ;
-                    sh:property [
-                      sh:path :requestedBy ;
-                      sh:class d3f:User ; 
-                      sh:minCount 1 ;
-                    ] ;
-                    sh:targetClass :AccessRequest .
 
 
 
