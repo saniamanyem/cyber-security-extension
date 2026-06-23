@@ -55,7 +55,8 @@ rdfs:label "d3f:Database" .
 s223:Equipment rdfs:subClassOf :Asset ;
 rdfs:label "s223:Equipment" .
 
-:Role rdf:type owl:Class ; 
+:Role rdf:type owl:Class ;
+:grantedPermission :Permission ;
 rdfs:label ":Role" . 
 
 
