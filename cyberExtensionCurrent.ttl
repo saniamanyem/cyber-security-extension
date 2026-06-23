@@ -483,27 +483,27 @@ rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ModifySetpoints ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ControlAlarms ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :MonitorBuildingServer ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ViewSensorData ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ModifyAccountDetails ;
                 ] ;
 
@@ -514,27 +514,27 @@ rdf:type owl:NamedIndividual ,
 :EmergencyResponderShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :OverrideDoorLocks ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ControlAlarms ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ViewSensorData ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :EmergencyOverride ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ViewCameraFeeds ;
                 ] ;
 
@@ -545,27 +545,27 @@ rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ViewCameraFeeds ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ConfigureControllers ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ViewSensorData ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ApplySoftwareUpdates ;
                 ] ;
 
                 sh:property [
-                  sh:path :hasPermission ;
+                  sh:path :grantedPermission ;
                   sh:hasValue :ViewLogs ;
                 ] ;
 
