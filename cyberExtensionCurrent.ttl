@@ -7,7 +7,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .
-@base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .g
+@base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
 
 <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> rdf:type owl:Ontology ;
                                                                      owl:imports <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
@@ -54,6 +54,9 @@ rdfs:label "d3f:Database" .
 ###  http://data.ashrae.org/standard223#Equipment
 s223:Equipment rdfs:subClassOf :Asset ;
 rdfs:label "s223:Equipment" .
+
+:Role rdf:type owl:Class ; 
+rdfs:label ":Role" . 
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
@@ -123,16 +126,13 @@ rdfs:label ":EmergencyOverride " ;
 rdfs:label ":ViewLogs " .
 
 
-:EmergencyResponder rdf:type owl:Class ;
-                    rdfs:subclassOf d3f:User ;
+:EmergencyResponder rdf:type :Role ;
                     rdfs:label ":EmergencyResponder" .
 
-:Vendor rdf:type owl:Class ;
-                    rdfs:subclassOf d3f:User ;
+:Vendor rdf:type :Role ;
                     rdfs:label ":Vendor" .
 
-:Operator rdf:type owl:Class ;
-                    rdfs:subclassOf d3f:User ;
+:Operator rdf:type :Role ;
                     rdfs:label ":Operator" .
 
 
@@ -166,6 +166,16 @@ rdfs:label ":EnterpriseNetwork" .
 #    Individuals
 #################################################################
 
+:hasRole rdf:type owl:NamedIndividual, s223:Relation ;
+        rdfs:domain d3f:User ;
+        rdfs:range :Role .
+        rdfs:label ":hasRole" .
+
+:grantedPermission rdf:type owl:NamedIndividual, s223:Relation ; 
+                  rdfs:domain :Role ;
+                  rdfs:range :Permission ;
+                  rdfs:label ":grantedPermission" .
+  
 :hosts rdf:type owl:NamedIndividual , s223:Relation ;
        rdfs:domain d3f:AuthenticationServer ;
        rdfs:range d3f:AuthenticationService ; 
