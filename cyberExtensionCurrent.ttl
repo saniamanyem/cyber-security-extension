@@ -570,16 +570,6 @@ rdf:type owl:NamedIndividual ,
                   sh:path :grantedPermission ;
                   sh:hasValue :ViewLogs ;
                 ] ;
-
-                sh:property [
-                  sh:path :usesDevice ;
-                  sh:node [
-                    sh:property [
-                      sh:path s223:cnx ;
-                      sh:hasValue :DMZNetwork ;
-                    ]
-                  ]
-                ] ;
                 sh:targetNode :Vendor . 
 
 
