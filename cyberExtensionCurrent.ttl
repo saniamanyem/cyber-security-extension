@@ -92,39 +92,58 @@ rdfs:label ":Permission" .
 
 :OverrideDoorLocks rdf:type :Permission ;
 rdfs:label ":OverrideDoorLocks " ;
+:allowsAction :Control ;
 :validDuring :EmergencyCondition .
 
 :ViewCameraFeeds rdf:type :Permission ;
+:allowsAction :Read ;
 rdfs:label ":ViewCameraFeeds " .
 
 :ModifySetpoints rdf:type :Permission ;
+:allowsAction :Write ;
 rdfs:label ":ModifySetpoints " .
 
 :ControlAlarms rdf:type :Permission ;
+:allowsAction :Control ;
 rdfs:label ":ControlAlarms " .
 
 :ConfigureControllers rdf:type :Permission ;
+:allowsAction :Write ;
 rdfs:label ":ConfigureControllers " .
 
 :MonitorBuildingServer rdf:type :Permission ;
+:allowsAction :View ;
 rdfs:label ":MonitorBuildingServer " .
 
 :ViewSensorData rdf:type :Permission ;
+:allowsAction :Read ;
 rdfs:label ":ViewSensorData " .
 
 :ApplySoftwareUpdates rdf:type :Permission ;
+:allowsAction :Write ;
 rdfs:label ":ApplySoftwareUpdates " .
 
 :ModifyAccountDetails rdf:type :Permission ;
+:allowsAction :Control ;
 rdfs:label ":ModifyAccountDetails " .
 
 :EmergencyOverride rdf:type :Permission ;
 rdfs:label ":EmergencyOverride " ;
+:allowsAction :Control ;
 :validDuring :EmergencyCondition .
 
 :ViewLogs rdf:type :Permission ;
+:allowsAction :Read ;
 rdfs:label ":ViewLogs " .
 
+:Read rdf:type d3f:Action ; 
+rdfs:label ":Read " .
+
+:Write rdf:type d3f:Action ; 
+rdfs:label ":Write " .
+
+:Control rdf:type d3f:Action ; 
+rdfs:label ":Control " .
 
 :EmergencyResponder rdf:type :Role ;
                     rdfs:label ":EmergencyResponder" .
