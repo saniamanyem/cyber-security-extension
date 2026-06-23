@@ -236,13 +236,6 @@ rdfs:label ":EnterpriseNetwork" .
                rdfs:comment "A User has credential Credential" ;
                rdfs:label ":hasCredential" .
 
-:hasPermission rdf:type owl:NamedIndividual ,
-                        s223:Relation ;
-               rdfs:domain d3f:User ;
-               rdfs:range :Permission ;
-               rdfs:label ":hasPermission" .
-
-
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/modifies
 :modifies rdf:type owl:NamedIndividual ,
                    s223:Relation ;
@@ -427,13 +420,11 @@ rdf:type owl:NamedIndividual ,
         sh:property [sh:class :Device ;
           sh:path :usesDevice ;
         ] ;
-
-
-          sh:or (
-              [sh:class :EmergencyResponder ]
-              [sh:class :Operator ]
-              [sh:class :Vendor ]
-        ) ;
+          
+        sh:property [
+          sh:path :hasRole ;
+          sh:minCount 1 ;
+          ] ;
            sh:targetClass d3f:User .
 
 :NetworkShape rdf:type owl:NamedIndividual ,
@@ -507,7 +498,7 @@ rdf:type owl:NamedIndividual ,
                   sh:hasValue :ModifyAccountDetails ;
                 ] ;
 
-                sh:targetClass :Operator .
+                sh:targetNode :Operator .
 
 #MUST HAVE ALL OF THESE...note in documentation
 
@@ -538,7 +529,7 @@ rdf:type owl:NamedIndividual ,
                   sh:hasValue :ViewCameraFeeds ;
                 ] ;
 
-                sh:targetClass :EmergencyResponder .
+                sh:targetNode :EmergencyResponder .
 
 
 :VendorShape rdf:type owl:NamedIndividual ,
@@ -578,16 +569,8 @@ rdf:type owl:NamedIndividual ,
                     ]
                   ]
                 ] ;
-                sh:targetClass :Vendor . 
+                sh:targetNode :Vendor . 
 
-:PermissionShape rdf:type owl:NamedIndividual ,
-                        sh:NodeShape ;
-  sh:property [
-    sh:path :enforcedBy ;
-    sh:class :EnforcementPoint ;
-    sh:minCount 1 ;
-  ] ;
-  sh:targetClass :Permission .
 
 :CredentialShape rdf:type owl:NamedIndividual, sh:NodeShape ; 
     sh:property [
@@ -595,7 +578,7 @@ rdf:type owl:NamedIndividual ,
       sh:minCount 1 ;
       sh:maxCount 1 ;
     ] ;
-    sh:targetclass d3f:Credential .
+    sh:targetClass d3f:Credential .
 
 
 
