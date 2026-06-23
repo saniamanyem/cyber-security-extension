@@ -160,7 +160,7 @@ rdfs:label ":Control " .
                 rdfs:label ":NetworkSegment" .
 
 :Device rdf:type owl:Class ;
-        rdfs:subclassOf :Equipment ;
+        rdfs:subclassOf s223:Equipment ;
         rdfs:label ":Device" .
 
 
@@ -271,7 +271,7 @@ rdfs:label ":EnterpriseNetwork" .
 :requestsAccessTo rdf:type owl:NamedIndividual ,
                            s223:Relation ;
                   rdfs:domain d3f:User ;
-                  rdfs:range: :Asset ;
+                  rdfs:range :Asset ;
                   rdfs:comment "A User requests access to an Asset" ;
                   rdfs:label ":requestsAccessTo" .
 
@@ -419,6 +419,23 @@ rdf:type owl:NamedIndividual ,
           sh:path :hasRole ;
           sh:minCount 1 ;
           ] ;
+
+        sh:sparql [
+          sh:message "Vendor users must use a device connected to DMZ Network" ;
+
+          sh:select """
+          SELECT $this 
+          WHERE {
+            $this :hasRole :Vendor .
+
+            FILTER NOT EXISTS {
+              $this :usesDevice ?device .
+              ?device s223:cnx :DMZNetwork .
+            }
+          }
+
+          """ ;
+        ] ;
            sh:targetClass d3f:User .
 
 :NetworkShape rdf:type owl:NamedIndividual ,
