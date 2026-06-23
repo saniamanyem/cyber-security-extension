@@ -79,6 +79,7 @@ rdfs:subclassOf :Asset ;
 rdfs:label ":EnforcementPoint " .
 
 :AuditLog rdf:type owl:Class ;
+rdfs:subclassOf :Asset .
 rdfs:label ":AuditLog" .
 
 
