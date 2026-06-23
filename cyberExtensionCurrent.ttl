@@ -79,7 +79,7 @@ rdfs:subclassOf :Asset ;
 rdfs:label ":EnforcementPoint " .
 
 :AuditLog rdf:type owl:Class ;
-rdfs:subclassOf :Asset .
+rdfs:subclassOf :Asset ;
 rdfs:label ":AuditLog" .
 
 
@@ -251,7 +251,7 @@ rdfs:label ":EnterpriseNetwork" .
 :requestsAccessTo rdf:type owl:NamedIndividual ,
                            s223:Relation ;
                   rdfs:domain :AccessRequest ;
-                  rdfs:range: :Asset .
+                  rdfs:range: :Asset ;
                   rdfs:comment "A User requests access to an Asset" ;
                   rdfs:label ":requestsAccessTo" .
 
