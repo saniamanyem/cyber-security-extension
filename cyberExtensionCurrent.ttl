@@ -56,7 +56,6 @@ s223:Equipment rdfs:subClassOf :Asset ;
 rdfs:label "s223:Equipment" .
 
 :Role rdf:type owl:Class ;
-:grantedPermission :Permission ;
 rdfs:label ":Role" . 
 
 
@@ -291,11 +290,6 @@ rdfs:label ":EnterpriseNetwork" .
               rdfs:domain d3f:User ;
               rdfs:range :Device .
             
-:authorizedFor rdf:type owl:NamedIndividual ,
-                        s223:Relation ;
-                rdfs:label ":authorizedFor" ;
-                rdfs:domain d3f:User ;
-                rdfs:range :Permission .
 
 d3f:User rdfs:label "d3f:User" .
 d3f:Credential rdfs:label "d3f:Credential" .
