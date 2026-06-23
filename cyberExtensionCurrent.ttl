@@ -424,13 +424,19 @@ rdf:type owl:NamedIndividual ,
           sh:message "Vendor users must use a device connected to DMZ Network" ;
 
           sh:select """
+          PREFIX : <@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>
+          PREFIX s223: <http://data.ashrae.org/standard223#>
+
+
           SELECT $this 
           WHERE {
-            $this :hasRole :Vendor .
+            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasRole>
+            <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Vendor> .
 
             FILTER NOT EXISTS {
-              $this :usesDevice ?device .
-              ?device s223:cnx :DMZNetwork .
+              $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/usesDevice> ?device .
+              ?device <http://data.ashrae.org/stanard223#cnx>
+               <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/DMZNetwork> .
             }
           }
 
