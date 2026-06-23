@@ -166,43 +166,56 @@ rdfs:label ":EnterpriseNetwork" .
 #    Individuals
 #################################################################
 
-:hosts rdf:type owl:NamedIndividual , s223:Relation ; 
+:hosts rdf:type owl:NamedIndividual , s223:Relation ;
+       rdfs:domain d3f:AuthenticationServer ;
+       rdfs:range d3f:AuthenticationService ; 
        rdfs:label ":hosts" . 
 
-:requestedAccess rdf:type owl:NamedIndividual, s223:Relation ; 
-                 rdfs:label ":requestedAccess" .
-
-:requestedBy rdf:type owl:NamedIndividual, s223:Relation ; 
-             rdfs:label ":requestedBy" . 
+:requestedBy rdf:type owl:NamedIndividual, s223:Relation ;
+  rdfs:label ":requestedBy" ;
+  rdfs:domain :AccessRequest ; 
+  rdfs:range d3f:User . 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
 :affectedBy rdf:type owl:NamedIndividual ,
                      s223:Relation ;
             rdfs:comment "A Permission is affected by a Condition" ;
-            rdfs:label ":affectedBy" .
+            rdfs:label ":affectedBy" ;
+            rdfs:domain :Asset ; 
+            rdfs:range :Event .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
 :allowsAction rdf:type owl:NamedIndividual ,
                        s223:Relation ;
-              rdfs:label ":allowsAction" .
+              rdfs:label ":allowsAction" ;
+              rdfs:domain :Permission ;
+              rdfs:range d3f:Action . 
 
 :recordsEvent rdf:type owl:NamedIndividual, s223:Relation ;
-              rdfs:label ":recordsEvent" .
+              rdfs:label ":recordsEvent" ;
+              rdfs:domain :AuditLog ; 
+              rdfs:range :Event .
 
 :generatedBy rdf:type owl:NamedIndividual, s223:Relation ;
-             rdfs:label ":generatedBy" .
+             rdfs:label ":generatedBy" ;
+             rdfs:domain :Event ; 
+             rdfs:range owl:Thing .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo
 :appliesTo rdf:type owl:NamedIndividual ,
                     s223:Relation ;
-                    rdfs:label ":appliesTo" .
+                    rdfs:label ":appliesTo" ;
+                    rdfs:domain :Permission ; 
+                    rdfs:range :Asset .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/enforcedBy
 :enforcedBy rdf:type owl:NamedIndividual ,
                      s223:Relation ;
             rdfs:comment "A Permission is enforced by an Enforcement Point" ;
-            rdfs:label "enforcedBy" .
+            rdfs:label "enforcedBy" ;
+            rdfs:domain d3f:AuthenticationService ;
+            rdfs:range :EnforcementPoint .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
@@ -223,16 +236,22 @@ rdfs:label ":EnterpriseNetwork" .
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/modifies
 :modifies rdf:type owl:NamedIndividual ,
                    s223:Relation ;
-                   rdfs:label ":modifies" .
+                   rdfs:label ":modifies" ;
+                   rdfs:domain d3f:Action ;
+                   rdfs:range :Asset .
 
 :protects rdf:type owl:NamedIndividual ,
                    s223:Relation ;
-          rdfs:label ":protects" .
+          rdfs:label ":protects" ;
+          rdfs:domain :EnforcementPoint ;
+          rdfs:range :Asset .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/requestsAccessTo
 :requestsAccessTo rdf:type owl:NamedIndividual ,
                            s223:Relation ;
+                  rdfs:domain :AccessRequest ;
+                  rdfs:range: :Asset .
                   rdfs:comment "A User requests access to an Asset" ;
                   rdfs:label ":requestsAccessTo" .
 
@@ -241,28 +260,38 @@ rdfs:label ":EnterpriseNetwork" .
 :validDuring rdf:type owl:NamedIndividual ,
                       s223:Relation ;
              rdfs:comment "A Permission is valid during a Condition" ;
-             rdfs:label ":validDuring" .
+             rdfs:label ":validDuring" ;
+             rdfs:domain :Permission ; 
+             rdfs:range :Condition .
 
 
 :validates rdf:type owl:NamedIndividual ,
                    s223:Relation ;
-                   rdfs:label ":validates" .
+                   rdfs:label ":validates" ;
+                   rdfs:domain d3f:AuthenticationService ;
+                   rdfs:range :Credential .
 
 
 :containsAsset rdf:type owl:NamedIndividual ,
                       s223:Relation ;
               rdfs:comment "A network contains an asset" ;
-              rdfs:label ":containsAsset" .
+              rdfs:label ":containsAsset" ;
+              rdfs:domain d3f:Network ;
+              rdfs:range :Device .
 
               
 :usesDevice rdf:type owl:NamedIndividual ,
                       s223:Relation ;
               rdfs:comment "A User uses a Device" ;
-              rdfs:label ":usesDevice" .
+              rdfs:label ":usesDevice" ;
+              rdfs:domain d3f:User ;
+              rdfs:range :Device .
             
 :authorizedFor rdf:type owl:NamedIndividual ,
                         s223:Relation ;
-                rdfs:label ":authorizedFor" .
+                rdfs:label ":authorizedFor" ;
+                rdfs:domain d3f:User ;
+                rdfs:range :Permission .
 
 d3f:User rdfs:label "d3f:User" .
 d3f:Credential rdfs:label "d3f:Credential" .
@@ -292,7 +321,7 @@ s223:Actuator rdfs:label "s223:Actuator" .
 
 :AccessRequestShape rdf:type owl:NamedIndividual, sh:NodeShape ;
                     sh:property [
-                      sh:path :requestedAccess ;
+                      sh:path :requestsAccessTo ;
                       sh:class :Asset ;
                       sh:minCount 1 ;
                     ] ;
