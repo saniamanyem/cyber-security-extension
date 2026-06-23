@@ -168,7 +168,7 @@ rdfs:label ":EnterpriseNetwork" .
 
 :hasRole rdf:type owl:NamedIndividual, s223:Relation ;
         rdfs:domain d3f:User ;
-        rdfs:range :Role .
+        rdfs:range :Role ;
         rdfs:label ":hasRole" .
 
 :grantedPermission rdf:type owl:NamedIndividual, s223:Relation ; 
