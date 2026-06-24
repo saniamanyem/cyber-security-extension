@@ -1,5 +1,5 @@
 @prefix psm: <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni#> .
-@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> .
 @prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .
 
