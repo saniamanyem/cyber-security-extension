@@ -3,7 +3,7 @@
 @prefix s223: <http://data.ashrae.org/standard223#> .
 @base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
 
-<http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> rdf:type owl:Ontology ;
+<http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> rdf:type owl:Ontology ;
                                                                      owl:imports <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
                                                                                  <http://data.ashrae.org/standard223/1.0/model/all> .
 
