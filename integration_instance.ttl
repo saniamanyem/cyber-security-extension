@@ -1,12 +1,14 @@
-<http://www.semanticweb.org/snm49/ontologies/2026/5/integration>
-a owl:Ontology ;
-owl:imports <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> ;
-owl:imports <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni> .
-
 @prefix psm: <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni#> .
 @prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
 @prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .
+
+<http://www.semanticweb.org/snm49/ontologies/2026/5/integration> a owl:Ontology ;
+                                                                owl:imports <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> ,
+                                                                <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni> ,
+                                                                <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
+                                                                <http://data.ashrae.org/standard223/1.0/model/all> .
+
 
 :Alice
     a :Operator ;
@@ -14,4 +16,5 @@ owl:imports <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni> .
 
 :ModifySetpoints
     a :Permission ;
-    :appliesTo psm:HVACZone1Thermostat . 
+    :appliesTo psm:HVACZone1Thermostat ;
+    :allowsAction :Write .
