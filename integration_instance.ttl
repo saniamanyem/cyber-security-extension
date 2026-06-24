@@ -17,4 +17,6 @@
 :ModifySetpoints
     a :Permission ;
     :appliesTo psm:HVACZone1Thermostat ;
+    :appliesTo psm:HVACZone2Thermostat ;
+    
     :allowsAction :Write .
