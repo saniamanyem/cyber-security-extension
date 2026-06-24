@@ -492,11 +492,11 @@ rdf:type owl:NamedIndividual ,
                 sh:property [
                   sh:path :grantedPermission ; 
                   sh:in (
-                    ::ModifySetpoints ;
-                    :ControlAlarms ; 
-                    :MonitorBuildingServer ;
-                    :ViewSensorData ; 
-                    :ModifyAccountDetails ;
+                    :ModifySetpoints 
+                    :ControlAlarms 
+                    :MonitorBuildingServer 
+                    :ViewSensorData 
+                    :ModifyAccountDetails 
                   ) ;
                 ] ;
 
@@ -511,11 +511,11 @@ rdf:type owl:NamedIndividual ,
 
                   sh:path :grantedPermission ; 
                   sh:in (
-                    :OverrideDoorLocks ;
-                    :ControlAlarms ; 
-                    :EmergencyOverride ;
-                    :ViewSensorData ; 
-                    :ViewCameraFeeds ;
+                    :OverrideDoorLocks 
+                    :ControlAlarms 
+                    :EmergencyOverride 
+                    :ViewSensorData 
+                    :ViewCameraFeeds 
                   ) ;
                 ] ;
                 sh:targetNode :EmergencyResponder .
@@ -528,11 +528,11 @@ rdf:type owl:NamedIndividual ,
                  
                   sh:path :grantedPermission ; 
                   sh:in (
-                    :ViewCameraFeeds ;
-                    :ConfigureControllers ; 
-                    :ViewSensorData ;
-                    :ApplySoftwareUpdates ; 
-                    :ViewLogs ;
+                    :ViewCameraFeeds 
+                    :ConfigureControllers 
+                    :ViewSensorData
+                    :ApplySoftwareUpdates 
+                    :ViewLogs 
                   ) ;
                 ] ;
 
