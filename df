@@ -1,0 +1,423 @@
+[1mdiff --git a/ServiceVendorCase.ttl b/ServiceVendorCase.ttl[m
+[1mindex df816b5..188a3f1 100644[m
+[1m--- a/ServiceVendorCase.ttl[m
+[1m+++ b/ServiceVendorCase.ttl[m
+[36m@@ -8,15 +8,19 @@[m
+                                                                                  <http://data.ashrae.org/standard223/1.0/model/all> .[m
+ [m
+ :Dan[m
+[31m-    a d3f:User, :Vendor ;[m
+[32m+[m[32m    a d3f:User ;[m
+[32m+[m[32m    :hasRole :Vendor ;[m
+     :usesDevice :Laptop;[m
+     :hasCredential :DanPassword123 ; [m
+[31m-    :requestsAccessTo :Skybox ;[m
+[31m-    :hasPermission :ApplySoftwareUpdates ;[m
+[31m-    :hasPermission :ViewLogs ; [m
+[31m-    :hasPermission :ViewSensorData ;[m
+[31m-    :hasPermission :ConfigureControllers ;[m
+[31m-    :hasPermission :ViewCameraFeeds .[m
+[32m+[m[32m    :requestsAccessTo :Skybox .[m
+[32m+[m
+[32m+[m[32m:Vendor[m
+[32m+[m[32m  a :Role ;[m
+[32m+[m[32m    :grantedPermission :ApplySoftwareUpdates ;[m
+[32m+[m[32m    :grantedPermission :ViewLogs ;[m[41m [m
+[32m+[m[32m    :grantedPermission :ViewSensorData ;[m
+[32m+[m[32m    :grantedPermission :ConfigureControllers ;[m
+[32m+[m[32m    :grantedPermission :ViewCameraFeeds .[m
+ [m
+ :Skybox [m
+     a :Asset . [m
+[1mdiff --git a/cyberExtensionCurrent.ttl b/cyberExtensionCurrent.ttl[m
+[1mindex e6adc88..fa360c4 100644[m
+[1m--- a/cyberExtensionCurrent.ttl[m
+[1m+++ b/cyberExtensionCurrent.ttl[m
+[36m@@ -55,6 +55,9 @@[m [mrdfs:label "d3f:Database" .[m
+ s223:Equipment rdfs:subClassOf :Asset ;[m
+ rdfs:label "s223:Equipment" .[m
+ [m
+[32m+[m[32m:Role rdf:type owl:Class ;[m
+[32m+[m[32mrdfs:label ":Role" .[m[41m [m
+[32m+[m
+ [m
+ ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset[m
+ :Asset rdf:type owl:Class ;[m
+[36m@@ -89,50 +92,66 @@[m [mrdfs:label ":Permission" .[m
+ [m
+ :OverrideDoorLocks rdf:type :Permission ;[m
+ rdfs:label ":OverrideDoorLocks " ;[m
+[32m+[m[32m:allowsAction :Control ;[m
+ :validDuring :EmergencyCondition .[m
+ [m
+ :ViewCameraFeeds rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Read ;[m
+ rdfs:label ":ViewCameraFeeds " .[m
+ [m
+ :ModifySetpoints rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Write ;[m
+ rdfs:label ":ModifySetpoints " .[m
+ [m
+ :ControlAlarms rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Control ;[m
+ rdfs:label ":ControlAlarms " .[m
+ [m
+ :ConfigureControllers rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Write ;[m
+ rdfs:label ":ConfigureControllers " .[m
+ [m
+ :MonitorBuildingServer rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :View ;[m
+ rdfs:label ":MonitorBuildingServer " .[m
+ [m
+ :ViewSensorData rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Read ;[m
+ rdfs:label ":ViewSensorData " .[m
+ [m
+ :ApplySoftwareUpdates rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Write ;[m
+ rdfs:label ":ApplySoftwareUpdates " .[m
+ [m
+ :ModifyAccountDetails rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Control ;[m
+ rdfs:label ":ModifyAccountDetails " .[m
+ [m
+ :EmergencyOverride rdf:type :Permission ;[m
+ rdfs:label ":EmergencyOverride " ;[m
+[32m+[m[32m:allowsAction :Control ;[m
+ :validDuring :EmergencyCondition .[m
+ [m
+ :ViewLogs rdf:type :Permission ;[m
+[32m+[m[32m:allowsAction :Read ;[m
+ rdfs:label ":ViewLogs " .[m
+ [m
+[32m+[m[32m:Read rdf:type d3f:Action ;[m[41m [m
+[32m+[m[32mrdfs:label ":Read " .[m
+[32m+[m
+[32m+[m[32m:Write rdf:type d3f:Action ;[m[41m [m
+[32m+[m[32mrdfs:label ":Write " .[m
+ [m
+[31m-:EmergencyResponder rdf:type owl:Class ;[m
+[31m-                    rdfs:subclassOf d3f:User ;[m
+[32m+[m[32m:Control rdf:type d3f:Action ;[m[41m [m
+[32m+[m[32mrdfs:label ":Control " .[m
+[32m+[m
+[32m+[m[32m:EmergencyResponder rdf:type :Role ;[m
+                     rdfs:label ":EmergencyResponder" .[m
+ [m
+[31m-:Vendor rdf:type owl:Class ;[m
+[31m-                    rdfs:subclassOf d3f:User ;[m
+[32m+[m[32m:Vendor rdf:type :Role ;[m
+                     rdfs:label ":Vendor" .[m
+ [m
+[31m-:Operator rdf:type owl:Class ;[m
+[31m-                    rdfs:subclassOf d3f:User ;[m
+[32m+[m[32m:Operator rdf:type :Role ;[m
+                     rdfs:label ":Operator" .[m
+ [m
+ [m
+[36m@@ -141,11 +160,9 @@[m [mrdfs:label ":ViewLogs " .[m
+                 rdfs:label ":NetworkSegment" .[m
+ [m
+ :Device rdf:type owl:Class ;[m
+[31m-        rdfs:subclassOf :Equipment ;[m
+[32m+[m[32m        rdfs:subclassOf s223:Equipment ;[m
+         rdfs:label ":Device" .[m
+ [m
+[31m-:AccessRequest rdf:type owl:Class ;[m
+[31m-rdfs:label ":AccessRequest" .[m
+ [m
+ :Event rdf:type owl:Class ; [m
+ rdfs:label ":Event" . [m
+[36m@@ -166,6 +183,16 @@[m [mrdfs:label ":EnterpriseNetwork" .[m
+ #    Individuals[m
+ #################################################################[m
+ [m
+[32m+[m[32m:hasRole rdf:type owl:NamedIndividual, s223:Relation ;[m
+[32m+[m[32m        rdfs:domain d3f:User ;[m
+[32m+[m[32m        rdfs:range :Role ;[m
+[32m+[m[32m        rdfs:label ":hasRole" .[m
+[32m+[m
+[32m+[m[32m:grantedPermission rdf:type owl:NamedIndividual, s223:Relation ;[m[41m [m
+[32m+[m[32m                  rdfs:domain :Role ;[m
+[32m+[m[32m                  rdfs:range :Permission ;[m
+[32m+[m[32m                  rdfs:label ":grantedPermission" .[m
+[32m+[m[41m  [m
+ :hosts rdf:type owl:NamedIndividual , s223:Relation ;[m
+        rdfs:domain d3f:AuthenticationServer ;[m
+        rdfs:range d3f:AuthenticationService ; [m
+[36m@@ -173,7 +200,7 @@[m [mrdfs:label ":EnterpriseNetwork" .[m
+ [m
+ :requestedBy rdf:type owl:NamedIndividual, s223:Relation ;[m
+   rdfs:label ":requestedBy" ;[m
+[31m-  rdfs:domain :AccessRequest ; [m
+[32m+[m[32m  rdfs:domain :Permission ;[m[41m [m
+   rdfs:range d3f:User . [m
+ [m
+ ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy[m
+[36m@@ -198,8 +225,8 @@[m [mrdfs:label ":EnterpriseNetwork" .[m
+ [m
+ :generatedBy rdf:type owl:NamedIndividual, s223:Relation ;[m
+              rdfs:label ":generatedBy" ;[m
+[31m-             rdfs:domain :Event ; [m
+[31m-             rdfs:range owl:Thing .[m
+[32m+[m[32m             rdfs:domain :AuditLog ;[m[41m [m
+[32m+[m[32m             rdfs:range :Asset .[m
+ [m
+ ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo[m
+ :appliesTo rdf:type owl:NamedIndividual ,[m
+[36m@@ -226,13 +253,6 @@[m [mrdfs:label ":EnterpriseNetwork" .[m
+                rdfs:comment "A User has credential Credential" ;[m
+                rdfs:label ":hasCredential" .[m
+ [m
+[31m-:hasPermission rdf:type owl:NamedIndividual ,[m
+[31m-                        s223:Relation ;[m
+[31m-               rdfs:domain d3f:User ;[m
+[31m-               rdfs:range :Permission ;[m
+[31m-               rdfs:label ":hasPermission" .[m
+[31m-[m
+[31m-[m
+ ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/modifies[m
+ :modifies rdf:type owl:NamedIndividual ,[m
+                    s223:Relation ;[m
+[36m@@ -250,8 +270,8 @@[m [mrdfs:label ":EnterpriseNetwork" .[m
+ ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/requestsAccessTo[m
+ :requestsAccessTo rdf:type owl:NamedIndividual ,[m
+                            s223:Relation ;[m
+[31m-                  rdfs:domain :AccessRequest ;[m
+[31m-                  rdfs:range: :Asset ;[m
+[32m+[m[32m                  rdfs:domain d3f:User ;[m
+[32m+[m[32m                  rdfs:range :Asset ;[m
+                   rdfs:comment "A User requests access to an Asset" ;[m
+                   rdfs:label ":requestsAccessTo" .[m
+ [m
+[36m@@ -287,11 +307,6 @@[m [mrdfs:label ":EnterpriseNetwork" .[m
+               rdfs:domain d3f:User ;[m
+               rdfs:range :Device .[m
+             [m
+[31m-:authorizedFor rdf:type owl:NamedIndividual ,[m
+[31m-                        s223:Relation ;[m
+[31m-                rdfs:label ":authorizedFor" ;[m
+[31m-                rdfs:domain d3f:User ;[m
+[31m-                rdfs:range :Permission .[m
+ [m
+ d3f:User rdfs:label "d3f:User" .[m
+ d3f:Credential rdfs:label "d3f:Credential" .[m
+[36m@@ -319,24 +334,6 @@[m [ms223:Actuator rdfs:label "s223:Actuator" .[m
+               ] ;[m
+               sh:targetClass :AuditLog .[m
+ [m
+[31m-:AccessRequestShape rdf:type owl:NamedIndividual, sh:NodeShape ;[m
+[31m-                    sh:property [[m
+[31m-                      sh:path :requestsAccessTo ;[m
+[31m-                      sh:class :Asset ;[m
+[31m-                      sh:minCount 1 ;[m
+[31m-                    ] ;[m
+[31m-                    sh:property [[m
+[31m-                      sh:path :authorizedFor ;[m
+[31m-                      sh:class :Permission ;[m
+[31m-                      sh:minCount 1 ;[m
+[31m-                    ] ;[m
+[31m-                    sh:property [[m
+[31m-                      sh:path :requestedBy ;[m
+[31m-                      sh:class d3f:User ; [m
+[31m-                      sh:minCount 1 ;[m
+[31m-                    ] ;[m
+[31m-                    sh:targetClass :AccessRequest .[m
+[31m-[m
+ [m
+ [m
+ ###  http://data.ashrae.org/standard223#FunctionShape[m
+[36m@@ -417,13 +414,34 @@[m [mrdf:type owl:NamedIndividual ,[m
+         sh:property [sh:class :Device ;[m
+           sh:path :usesDevice ;[m
+         ] ;[m
+[32m+[m[41m          [m
+[32m+[m[32m        sh:property [[m
+[32m+[m[32m          sh:path :hasRole ;[m
+[32m+[m[32m          sh:minCount 1 ;[m
+[32m+[m[32m          ] ;[m
+[32m+[m
+[32m+[m[32m        sh:sparql [[m
+[32m+[m[32m          sh:message "Vendor users must use a device connected to DMZ Network" ;[m
+[32m+[m
+[32m+[m[32m          sh:select """[m
+[32m+[m[32m          PREFIX : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>[m
+[32m+[m[32m          PREFIX s223: <http://data.ashrae.org/standard223#>[m
+[32m+[m
+ [m
+[32m+[m[32m          SELECT $this[m[41m [m
+[32m+[m[32m          WHERE {[m
+[32m+[m[32m            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasRole>[m
+[32m+[m[32m            <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Vendor> .[m
+ [m
+[31m-          sh:or ([m
+[31m-              [sh:class :EmergencyResponder ][m
+[31m-              [sh:class :Operator ][m
+[31m-              [sh:class :Vendor ][m
+[31m-        ) ;[m
+[32m+[m[32m            FILTER NOT EXISTS {[m
+[32m+[m[32m              $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/usesDevice> ?device .[m
+[32m+[m[32m              ?device <http://data.ashrae.org/standard223#cnx>[m
+[32m+[m[32m               <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/DMZNetwork> .[m
+[32m+[m[32m            }[m
+[32m+[m[32m          }[m
+[32m+[m
+[32m+[m[32m          """ ;[m
+[32m+[m[32m        ] ;[m
+            sh:targetClass d3f:User .[m
+ [m
+ :NetworkShape rdf:type owl:NamedIndividual ,[m
+[36m@@ -471,113 +489,55 @@[m [mrdf:type owl:NamedIndividual ,[m
+ [m
+ :OperatorShape rdf:type owl:NamedIndividual ,[m
+                         sh:NodeShape ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ModifySetpoints ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ControlAlarms ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :MonitorBuildingServer ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ViewSensorData ;[m
+[31m-                ] ;[m
+[31m-[m
+                 sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ModifyAccountDetails ;[m
+[32m+[m[32m                  sh:path :grantedPermission ;[m[41m [m
+[32m+[m[32m                  sh:in ([m
+[32m+[m[32m                    :ModifySetpoints[m[41m [m
+[32m+[m[32m                    :ControlAlarms[m[41m [m
+[32m+[m[32m                    :MonitorBuildingServer[m[41m [m
+[32m+[m[32m                    :ViewSensorData[m[41m [m
+[32m+[m[32m                    :ModifyAccountDetails[m[41m [m
+[32m+[m[32m                  ) ;[m
+                 ] ;[m
+ [m
+[31m-                sh:targetClass :Operator .[m
+[32m+[m[32m                sh:targetNode :Operator .[m
+ [m
+ #MUST HAVE ALL OF THESE...note in documentation[m
+ [m
+ :EmergencyResponderShape rdf:type owl:NamedIndividual ,[m
+                         sh:NodeShape ;[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :OverrideDoorLocks ;[m
+[31m-                ] ;[m
+ [m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ControlAlarms ;[m
+[31m-                ] ;[m
+[32m+[m[32m                  sh:property [[m
+ [m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ViewSensorData ;[m
+[32m+[m[32m                  sh:path :grantedPermission ;[m[41m [m
+[32m+[m[32m                  sh:in ([m
+[32m+[m[32m                    :OverrideDoorLocks[m[41m [m
+[32m+[m[32m                    :ControlAlarms[m[41m [m
+[32m+[m[32m                    :EmergencyOverride[m[41m [m
+[32m+[m[32m                    :ViewSensorData[m[41m [m
+[32m+[m[32m                    :ViewCameraFeeds[m[41m [m
+[32m+[m[32m                  ) ;[m
+                 ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :EmergencyOverride ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ViewCameraFeeds ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:targetClass :EmergencyResponder .[m
+[32m+[m[32m                sh:targetNode :EmergencyResponder .[m
+ [m
+ [m
+ :VendorShape rdf:type owl:NamedIndividual ,[m
+                         sh:NodeShape ;[m
+ [m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ViewCameraFeeds ;[m
+[32m+[m[32m                  sh:property [[m
+[32m+[m[41m                 [m
+[32m+[m[32m                  sh:path :grantedPermission ;[m[41m [m
+[32m+[m[32m                  sh:in ([m
+[32m+[m[32m                    :ViewCameraFeeds[m[41m [m
+[32m+[m[32m                    :ConfigureControllers[m[41m [m
+[32m+[m[32m                    :ViewSensorData[m
+[32m+[m[32m                    :ApplySoftwareUpdates[m[41m [m
+[32m+[m[32m                    :ViewLogs[m[41m [m
+[32m+[m[32m                  ) ;[m
+                 ] ;[m
+ [m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ConfigureControllers ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ViewSensorData ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ApplySoftwareUpdates ;[m
+[31m-                ] ;[m
+[32m+[m[32m                sh:targetNode :Vendor .[m[41m [m
+ [m
+[31m-                sh:property [[m
+[31m-                  sh:path :hasPermission ;[m
+[31m-                  sh:hasValue :ViewLogs ;[m
+[31m-                ] ;[m
+[31m-[m
+[31m-                sh:property [[m
+[31m-                  sh:path :usesDevice ;[m
+[31m-                  sh:node [[m
+[31m-                    sh:property [[m
+[31m-                      sh:path s223:cnx ;[m
+[31m-                      sh:hasValue :DMZNetwork ;[m
+[31m-                    ][m
+[31m-                  ][m
+[31m-                ] ;[m
+[31m-                sh:targetClass :Vendor . [m
+[31m-[m
+[31m-:PermissionShape rdf:type owl:NamedIndividual ,[m
+[31m-                        sh:NodeShape ;[m
+[31m-  sh:property [[m
+[31m-    sh:path :enforcedBy ;[m
+[31m-    sh:class :EnforcementPoint ;[m
+[31m-    sh:minCount 1 ;[m
+[31m-  ] ;[m
+[31m-  sh:targetClass :Permission .[m
+ [m
+ :CredentialShape rdf:type owl:NamedIndividual, sh:NodeShape ; [m
+     sh:property [[m
+[36m@@ -585,7 +545,7 @@[m [mrdf:type owl:NamedIndividual ,[m
+       sh:minCount 1 ;[m
+       sh:maxCount 1 ;[m
+     ] ;[m
+[31m-    sh:targetclass d3f:Credential .[m
+[32m+[m[32m    sh:targetClass d3f:Credential .[m
+ [m
+ [m
+ [m
