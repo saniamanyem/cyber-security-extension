@@ -225,8 +225,8 @@ rdfs:label ":EnterpriseNetwork" .
 
 :generatedBy rdf:type owl:NamedIndividual, s223:Relation ;
              rdfs:label ":generatedBy" ;
-             rdfs:domain :Event ; 
-             rdfs:range owl:Thing .
+             rdfs:domain :AuditLog ; 
+             rdfs:range :Asset .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo
 :appliesTo rdf:type owl:NamedIndividual ,
@@ -424,7 +424,7 @@ rdf:type owl:NamedIndividual ,
           sh:message "Vendor users must use a device connected to DMZ Network" ;
 
           sh:select """
-          PREFIX : <@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>
+          PREFIX : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>
           PREFIX s223: <http://data.ashrae.org/standard223#>
 
 
@@ -435,7 +435,7 @@ rdf:type owl:NamedIndividual ,
 
             FILTER NOT EXISTS {
               $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/usesDevice> ?device .
-              ?device <http://data.ashrae.org/stanard223#cnx>
+              ?device <http://data.ashrae.org/standard223#cnx>
                <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/DMZNetwork> .
             }
           }
