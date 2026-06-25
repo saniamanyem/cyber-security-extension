@@ -12,8 +12,7 @@
 
 :Alice
     a d3f:User ;
-    :hasRole :EmergencyResponder ;
-    :hasCredential :AlicePassword123 .
+    :hasRole :EmergencyResponder .
 
 :AlicePassword123
     a d3f:Credential .
