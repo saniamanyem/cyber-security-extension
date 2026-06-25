@@ -165,10 +165,10 @@ rdfs:label ":EnterpriseNetwork" .
             rdfs:domain :Asset ; 
             rdfs:range :Event .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
-:allowsAction rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowedAction
+:allowedAction rdf:type owl:NamedIndividual ,
                        s223:Relation ;
-              rdfs:label ":allowsAction" ;
+              rdfs:label ":allowedAction" ;
               rdfs:domain :Permission ;
               rdfs:range d3f:Action . 
 
@@ -186,9 +186,7 @@ rdfs:label ":EnterpriseNetwork" .
 :appliesTo rdf:type owl:NamedIndividual ,
                     s223:Relation ;
                     rdfs:label ":appliesTo" ;
-                    rdfs:domain :Permission ; 
-                    rdfs:range :Asset .
-
+                    rdfs:domain :Permission .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/enforcedBy
 :enforcedBy rdf:type owl:NamedIndividual ,
@@ -261,6 +259,24 @@ rdfs:label ":EnterpriseNetwork" .
               rdfs:domain d3f:User ;
               rdfs:range :Device .
             
+
+:canRead rdf:type owl:NamedIndividual ,
+                      s223:Relation ;
+              rdfs:label ":canRead" ;
+              rdfs:domain d3f:Action ;
+              rdfs:range :Device .
+
+:canWrite rdf:type owl:NamedIndividual ,
+                      s223:Relation ;
+              rdfs:label ":canWrite" ;
+              rdfs:domain d3f:Action ;
+              rdfs:range :Device .
+
+:canControl rdf:type owl:NamedIndividual ,
+                      s223:Relation ;
+              rdfs:label ":canControl" ;
+              rdfs:domain d3f:Action ;
+              rdfs:range :Device .
 
 d3f:User rdfs:label "d3f:User" .
 d3f:Credential rdfs:label "d3f:Credential" .

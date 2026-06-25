@@ -11,5 +11,16 @@
 
 
 :Alice
-    a :EmergencyResponder ;
-    :hasPermission :
+    :hasRole :EmergencyResponder .
+
+:EmergencyResponder 
+    :grantedPermission :canRead ;
+    :grantedPermission :canWrite .
+
+:canRead
+    :allowsAction :Read ;
+    :appliesTo :TemperatureSensor101 .
+
+:canWrite   
+    :allowsAction :Write ; 
+    :appliesTo :VAVBox .
