@@ -260,23 +260,16 @@ rdfs:label ":EnterpriseNetwork" .
               rdfs:range :Device .
             
 
-:canRead rdf:type owl:NamedIndividual ,
-                      s223:Relation ;
-              rdfs:label ":canRead" ;
-              rdfs:domain d3f:Action ;
-              rdfs:range :Device .
+:canRead rdf:type :Permission ;
+              rdfs:label ":canRead" .
 
-:canWrite rdf:type owl:NamedIndividual ,
-                      s223:Relation ;
-              rdfs:label ":canWrite" ;
-              rdfs:domain d3f:Action ;
-              rdfs:range :Device .
 
-:canControl rdf:type owl:NamedIndividual ,
-                      s223:Relation ;
-              rdfs:label ":canControl" ;
-              rdfs:domain d3f:Action ;
-              rdfs:range :Device .
+:canWrite rdf:type :Permission ;
+              rdfs:label ":canWrite" .
+
+
+:canControl rdf:type :Permission ;
+              rdfs:label ":canControl" .
 
 d3f:User rdfs:label "d3f:User" .
 d3f:Credential rdfs:label "d3f:Credential" .

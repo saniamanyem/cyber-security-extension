@@ -11,6 +11,7 @@
 
 
 :Alice
+    a d3f:User ;
     :hasRole :EmergencyResponder .
 
 :EmergencyResponder 
@@ -19,7 +20,7 @@
 
 :canRead
     :allowsAction :Read ;
-    :appliesTo :TemperatureSensor101 .
+    :appliesTo psm:ChilledWaterTemperatureSensor_13 .
 
 :canWrite   
     :allowsAction :Write ; 
