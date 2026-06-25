@@ -87,7 +87,7 @@ rdfs:label ":AuditLog" .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Permission
-:Permission rdf:type s223:EnumerationKind ;
+:Permission rdf:type owl:Class ;
 rdfs:label ":Permission" .
 
 :Read rdf:type d3f:Action ; 
@@ -445,13 +445,7 @@ rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
                 sh:property [
                   sh:path :grantedPermission ; 
-                  sh:in (
-                    :ModifySetpoints 
-                    :ControlAlarms 
-                    :MonitorBuildingServer 
-                    :ViewSensorData 
-                    :ModifyAccountDetails 
-                  ) ;
+                  sh:class :Permission 
                 ] ;
 
                 sh:targetNode :Operator .
@@ -461,16 +455,9 @@ rdf:type owl:NamedIndividual ,
 :EmergencyResponderShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
 
-                  sh:property [
-
+                sh:property [
                   sh:path :grantedPermission ; 
-                  sh:in (
-                    :OverrideDoorLocks 
-                    :ControlAlarms 
-                    :EmergencyOverride 
-                    :ViewSensorData 
-                    :ViewCameraFeeds 
-                  ) ;
+                  sh:class :Permission 
                 ] ;
                 sh:targetNode :EmergencyResponder .
 
@@ -479,15 +466,8 @@ rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
 
                   sh:property [
-                 
                   sh:path :grantedPermission ; 
-                  sh:in (
-                    :ViewCameraFeeds 
-                    :ConfigureControllers 
-                    :ViewSensorData
-                    :ApplySoftwareUpdates 
-                    :ViewLogs 
-                  ) ;
+                  sh:class :Permission 
                 ] ;
 
                 sh:targetNode :Vendor . 
