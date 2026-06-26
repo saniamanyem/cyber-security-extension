@@ -20,7 +20,7 @@ psm:VAVBox1DamperActuator
     a :Asset .
 
 psm:HVACZone1TemperatureSetpoint 
-    a s223:property  .
+    a s223:Property  .
 
 :EnterpriseNetwork 
     a :NetworkSegment .
@@ -119,37 +119,23 @@ psm:HVACZone1TemperatureSetpoint
     :allowsAction :Control ;
     :validDuring :EmergencyCondition .
 
-:ControlNetwork 
-    :containsAsset 
-        psm:VAVBox1DamperActuator ,
-        psm:HVACZone1Thermostat ,
-        :FireAlarmPanel .
 
-:EnterpriseNetwork 
-    :containsAsset 
-        :BuildingServer ,
-        :BuildingAuthenticationServer ,
-        :EmergencyMonitor ,
-        :OperatorWorkstation .
-
-:DMZNetwork 
-    :containsAsset 
-        :VendorLaptop .
+#GRAPHDB DOESNT REASON OVER SUBCLASSES . 
 
 :OperatorWorkstation 
-    a :Device ;
+  a :Device , :Asset ;
     s223:cnx :EnterpriseNetwork .
 
 :VendorLaptop 
-    a :Device ; 
-    s223:cnx :DMZNetwork .
+  a :Device, :Asset ;
+  s223:cnx :DMZNetwork .
 
 :EmergencyMonitor 
-    a :Device ;
-    s223:cnx :EnterpriseNetwork .
+  a :Device, :Asset ;
+  s223:cnx :EnterpriseNetwork .        
 
 :BuildingAuthenticationServer 
-    a d3f:AuthenticationServer ;
+  a d3f:AuthenticationServer, :Asset ;
     :hosts :BuildingAuthenticationService ;
     :protects 
         psm:VAVBox1DamperActuator ,
