@@ -95,7 +95,7 @@
     :validDuring :EmergencyCondition .
 
 :EmergencyOverride 
-    :appliesTo psm:HVACZone1Thermostat ;
+    :appliesTo psm:HVACZone1TemperatureSetpoint ;
     :allowsAction :Control ;
     :validDuring :EmergencyCondition .
 
@@ -107,14 +107,14 @@
 
 :EnterpriseNetwork 
     :containsAsset 
-        :BuildingServer ;
-        :BuildingAuthenticationServer .
+        :BuildingServer ,
+        :BuildingAuthenticationServer ,
+        :EmergencyMonitor ,
+        :OperatorWorkstation .
 
 :DMZNetwork 
     :containsAsset 
-        :VendorLaptop ,
-        :EmergencyMonitor ,
-        :OperatorWorkstation .
+        :VendorLaptop .
 
 :OperatorWorkstation 
     a :Device ;
@@ -134,6 +134,7 @@
     :protects 
         psm:VAVBox1DamperActuator ,
         :FireAlarmPanel ,
+        :BuildingServer ,
         psm:HVACZone1Thermostat .
 
 :BuildingAuthenticationService 
@@ -163,3 +164,12 @@
     a :AuditLog ;
     :recordsEvent :ModifySetpointEvent ;
     :generatedBy psm:HVACZone1Thermostat .
+
+:BuildingServer 
+    a d3f:Database .
+
+:FireAlarmPanel 
+    a s223:Equipment .
+
+:MainDoorLocks
+    a s223:Equipment .
