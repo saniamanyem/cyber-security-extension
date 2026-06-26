@@ -292,12 +292,8 @@ rdfs:label ":EnterpriseNetwork" .
                    rdfs:range :Credential .
 
 
-:containsAsset rdf:type owl:NamedIndividual ,
-                      s223:Relation ;
-              rdfs:comment "A network contains an asset" ;
-              rdfs:label ":containsAsset" ;
-              rdfs:domain d3f:Network ;
-              rdfs:range :Device .
+
+
 
               
 :usesDevice rdf:type owl:NamedIndividual ,
@@ -444,12 +440,6 @@ rdf:type owl:NamedIndividual ,
         ] ;
            sh:targetClass d3f:User .
 
-:NetworkShape rdf:type owl:NamedIndividual ,
-                    sh:NodeShape ; 
-            sh:property [sh:class :Asset ;
-                          sh:path :containsAsset
-                        ] ;
-            sh:targetClass d3f:Network .
 
 :FirewallShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
