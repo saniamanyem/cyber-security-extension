@@ -10,13 +10,153 @@
                                                                 <http://data.ashrae.org/standard223/1.0/model/all> .
 
 
-:Alice
-    a :Operator ;
-    :hasPermission :ModifySetpoints .
+:Sandy
+    a d3f:User ;
+    :hasRole :Operator ; 
+    :hasCredential :SandyPassword123 ; 
+    :requestsAccessTo psm:HVACZone1Thermostat ;
+    :usesDevice :OperatorWorkstation .
 
-:ModifySetpoints
-    a :Permission ;
+:Kevin
+    a d3f:User ; 
+    :hasRole :Vendor ; 
+    :hasCredential :KevinPassword456 ; 
+    :requestsAccessTo psm:VAVBox1DamperActuator ; 
+    :usesDevice :VendorLaptop .
+
+:Shiloh 
+    a d3f:User ;
+    :hasRole :EmergencyResponder ;
+    :hasCredential :ShilohPassword789 ;
+    :requestsAccessTo psm:HVACSpace6TempSensor ;
+    :usesDevice :EmergencyMonitor .
+
+:SandyPassword123 
+    a d3f:Credential .
+
+:KevinPassword456 
+    a d3f:Credential .
+
+:ShilohPassword789 
+    a d3f:Credential .
+
+:Operator 
+    :grantedPermission 
+        :ModifySetpoints , 
+        :ViewSensorData ,
+        :MonitorBuildingServer ,
+        :ControlAlarms ,
+        :ModifyAccountDetails .
+
+:Vendor 
+    :grantedPermission 
+        :ApplySoftwareUpdates , 
+        :ViewLogs .
+
+:EmergencyResponder 
+    :grantedPermission 
+        :OverrideDoorLocks ,
+        :EmergencyOverride , 
+        :ControlAlarms ,
+        :ViewSensorData .
+
+:ModifySetpoints 
     :appliesTo psm:HVACZone1Thermostat ;
-    :appliesTo psm:HVACZone2Thermostat ;
-    
+    :allowsAction :Write . 
+
+:ViewSensorData 
+    :appliesTo psm:HVACSpace6TempSensor ;
+    :allowsAction :Read .
+
+:MonitorBuildingServer 
+    :appliesTo :buildingServer ;
+    :allowsAction :Read .
+
+:ApplySoftwareUpdates 
+    :appliesTo :buildingServer ;
+    :allowsAction :Control .
+
+:ViewLogs  
+    :appliesTo :BuildingAuditLog ;
+    :allowsAction :Read .
+
+:ControlAlarms 
+    :appliesTo :FireAlarmPanel ; 
+    :allowsAction :Control. 
+
+:ModifyAccountDetails 
+    :appliesTo :BuildingAuthenticationServer ;
     :allowsAction :Write .
+
+:OverrideDoorLocks
+    :appliesTo :MainDoorLocks ,
+    :allowsAction :Control ,
+    :validDuring :EmergencyCondition .
+
+:EmergencyOverride 
+    :appliesTo psm:HVACZone1Thermostat ,
+    :allowsAction :Control ,
+    :validDuring :EmergencyCondition .
+
+:ControlNetwork 
+    :containsAsset 
+        psm:HVACSpace6TempSensor ,
+        psm:HVACZone1Thermostat ,
+        psm:VAVBox1DamperActuator .
+
+:EnterpriseNetwork 
+    :containsAsset 
+        :buildingServer ;
+        d3f:BuildingAuthenticationServer .
+
+:DMZNetwork 
+    :containsAsset 
+        :VendorLaptop ,
+        :EmergencyMonitor ,
+        :OperatorWorkstation .
+
+:OperatorWorkstation 
+    a :Device . 
+    s223:cnx :EnterpriseNetwork .
+
+:VendorLaptop 
+    a :Device ; 
+    s223:cnx :DMZNetwork .
+
+:EmergencyMonitor 
+    a :Device ;
+    s223:cnx :EnterpriseNetwork .
+
+:BuildingAuthenticationServer 
+    a d3f:AuthenticationServer ;
+    :hosts :BuildingAuthenticationService ;
+    :protects 
+        psm:HVACSpace6TempSensor ,
+        psm:HVACZone1Thermostat .
+
+:BuildingAuthenticationService 
+    a d3f:AuthenticationService ;
+    :validates 
+        :SandyPassword123 ,
+        :KevinPassword456 ,
+        :ShilohPassword789 ;
+    d3f:authenticates 
+        :Sandy ,
+        :Kevin ,
+        :Shiloh ; 
+    :enforcedBy :AccessGateway .
+
+:AccessGateway 
+    a :EnforcementPoint ; 
+    protects
+        psm:HVACSpace6TempSensor ,
+        psm:HVACZone1Thermostat ;
+    s223:hasProperty psm:HVACZone1TemperatureSetpoint .
+
+:ModifySetpointEvent
+    a :Event .
+
+:BuildingAuditLog 
+    a :AuditLog 
+    :recordsEvent :ModifySetpointEvent ;
+    :generatedBy psm:HVACZone1Thermostat .
