@@ -29,7 +29,7 @@
     a d3f:User ;
     :hasRole :EmergencyResponder ;
     :hasCredential :ShilohPassword789 ;
-    :requestsAccessTo psm:HVACSpace6TempSensor ;
+    :requestsAccessTo :FireAlarmPanel ;
     :usesDevice :EmergencyMonitor .
 
 :SandyPassword123 
@@ -62,7 +62,7 @@
         :ViewSensorData .
 
 :ModifySetpoints 
-    :appliesTo psm:HVACZone1Thermostat ;
+    :appliesTo psm:HVACZone1TemperatureSetpoint ;
     :allowsAction :Write . 
 
 :ViewSensorData 
@@ -70,12 +70,12 @@
     :allowsAction :Read .
 
 :MonitorBuildingServer 
-    :appliesTo :buildingServer ;
+    :appliesTo :BuildingServer ;
     :allowsAction :Read .
 
 :ApplySoftwareUpdates 
-    :appliesTo :buildingServer ;
-    :allowsAction :Control .
+    :appliesTo :BuildingServer ;
+    :allowsAction :Write .
 
 :ViewLogs  
     :appliesTo :BuildingAuditLog ;
@@ -90,25 +90,25 @@
     :allowsAction :Write .
 
 :OverrideDoorLocks
-    :appliesTo :MainDoorLocks ,
-    :allowsAction :Control ,
+    :appliesTo :MainDoorLocks ;
+    :allowsAction :Control ;
     :validDuring :EmergencyCondition .
 
 :EmergencyOverride 
-    :appliesTo psm:HVACZone1Thermostat ,
-    :allowsAction :Control ,
+    :appliesTo psm:HVACZone1Thermostat ;
+    :allowsAction :Control ;
     :validDuring :EmergencyCondition .
 
 :ControlNetwork 
     :containsAsset 
-        psm:HVACSpace6TempSensor ,
+        psm:VAVBox1DamperActuator ,
         psm:HVACZone1Thermostat ,
-        psm:VAVBox1DamperActuator .
+        :FireAlarmPanel .
 
 :EnterpriseNetwork 
     :containsAsset 
-        :buildingServer ;
-        d3f:BuildingAuthenticationServer .
+        :BuildingServer ;
+        :BuildingAuthenticationServer .
 
 :DMZNetwork 
     :containsAsset 
@@ -117,7 +117,7 @@
         :OperatorWorkstation .
 
 :OperatorWorkstation 
-    a :Device . 
+    a :Device ;
     s223:cnx :EnterpriseNetwork .
 
 :VendorLaptop 
@@ -132,7 +132,8 @@
     a d3f:AuthenticationServer ;
     :hosts :BuildingAuthenticationService ;
     :protects 
-        psm:HVACSpace6TempSensor ,
+        psm:VAVBox1DamperActuator ,
+        :FireAlarmPanel ,
         psm:HVACZone1Thermostat .
 
 :BuildingAuthenticationService 
@@ -149,15 +150,16 @@
 
 :AccessGateway 
     a :EnforcementPoint ; 
-    protects
-        psm:HVACSpace6TempSensor ,
-        psm:HVACZone1Thermostat ;
+    :protects
+        psm:VAVBox1DamperActuator ,
+        psm:HVACZone1Thermostat ,
+        :FireAlarmPanel ;
     s223:hasProperty psm:HVACZone1TemperatureSetpoint .
 
 :ModifySetpointEvent
     a :Event .
 
 :BuildingAuditLog 
-    a :AuditLog 
+    a :AuditLog ;
     :recordsEvent :ModifySetpointEvent ;
     :generatedBy psm:HVACZone1Thermostat .
