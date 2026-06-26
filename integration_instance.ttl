@@ -11,6 +11,26 @@
                                                                 <http://data.ashrae.org/standard223/1.0/model/all> .
 
 
+### graphdb doesnt reason over subclass relationships
+
+psm:HVACZone1Thermostat 
+    a :Asset .
+
+psm:VAVBox1DamperActuator 
+    a :Asset .
+
+psm:HVACZone1TemperatureSetpoint 
+    a s223:property  .
+
+:EnterpriseNetwork 
+    a :NetworkSegment .
+
+:DMZNetwork 
+    a :NetworkSegment .
+
+:ControlNetwork 
+    a :NetworkSegment .
+
 :Sandy
     a d3f:User ;
     :hasRole :Operator ; 
@@ -66,7 +86,7 @@
     :allowsAction :Write . 
 
 :ViewSensorData 
-    :appliesTo psm:HVACSpace6TempSensor ;
+    :appliesTo psm:HVACZone1TemperatureSensor ;
     :allowsAction :Read .
 
 :MonitorBuildingServer 
