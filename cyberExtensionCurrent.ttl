@@ -148,19 +148,19 @@ rdfs:label ":Control " .
 :EmergencyResponder rdf:type :Role ;
    rdfs:label ":EmergencyResponder" ;
     :hasPermission 
-       :OverrideDoorLocks 
-       :ControlAlarms 
-       :EmergencyOverride 
-       :ViewSensorData 
+       :OverrideDoorLocks ,
+       :ControlAlarms ,
+       :EmergencyOverride ,
+       :ViewSensorData ,
        :ViewCameraFeeds .
 
 :Vendor rdf:type :Role ;
   rdfs:label ":Vendor" ;
   :hasPermission
-     :ViewCameraFeeds 
-    :ConfigureControllers 
-    :ViewSensorData
-    :ApplySoftwareUpdates 
+     :ViewCameraFeeds ,
+    :ConfigureControllers ,
+    :ViewSensorData ,
+    :ApplySoftwareUpdates ,
     :ViewLogs .
 
 :Operator rdf:type :Role ;
