@@ -42,24 +42,19 @@ psm:HVACZone1TemperatureSetpoint
     a d3f:Credential .
 
 :ModifySetpoints 
-    :appliesTo psm:HVACZone1TemperatureSetpoint ;
-    :allowsAction :Write . 
+    :appliesTo psm:HVACZone1TemperatureSetpoint .
 
 :ViewSensorData 
-    :appliesTo psm:HVACZone1TemperatureSensor ;
-    :allowsAction :Read .
+    :appliesTo psm:HVACZone1TemperatureSensor .
 
 :MonitorBuildingServer 
-    :appliesTo :BuildingServer ;
-    :allowsAction :Read .
+    :appliesTo :BuildingServer .
 
 :ControlAlarms 
-    :appliesTo :FireAlarmPanel ; 
-    :allowsAction :Control. 
+    :appliesTo :FireAlarmPanel .
 
 :ModifyAccountDetails 
-    :appliesTo :BuildingAuthenticationServer ;
-    :allowsAction :Write .
+    :appliesTo :BuildingAuthenticationServer .
 
 :OperatorWorkstation  
   a :Device , :Asset ;
