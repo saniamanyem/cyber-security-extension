@@ -1,0 +1,78 @@
+#################################################################
+# Vendor remotely accesses HVAC Zone 1 data
+#################################################################
+
+@prefix psm: <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni#> .
+@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
+@prefix s223: <http://data.ashrae.org/standard223#> .  
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://www.semanticweb.org/snm49/ontologies/2026/5/pritoni_VendorAccess> a owl:Ontology ;
+                                                                owl:imports <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> ,
+                                                                <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni> ,
+                                                                <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
+                                                                <http://data.ashrae.org/standard223/1.0/model/all> .
+
+:Sania
+    a :Vendor ; 
+    :hasCredential :SaniaCredential123 ;
+    :usesDevice :VendorLaptop ; 
+    :requestsAccessTo psm:HVACZone1Thermostat ;
+    :grantedPermission
+        :ViewLogs ,
+        :ApplySoftwareUpdates .
+
+:VendorLaptop 
+    a :Device ;
+    s223:cnx :DMZNetwork .
+
+:DMZNetwork
+    a :NetworkSegment .
+
+:SaniaCredential123
+    a d3f:Credential .
+
+:BuildingAuthenticationServer 
+    a d3f:AuthenticationServer , :Asset ;
+    :hosts :BuildingAuthenticationService ;
+    :protects 
+        psm:HVACZone1Thermostat ,
+        psm:HVACZone1TemperatureSensor ,
+        psm:VAVBox1DamperActuator .
+
+:BuildingAuthenticationService  
+    a d3f:AuthenticationService ;
+    :validates :SaniaCredential123 ;
+    d3f:authenticates :Sania ;
+    :enforcedBy :HVACAccessGateway .
+
+:HVACAccessGateway 
+    a :EnforcementPoint ;
+    :protects  
+        psm:HVACZone1Thermostat ,
+        psm:HVACZone1TemperatureSensor ,
+        psm:TerminalUnit1Function ,
+        psm:VAVBox1DamperActuator .
+
+psm:HVACZone1Thermostat 
+    a :Asset ;
+    s223:contains psm:HVACZone1TemperatureSensor ;
+    s223:executes psm:TerminalUnit1Function .
+
+psm:HVACZone1TemperatureSensor 
+    a :Asset ;
+    s223:observes psm:HVACZone1Temperature .
+
+psm:VAVBox1DamperActuator
+    a :Asset .
+
+psm:TerminalUnit1Function
+    s223:hasOutput psm:TU1DamperPositionCommand .
+
+
+
+
+
+
+
