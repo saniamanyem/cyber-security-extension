@@ -146,13 +146,32 @@ rdfs:label ":Write " .
 rdfs:label ":Control " .
 
 :EmergencyResponder rdf:type :Role ;
-                    rdfs:label ":EmergencyResponder" .
+   rdfs:label ":EmergencyResponder" ;
+    :hasPermission 
+       :OverrideDoorLocks 
+       :ControlAlarms 
+       :EmergencyOverride 
+       :ViewSensorData 
+       :ViewCameraFeeds .
 
 :Vendor rdf:type :Role ;
-                    rdfs:label ":Vendor" .
+  rdfs:label ":Vendor" ;
+  :hasPermission
+     :ViewCameraFeeds 
+    :ConfigureControllers 
+    :ViewSensorData
+    :ApplySoftwareUpdates 
+    :ViewLogs .
 
 :Operator rdf:type :Role ;
-                    rdfs:label ":Operator" .
+  rdfs:label ":Operator" ;
+  :hasPermission 
+    :ModifySetpoints ,
+    :ControlAlarms ,
+    :MonitorBuildingServer ,
+    :ViewSensorData ,
+    :ModifyAccountDetails .
+
 
 
 :NetworkSegment rdf:type owl:Class ;

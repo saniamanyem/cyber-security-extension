@@ -61,9 +61,7 @@ psm:HVACZone1TemperatureSetpoint
     :appliesTo :BuildingAuthenticationServer ;
     :allowsAction :Write .
 
-#GRAPHDB DOESNT REASON OVER SUBCLASSES . 
-
-:OperatorWorkstation 
+:OperatorWorkstation  
   a :Device , :Asset ;
     s223:cnx :EnterpriseNetwork .
 
