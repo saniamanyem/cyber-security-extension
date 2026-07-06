@@ -1,5 +1,5 @@
 @prefix psm: <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni#> .
-@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix cyber: <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
 @prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .  
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -14,92 +14,92 @@
 ### graphdb doesnt reason over subclass relationships
 
 psm:HVACZone1Thermostat 
-    a :Asset .
+    a cyber:Asset .
 
 psm:VAVBox1DamperActuator 
-    a :Asset .
+    a cyber:Asset .
 
 psm:HVACZone1TemperatureSetpoint 
     a s223:Property  .
 
 :EnterpriseNetwork 
-    a :NetworkSegment .
+    a cyber:NetworkSegment .
 
 :DMZNetwork 
-    a :NetworkSegment .
+    a cyber:NetworkSegment .
 
 :ControlNetwork 
-    a :NetworkSegment .
+    a cyber:NetworkSegment .
 
 :Sandy
     a d3f:User ;
-    :hasRole :Operator ; 
-    :hasCredential :SandyPassword123 ; 
-    :requestsAccessTo psm:HVACZone1Thermostat ;
-    :usesDevice :OperatorWorkstation .
+    cyber:hasRole cyber:Operator ; 
+    cyber:hasCredential cyber:SandyPassword123 ; 
+    cyber:requestsAccessTo psm:HVACZone1Thermostat ;
+    cyber:usesDevice cyber:OperatorWorkstation .
 
 :SandyPassword123 
     a d3f:Credential .
 
 :ModifySetpoints 
-    :appliesTo psm:HVACZone1TemperatureSetpoint .
+    cyber:appliesTo psm:HVACZone1TemperatureSetpoint .
 
 :ViewSensorData 
-    :appliesTo psm:HVACZone1TemperatureSensor .
+    cyber:appliesTo psm:HVACZone1TemperatureSensor .
 
 :MonitorBuildingServer 
-    :appliesTo :BuildingServer .
+    cyber:appliesTo cyber:BuildingServer .
 
 :ControlAlarms 
-    :appliesTo :FireAlarmPanel .
+    cyber:appliesTo cyber:FireAlarmPanel .
 
 :ModifyAccountDetails 
-    :appliesTo :BuildingAuthenticationServer .
+    cyber:appliesTo cyber:BuildingAuthenticationServer .
 
 :OperatorWorkstation  
-  a :Device , :Asset ;
-    s223:cnx :EnterpriseNetwork .
+  a cyber:Device , cyber:Asset ;
+    s223:cnx cyber:EnterpriseNetwork .
 
 :VendorLaptop 
-  a :Device, :Asset ;
-  s223:cnx :DMZNetwork .
+  a cyber:Device, cyber:Asset ;
+  s223:cnx cyber:DMZNetwork .
 
 :EmergencyMonitor 
-  a :Device, :Asset ;
-  s223:cnx :EnterpriseNetwork .        
+  a cyber:Device, cyber:Asset ;
+  s223:cnx cyber:EnterpriseNetwork .        
 
 :BuildingAuthenticationServer 
-  a d3f:AuthenticationServer, :Asset ;
-    :hosts :BuildingAuthenticationService ;
-    :protects 
+  a d3f:AuthenticationServer, cyber:Asset ;
+    cyber:hosts cyber:BuildingAuthenticationService ;
+    cyber:protects 
         psm:VAVBox1DamperActuator ,
-        :FireAlarmPanel ,
-        :BuildingServer ,
+        cyber:FireAlarmPanel ,
+        cyber:BuildingServer ,
         psm:HVACZone1Thermostat .
 
 :BuildingAuthenticationService 
     a d3f:AuthenticationService ;
-    :validates 
-        :SandyPassword123 ;
+    cyber:validates 
+        cyber:SandyPassword123 ;
     d3f:authenticates 
-        :Sandy ;
-    :enforcedBy :AccessGateway .
+        cyber:Sandy ;
+    cyber:enforcedBy cyber:AccessGateway .
 
 :AccessGateway 
-    a :EnforcementPoint ; 
-    :protects
+    a cyber:EnforcementPoint ; 
+    cyber:protects
         psm:VAVBox1DamperActuator ,
         psm:HVACZone1Thermostat ,
-        :FireAlarmPanel ;
+        cyber:FireAlarmPanel ;
     s223:hasProperty psm:HVACZone1TemperatureSetpoint .
 
 :ModifySetpointEvent
-    a :Event .
+    a cyber:Event .
 
 :BuildingAuditLog 
-    a :AuditLog ;
-    :recordsEvent :ModifySetpointEvent ;
-    :generatedBy psm:HVACZone1Thermostat .
+    a cyber:AuditLog ;
+    cyber:recordsEvent cyber:ModifySetpointEvent ;
+    cyber:generatedBy psm:HVACZone1Thermostat .
 
 :BuildingServer 
     a d3f:Database .

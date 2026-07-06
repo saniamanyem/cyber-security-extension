@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix cyber: <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -38,7 +38,7 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 #################################################################
 
 
-d3f:AuthenticationServer rdfs:subclassOf :Asset ;
+d3f:AuthenticationServer rdfs:subclassOf cyber:asset ;
 :hosts d3f:AuthenticationService ;
 rdfs:label "d3f:AuthenticationServer" .
 
@@ -48,41 +48,41 @@ rdfs:label "d3f:AuthenticationService" ;
 
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
-d3f:Database rdfs:subClassOf :Asset ;
+d3f:Database rdfs:subClassOf cyber:asset ;
 rdfs:label "d3f:Database" .
 
 ###  http://data.ashrae.org/standard223#Equipment
-s223:Equipment rdfs:subClassOf :Asset ;
+s223:Equipment rdfs:subClassOf cyber:asset ;
 rdfs:label "s223:Equipment" .
 
-:Role rdf:type owl:Class ;
-rdfs:label ":Role" . 
+:role rdf:type owl:Class ;
+rdfs:label ":role" . 
 
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
-:Asset rdf:type owl:Class ;
-rdfs:label ":Asset" .
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/asset
+:asset rdf:type owl:Class ;
+rdfs:label ":asset" .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Condition
 :Condition rdf:type owl:Class ;
 rdfs:label ":Condition" .
 
-:EmergencyCondition rdf:type :Condition ; 
+:EmergencyCondition rdf:type cyber:Condition ; 
   rdfs:label ":EmergencyCondition" . 
 
-:MaintenanceWindow rdf:type :Condition ;
+:MaintenanceWindow rdf:type cyber:Condition ;
   rdfs:label ":MaintenanceWindow" . 
 
-:NormalOperations rdf:type :Condition ;
+:NormalOperations rdf:type cyber:Condition ;
   rdfs:label ":NormalOperations" .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
 :EnforcementPoint rdf:type owl:Class ;
-rdfs:subclassOf :Asset ;
+rdfs:subclassOf cyber:asset ;
 rdfs:label ":EnforcementPoint " .
 
 :AuditLog rdf:type owl:Class ;
-rdfs:subclassOf :Asset ;
+rdfs:subclassOf cyber:asset ;
 rdfs:label ":AuditLog" .
 
 
@@ -90,126 +90,126 @@ rdfs:label ":AuditLog" .
 :Permission rdf:type s223:EnumerationKind ;
 rdfs:label ":Permission" .
 
-:OverrideDoorLocks rdf:type :Permission ;
-rdfs:label ":OverrideDoorLocks " ;
-:allowsAction :Control ;
-:validDuring :EmergencyCondition .
+:overridedoorlocks rdf:type cyber:Permission ;
+rdfs:label ":overridedoorlocks " ;
+:allowsaction cyber:control ;
+:validDuring cyber:EmergencyCondition .
 
-:ViewCameraFeeds rdf:type :Permission ;
-:allowsAction :Read ;
-rdfs:label ":ViewCameraFeeds " .
+:viewcamerafeeds rdf:type cyber:Permission ;
+:allowsaction cyber:read ;
+rdfs:label ":viewcamerafeeds " .
 
-:ModifySetpoints rdf:type :Permission ;
-:allowsAction :Write ;
-rdfs:label ":ModifySetpoints " .
+:modifysetpoints rdf:type cyber:Permission ;
+:allowsaction cyber:write ;
+rdfs:label ":modifysetpoints " .
 
-:ControlAlarms rdf:type :Permission ;
-:allowsAction :Control ;
-rdfs:label ":ControlAlarms " .
+:controlalarms rdf:type cyber:Permission ;
+:allowsaction cyber:control ;
+rdfs:label ":controlalarms " .
 
-:ConfigureControllers rdf:type :Permission ;
-:allowsAction :Write ;
-rdfs:label ":ConfigureControllers " .
+:configurecontrollers rdf:type cyber:Permission ;
+:allowsaction cyber:write ;
+rdfs:label ":configurecontrollers " .
 
-:MonitorBuildingServer rdf:type :Permission ;
-:allowsAction :View ;
-rdfs:label ":MonitorBuildingServer " .
+:monitorbuildingserver rdf:type cyber:Permission ;
+:allowsaction cyber:View ;
+rdfs:label ":monitorbuildingserver " .
 
-:ViewSensorData rdf:type :Permission ;
-:allowsAction :Read ;
-rdfs:label ":ViewSensorData " .
+:viewsensordata rdf:type cyber:Permission ;
+:allowsaction cyber:read ;
+rdfs:label ":viewsensordata " .
 
-:ApplySoftwareUpdates rdf:type :Permission ;
-:allowsAction :Write ;
-rdfs:label ":ApplySoftwareUpdates " .
+:applysoftwareupdates rdf:type cyber:Permission ;
+:allowsaction cyber:write ;
+rdfs:label ":applysoftwareupdates " .
 
-:ModifyAccountDetails rdf:type :Permission ;
-:allowsAction :Control ;
-rdfs:label ":ModifyAccountDetails " .
+:modifyaccountdetails rdf:type cyber:Permission ;
+:allowsaction cyber:control ;
+rdfs:label ":modifyaccountdetails " .
 
-:EmergencyOverride rdf:type :Permission ;
-rdfs:label ":EmergencyOverride " ;
-:allowsAction :Control ;
-:validDuring :EmergencyCondition .
+:emergencyoverride rdf:type cyber:Permission ;
+rdfs:label ":emergencyoverride " ;
+:allowsaction cyber:control ;
+:validDuring cyber:EmergencyCondition .
 
-:ViewLogs rdf:type :Permission ;
-:allowsAction :Read ;
+:ViewLogs rdf:type cyber:Permission ;
+:allowsaction cyber:read ;
 rdfs:label ":ViewLogs " .
 
-:Read rdf:type d3f:Action ; 
-rdfs:label ":Read " .
+:read rdf:type d3f:Action ; 
+rdfs:label ":read " .
 
-:Write rdf:type d3f:Action ; 
-rdfs:label ":Write " .
+:write rdf:type d3f:Action ; 
+rdfs:label ":write " .
 
-:Control rdf:type d3f:Action ; 
-rdfs:label ":Control " .
+:control rdf:type d3f:Action ; 
+rdfs:label ":control " .
 
-:EmergencyResponder rdf:type :Role ;
-   rdfs:label ":EmergencyResponder" ;
-    :hasPermission 
-       :OverrideDoorLocks ,
-       :ControlAlarms ,
-       :EmergencyOverride ,
-       :ViewSensorData ,
-       :ViewCameraFeeds .
+:emergencyresponder rdf:type cyber:role ;
+   rdfs:label ":emergencyresponder" ;
+    cyber:hasPermission 
+       cyber:overridedoorlocks ,
+       cyber:controlalarms ,
+       cyber:emergencyoverride ,
+       cyber:viewsensordata ,
+       cyber:viewcamerafeeds .
 
-:Vendor rdf:type :Role ;
-  rdfs:label ":Vendor" ;
-  :hasPermission
-     :ViewCameraFeeds ,
-    :ConfigureControllers ,
-    :ViewSensorData ,
-    :ApplySoftwareUpdates ,
-    :ViewLogs .
+:vendor rdf:type cyber:role ;
+  rdfs:label ":vendor" ;
+  cyber:hasPermission
+    cyber:viewcamerafeeds ,
+    cyber:configurecontrollers ,
+    cyber:viewsensordata ,
+    cyber:applysoftwareupdates ,
+    cyber:ViewLogs .
 
-:Operator rdf:type :Role ;
-  rdfs:label ":Operator" ;
-  :hasPermission 
-    :ModifySetpoints ,
-    :ControlAlarms ,
-    :MonitorBuildingServer ,
-    :ViewSensorData ,
-    :ModifyAccountDetails .
+:operator rdf:type cyber:role ;
+  rdfs:label ":operator" ;
+  cyber:hasPermission 
+    cyber:modifysetpoints ,
+    cyber:controlalarms ,
+    cyber:monitorbuildingserver ,
+    cyber:viewsensordata ,
+    cyber:modifyaccountdetails .
 
 
 
-:NetworkSegment rdf:type owl:Class ;
+:networksegment rdf:type owl:Class ;
                 rdfs:subClassOf d3f:Network ;
-                rdfs:label ":NetworkSegment" .
+                rdfs:label ":networksegment" .
 
-:Device rdf:type owl:Class ;
+:device rdf:type owl:Class ;
         rdfs:subclassOf s223:Equipment ;
-        rdfs:label ":Device" .
+        rdfs:label ":device" .
 
 
 :Event rdf:type owl:Class ; 
 rdfs:label ":Event" . 
 
-:ControlNetwork rdf:type :NetworkSegment ;
-rdfs:label ":ControlNetwork" .
+:controlNetwork rdf:type cyber:networksegment ;
+rdfs:label ":controlNetwork" .
 
-:RemoteAccessNetwork rdf:type :NetworkSegment , d3f:Network ;
-rdfs:label "RemoteAccessNetwork" .
+:remoteaccessNetwork rdf:type cyber:networksegment , d3f:Network ;
+rdfs:label "remoteaccessNetwork" .
 
-:DMZNetwork rdf:type :NetworkSegment ;
+:DMZNetwork rdf:type cyber:networksegment ;
 rdfs:label ":DMZNetwork" .
 
-:EnterpriseNetwork rdf:type :NetworkSegment ;
-rdfs:label ":EnterpriseNetwork" .
+:enterprisenetwork rdf:type cyber:networksegment ;
+rdfs:label ":enterprisenetwork" .
 
 #################################################################
 #    Individuals
 #################################################################
 
-:hasRole rdf:type owl:NamedIndividual, s223:Relation ;
+:hasrole rdf:type owl:NamedIndividual, s223:Relation ;
         rdfs:domain d3f:User ;
-        rdfs:range :Role ;
-        rdfs:label ":hasRole" .
+        rdfs:range cyber:role ;
+        rdfs:label ":hasrole" .
 
 :grantedPermission rdf:type owl:NamedIndividual, s223:Relation ; 
-                  rdfs:domain :Role ;
-                  rdfs:range :Permission ;
+                  rdfs:domain cyber:role ;
+                  rdfs:range cyber:Permission ;
                   rdfs:label ":grantedPermission" .
   
 :hosts rdf:type owl:NamedIndividual , s223:Relation ;
@@ -219,7 +219,7 @@ rdfs:label ":EnterpriseNetwork" .
 
 :requestedBy rdf:type owl:NamedIndividual, s223:Relation ;
   rdfs:label ":requestedBy" ;
-  rdfs:domain :Permission ; 
+  rdfs:domain cyber:Permission ; 
   rdfs:range d3f:User . 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
@@ -227,32 +227,32 @@ rdfs:label ":EnterpriseNetwork" .
                      s223:Relation ;
             rdfs:comment "A Permission is affected by a Condition" ;
             rdfs:label ":affectedBy" ;
-            rdfs:domain :Asset ; 
-            rdfs:range :Event .
+            rdfs:domain cyber:asset ; 
+            rdfs:range cyber:Event .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
-:allowsAction rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsaction
+:allowsaction rdf:type owl:NamedIndividual ,
                        s223:Relation ;
-              rdfs:label ":allowsAction" ;
-              rdfs:domain :Permission ;
+              rdfs:label ":allowsaction" ;
+              rdfs:domain cyber:Permission ;
               rdfs:range d3f:Action . 
 
 :recordsEvent rdf:type owl:NamedIndividual, s223:Relation ;
               rdfs:label ":recordsEvent" ;
-              rdfs:domain :AuditLog ; 
-              rdfs:range :Event .
+              rdfs:domain cyber:AuditLog ; 
+              rdfs:range cyber:Event .
 
 :generatedBy rdf:type owl:NamedIndividual, s223:Relation ;
              rdfs:label ":generatedBy" ;
-             rdfs:domain :AuditLog ; 
-             rdfs:range :Asset .
+             rdfs:domain cyber:AuditLog ; 
+             rdfs:range cyber:asset .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo
 :appliesTo rdf:type owl:NamedIndividual ,
                     s223:Relation ;
                     rdfs:label ":appliesTo" ;
-                    rdfs:domain :Permission ; 
-                    rdfs:range :Asset .
+                    rdfs:domain cyber:Permission ; 
+                    rdfs:range cyber:asset .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/enforcedBy
@@ -261,7 +261,7 @@ rdfs:label ":EnterpriseNetwork" .
             rdfs:comment "A Permission is enforced by an Enforcement Point" ;
             rdfs:label "enforcedBy" ;
             rdfs:domain d3f:AuthenticationService ;
-            rdfs:range :EnforcementPoint .
+            rdfs:range cyber:EnforcementPoint .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
@@ -277,21 +277,21 @@ rdfs:label ":EnterpriseNetwork" .
                    s223:Relation ;
                    rdfs:label ":modifies" ;
                    rdfs:domain d3f:Action ;
-                   rdfs:range :Asset .
+                   rdfs:range cyber:asset .
 
 :protects rdf:type owl:NamedIndividual ,
                    s223:Relation ;
           rdfs:label ":protects" ;
-          rdfs:domain :EnforcementPoint ;
-          rdfs:range :Asset .
+          rdfs:domain cyber:EnforcementPoint ;
+          rdfs:range cyber:asset .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/requestsAccessTo
 :requestsAccessTo rdf:type owl:NamedIndividual ,
                            s223:Relation ;
                   rdfs:domain d3f:User ;
-                  rdfs:range :Asset ;
-                  rdfs:comment "A User requests access to an Asset" ;
+                  rdfs:range cyber:asset ;
+                  rdfs:comment "A User requests access to an asset" ;
                   rdfs:label ":requestsAccessTo" .
 
 
@@ -300,15 +300,15 @@ rdfs:label ":EnterpriseNetwork" .
                       s223:Relation ;
              rdfs:comment "A Permission is valid during a Condition" ;
              rdfs:label ":validDuring" ;
-             rdfs:domain :Permission ; 
-             rdfs:range :Condition .
+             rdfs:domain cyber:Permission ; 
+             rdfs:range cyber:Condition .
 
 
 :validates rdf:type owl:NamedIndividual ,
                    s223:Relation ;
                    rdfs:label ":validates" ;
                    rdfs:domain d3f:AuthenticationService ;
-                   rdfs:range :Credential .
+                   rdfs:range cyber:Credential .
 
 
 
@@ -320,7 +320,7 @@ rdfs:label ":EnterpriseNetwork" .
               rdfs:comment "A User uses a Device" ;
               rdfs:label ":usesDevice" ;
               rdfs:domain d3f:User ;
-              rdfs:range :Device .
+              rdfs:range cyber:device .
             
 
 d3f:User rdfs:label "d3f:User" .
@@ -331,23 +331,23 @@ d3f:Network rdfs:label "d3f:Network" .
 d3f:Action rdfs:label "d3f:Action" .
 
 s223:cnx rdfs:label "s223:cnx" .
-s223:Controller rdfs:label "s223:Controller" .
+s223:controller rdfs:label "s223:controller" .
 s223:Sensor rdfs:label "s223:Sensor" .
 s223:Actuator rdfs:label "s223:Actuator" .
 
 
 :AuditLogShape rdf:type owl:NamedIndividual, sh:NodeShape ;
               sh:property [ 
-                sh:path :recordsEvent ;
-                sh:class :Event ; 
+                sh:path cyber:recordsEvent ;
+                sh:class cyber:Event ; 
                 sh:minCount 1 ;
               ] ;
               sh:property [ 
-                sh:path :generatedBy ;
-                sh:class :Asset ; 
+                sh:path cyber:generatedBy ;
+                sh:class cyber:asset ; 
                 sh:minCount 1;
               ] ;
-              sh:targetClass :AuditLog .
+              sh:targetClass cyber:AuditLog .
 
 
 
@@ -355,17 +355,17 @@ s223:Actuator rdfs:label "s223:Actuator" .
 :FunctionShape rdf:type owl:NamedIndividual ,
                             sh:NodeShape ;
                    sh:property [ sh:class   s223:Property ;
-                                 sh:path :modifies
+                                 sh:path cyber:modifies
                                ] ;
                    sh:targetClass s223:Function .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AssetShape
-:AssetShape rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/assetShape
+:assetShape rdf:type owl:NamedIndividual ,
                      sh:NodeShape ;
             sh:property [ sh:class d3f:Network ;
                           sh:path s223:cnx 
                         ] ; 
-            sh:targetClass :Asset .
+            sh:targetClass cyber:asset .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AuthenticationServiceShape
@@ -376,11 +376,11 @@ s223:Actuator rdfs:label "s223:Actuator" .
                                         sh:minCount 1 ;
                                         ] ;
                             sh:property [ sh:class d3f:Credential ;
-                                          sh:path :validates;
+                                          sh:path cyber:validates;
                                           sh:minCount 1 ;
                                         ] ;
                             sh:property [
-                              sh:path [sh:inversePath :hosts ] ;
+                              sh:path [sh:inversePath cyber:hosts ] ;
                               sh:minCount 1 ;      
                                         ] ; 
                             sh:targetClass d3f:AuthenticationService .
@@ -388,10 +388,10 @@ s223:Actuator rdfs:label "s223:Actuator" .
 :AuthenticationServerShape rdf:type owl:NamedIndividual ,
                                      sh:NodeShape ;
                             sh:property [ sh:class d3f:AuthenticationService ;
-                                          sh:path :hosts 
+                                          sh:path cyber:hosts 
                                         ] ;
-                            sh:property [ sh:class :Asset ;
-                                          sh:path :protects 
+                            sh:property [ sh:class cyber:asset ;
+                                          sh:path cyber:protects 
                                         ] ;
                             sh:targetClass d3f:AuthenticationServer .
 
@@ -402,11 +402,11 @@ s223:Actuator rdfs:label "s223:Actuator" .
                         sh:property [ sh:class s223:Property ;
                                       sh:path s223:hasProperty 
                                     ] ;
-                        sh:property [ sh:path :protects ;
+                        sh:property [ sh:path cyber:protects ;
                                       sh:minCount 1 ;
-                                      sh:class :Asset ;
+                                      sh:class cyber:asset ;
                                     ] ;
-                        sh:targetClass :EnforcementPoint .         
+                        sh:targetClass cyber:EnforcementPoint .         
 
 
 
@@ -417,36 +417,36 @@ rdf:type owl:NamedIndividual ,
         sh:NodeShape ;
            
         sh:property [
-          sh:class :Asset ;
-          sh:path :requestsAccessTo ;
+          sh:class cyber:asset ;
+          sh:path cyber:requestsAccessTo ;
         ] ;
         sh:property [ 
           sh:class d3f:Credential ;
-          sh:path :hasCredential ;
+          sh:path cyber:hasCredential ;
           sh:minCount 1 ;
         ] ;
 
-        sh:property [sh:class :Device ;
-          sh:path :usesDevice ;
+        sh:property [sh:class cyber:device ;
+          sh:path cyber:usesDevice ;
         ] ;
           
         sh:property [
-          sh:path :hasRole ;
+          sh:path cyber:hasrole ;
           sh:minCount 1 ;
           ] ;
 
         sh:sparql [
-          sh:message "Vendor users must use a device connected to DMZ Network" ;
+          sh:message "vendor users must use a device connected to DMZ Network" ;
 
           sh:select """
-          PREFIX : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>
+          PREFIX cyber: <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>
           PREFIX s223: <http://data.ashrae.org/standard223#>
 
 
           SELECT $this 
           WHERE {
-            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasRole>
-            <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Vendor> .
+            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasrole>
+            <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/vendor> .
 
             FILTER NOT EXISTS {
               $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/usesDevice> ?device .
@@ -469,88 +469,88 @@ rdf:type owl:NamedIndividual ,
 
 :SensorShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
-               sh:property [sh:hasValue :ControlNetwork ;
+               sh:property [sh:hasValue cyber:controlNetwork ;
                              sh:path s223:cnx ;
                            ] ;
                sh:targetClass s223:Sensor .
 
-:ControllerShape rdf:type owl:NamedIndividual ,
+:controllerShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
-               sh:property [sh:hasValue :ControlNetwork ;
+               sh:property [sh:hasValue cyber:controlNetwork ;
                              sh:path s223:cnx ;
                            ] ;
-               sh:targetClass s223:Controller .
+               sh:targetClass s223:controller .
 
 :ActuatorShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
-               sh:property [sh:hasValue :ControlNetwork ;
+               sh:property [sh:hasValue cyber:controlNetwork ;
                              sh:path s223:cnx ;
                            ] ;
                sh:targetClass s223:Actuator .
 
-:DeviceShape rdf:type owl:NamedIndividual ,
+:deviceShape rdf:type owl:NamedIndividual ,
                       sh:NodeShape ;
-              sh:property [sh:class :NetworkSegment ;
+              sh:property [sh:class cyber:networksegment ;
                             sh:path s223:cnx ;
                             sh:minCount 1 ;
                             ] ;
-              sh:targetClass :Device .
+              sh:targetClass cyber:device .
 
-:OperatorShape rdf:type owl:NamedIndividual ,
+:operatorShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
                 sh:property [
-                  sh:path :grantedPermission ; 
+                  sh:path cyber:grantedPermission ; 
                   sh:in (
-                    :ModifySetpoints 
-                    :ControlAlarms 
-                    :MonitorBuildingServer 
-                    :ViewSensorData 
-                    :ModifyAccountDetails 
+                    cyber:modifysetpoints 
+                    cyber:controlalarms 
+                    cyber:monitorbuildingserver 
+                    cyber:viewsensordata 
+                    cyber:modifyaccountdetails 
                   ) ;
                 ] ;
 
-                sh:targetNode :Operator .
+                sh:targetNode cyber:operator .
 
 #MUST HAVE ALL OF THESE...note in documentation
 
-:EmergencyResponderShape rdf:type owl:NamedIndividual ,
+:emergencyresponderShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
 
                   sh:property [
 
-                  sh:path :grantedPermission ; 
+                  sh:path cyber:grantedPermission ; 
                   sh:in (
-                    :OverrideDoorLocks 
-                    :ControlAlarms 
-                    :EmergencyOverride 
-                    :ViewSensorData 
-                    :ViewCameraFeeds 
+                    cyber:overridedoorlocks 
+                    cyber:controlalarms 
+                    cyber:emergencyoverride 
+                    cyber:viewsensordata 
+                    cyber:viewcamerafeeds 
                   ) ;
                 ] ;
-                sh:targetNode :EmergencyResponder .
+                sh:targetNode cyber:emergencyresponder .
 
 
-:VendorShape rdf:type owl:NamedIndividual ,
+:vendorShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;
 
                   sh:property [
                  
-                  sh:path :grantedPermission ; 
+                  sh:path cyber:grantedPermission ; 
                   sh:in (
-                    :ViewCameraFeeds 
-                    :ConfigureControllers 
-                    :ViewSensorData
-                    :ApplySoftwareUpdates 
-                    :ViewLogs 
+                    cyber:viewcamerafeeds 
+                    cyber:configurecontrollers 
+                    cyber:viewsensordata
+                    cyber:applysoftwareupdates 
+                    cyber:ViewLogs 
                   ) ;
                 ] ;
 
-                sh:targetNode :Vendor . 
+                sh:targetNode cyber:vendor . 
 
 
 :CredentialShape rdf:type owl:NamedIndividual, sh:NodeShape ; 
     sh:property [
-      sh:path [ sh:inversePath :hasCredential ] ;
+      sh:path [ sh:inversePath cyber:hasCredential ] ;
       sh:minCount 1 ;
       sh:maxCount 1 ;
     ] ;
