@@ -38,48 +38,8 @@ psm:HVACZone1TemperatureSetpoint
     :requestsAccessTo psm:HVACZone1Thermostat ;
     :usesDevice :OperatorWorkstation .
 
-:Kevin
-    a d3f:User ; 
-    :hasRole :Vendor ; 
-    :hasCredential :KevinPassword456 ; 
-    :requestsAccessTo psm:VAVBox1DamperActuator ; 
-    :usesDevice :VendorLaptop .
-
-:Shiloh 
-    a d3f:User ;
-    :hasRole :EmergencyResponder ;
-    :hasCredential :ShilohPassword789 ;
-    :requestsAccessTo :FireAlarmPanel ;
-    :usesDevice :EmergencyMonitor .
-
 :SandyPassword123 
     a d3f:Credential .
-
-:KevinPassword456 
-    a d3f:Credential .
-
-:ShilohPassword789 
-    a d3f:Credential .
-
-:Operator 
-    :grantedPermission 
-        :ModifySetpoints , 
-        :ViewSensorData ,
-        :MonitorBuildingServer ,
-        :ControlAlarms ,
-        :ModifyAccountDetails .
-
-:Vendor 
-    :grantedPermission 
-        :ApplySoftwareUpdates , 
-        :ViewLogs .
-
-:EmergencyResponder 
-    :grantedPermission 
-        :OverrideDoorLocks ,
-        :EmergencyOverride , 
-        :ControlAlarms ,
-        :ViewSensorData .
 
 :ModifySetpoints 
     :appliesTo psm:HVACZone1TemperatureSetpoint ;
@@ -93,14 +53,6 @@ psm:HVACZone1TemperatureSetpoint
     :appliesTo :BuildingServer ;
     :allowsAction :Read .
 
-:ApplySoftwareUpdates 
-    :appliesTo :BuildingServer ;
-    :allowsAction :Write .
-
-:ViewLogs  
-    :appliesTo :BuildingAuditLog ;
-    :allowsAction :Read .
-
 :ControlAlarms 
     :appliesTo :FireAlarmPanel ; 
     :allowsAction :Control. 
@@ -108,17 +60,6 @@ psm:HVACZone1TemperatureSetpoint
 :ModifyAccountDetails 
     :appliesTo :BuildingAuthenticationServer ;
     :allowsAction :Write .
-
-:OverrideDoorLocks
-    :appliesTo :MainDoorLocks ;
-    :allowsAction :Control ;
-    :validDuring :EmergencyCondition .
-
-:EmergencyOverride 
-    :appliesTo psm:HVACZone1TemperatureSetpoint ;
-    :allowsAction :Control ;
-    :validDuring :EmergencyCondition .
-
 
 #GRAPHDB DOESNT REASON OVER SUBCLASSES . 
 
