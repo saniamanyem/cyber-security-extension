@@ -80,13 +80,9 @@ psm:HVACZone1TemperatureSetpoint
 :BuildingAuthenticationService 
     a d3f:AuthenticationService ;
     :validates 
-        :SandyPassword123 ,
-        :KevinPassword456 ,
-        :ShilohPassword789 ;
+        :SandyPassword123 ;
     d3f:authenticates 
-        :Sandy ,
-        :Kevin ,
-        :Shiloh ; 
+        :Sandy ;
     :enforcedBy :AccessGateway .
 
 :AccessGateway 
