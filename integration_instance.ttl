@@ -34,63 +34,52 @@ psm:HVACZone1TemperatureSetpoint
 :Sandy
     a d3f:User ;
     cyber:hasRole cyber:Operator ; 
-    cyber:hasCredential cyber:SandyPassword123 ; 
+    cyber:hasCredential :SandyPassword123 ; 
     cyber:requestsAccessTo psm:HVACZone1Thermostat ;
-    cyber:usesDevice cyber:OperatorWorkstation .
+    cyber:usesDevice :OperatorWorkstation .
 
 :SandyPassword123 
     a d3f:Credential .
 
-:ModifySetpoints 
+cyber:ModifySetpoints 
     cyber:appliesTo psm:HVACZone1TemperatureSetpoint .
 
-:ViewSensorData 
+cyber:ViewSensorData 
     cyber:appliesTo psm:HVACZone1TemperatureSensor .
 
-:MonitorBuildingServer 
+cyber:MonitorBuildingServer 
     cyber:appliesTo cyber:BuildingServer .
 
-:ControlAlarms 
+cyber:ControlAlarms 
     cyber:appliesTo cyber:FireAlarmPanel .
 
-:ModifyAccountDetails 
+cyber:ModifyAccountDetails 
     cyber:appliesTo cyber:BuildingAuthenticationServer .
 
 :OperatorWorkstation  
   a cyber:Device , cyber:Asset ;
     s223:cnx cyber:EnterpriseNetwork .
-
-:VendorLaptop 
-  a cyber:Device, cyber:Asset ;
-  s223:cnx cyber:DMZNetwork .
-
-:EmergencyMonitor 
-  a cyber:Device, cyber:Asset ;
-  s223:cnx cyber:EnterpriseNetwork .        
+      
 
 :BuildingAuthenticationServer 
   a d3f:AuthenticationServer, cyber:Asset ;
     cyber:hosts cyber:BuildingAuthenticationService ;
     cyber:protects 
         psm:VAVBox1DamperActuator ,
-        cyber:FireAlarmPanel ,
-        cyber:BuildingServer ,
+        :BuildingServer ,
         psm:HVACZone1Thermostat .
 
 :BuildingAuthenticationService 
     a d3f:AuthenticationService ;
-    cyber:validates 
-        cyber:SandyPassword123 ;
-    d3f:authenticates 
-        cyber:Sandy ;
-    cyber:enforcedBy cyber:AccessGateway .
+    cyber:validates :SandyPassword123 ;
+    d3f:authenticates :Sandy ;
+    cyber:enforcedBy :AccessGateway .
 
 :AccessGateway 
     a cyber:EnforcementPoint ; 
     cyber:protects
         psm:VAVBox1DamperActuator ,
         psm:HVACZone1Thermostat ,
-        cyber:FireAlarmPanel ;
     s223:hasProperty psm:HVACZone1TemperatureSetpoint .
 
 :ModifySetpointEvent
@@ -103,9 +92,3 @@ psm:HVACZone1TemperatureSetpoint
 
 :BuildingServer 
     a d3f:Database .
-
-:FireAlarmPanel 
-    a s223:Equipment .
-
-:MainDoorLocks
-    a s223:Equipment .
