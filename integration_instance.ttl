@@ -1,5 +1,6 @@
 @prefix psm: <http://data.ashrae.org/standard223/1.0/data/pd-sr-mp-pritoni#> .
 @prefix cyber: <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/integration/> .
 @prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .  
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -21,15 +22,6 @@ psm:VAVBox1DamperActuator
 
 psm:HVACZone1TemperatureSetpoint 
     a s223:Property  .
-
-:EnterpriseNetwork 
-    a cyber:NetworkSegment .
-
-:DMZNetwork 
-    a cyber:NetworkSegment .
-
-:ControlNetwork 
-    a cyber:NetworkSegment .
 
 :Sandy
     a d3f:User ;

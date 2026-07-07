@@ -205,10 +205,10 @@ rdfs:label ":EnterpriseNetwork" .
 #    Individuals
 #################################################################
 
-cyber:hasrole rdf:type owl:NamedIndividual, s223:Relation ;
+cyber:hasRole rdf:type owl:NamedIndividual, s223:Relation ;
         rdfs:domain d3f:User ;
         rdfs:range cyber:role ;
-        rdfs:label ":hasrole" .
+        rdfs:label ":hasRole" .
 
 cyber:grantedPermission rdf:type owl:NamedIndividual, s223:Relation ; 
                   rdfs:domain cyber:role ;
@@ -434,7 +434,7 @@ rdf:type owl:NamedIndividual ,
         ] ;
           
         sh:property [
-          sh:path cyber:hasrole ;
+          sh:path cyber:hasRole ;
           sh:minCount 1 ;
           ] ;
 
@@ -448,7 +448,7 @@ rdf:type owl:NamedIndividual ,
 
           SELECT $this 
           WHERE {
-            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasrole>
+            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasRole>
             <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Vendor> .
 
             FILTER NOT EXISTS {
