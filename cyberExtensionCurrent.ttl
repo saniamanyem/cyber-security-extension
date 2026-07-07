@@ -38,11 +38,11 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 #################################################################
 
 
-d3f:AuthenticationServer rdfs:subclassOf cyber:Asset ;
+d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 :hosts d3f:AuthenticationService ;
 rdfs:label "d3f:AuthenticationServer" .
 
-d3f:AuthenticationService rdfs:subclassOf d3f:Action ;
+d3f:AuthenticationService rdfs:subClassOf d3f:Action ;
 rdfs:label "d3f:AuthenticationService" ;
 :validates d3f:Credential .
 
@@ -78,11 +78,11 @@ cyber:NormalOperations rdf:type cyber:Condition ;
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
 cyber:EnforcementPoint rdf:type owl:Class ;
-rdfs:subclassOf cyber:Asset ;
+rdfs:subClassOf cyber:Asset ;
 rdfs:label ":EnforcementPoint " .
 
 cyber:AuditLog rdf:type owl:Class ;
-rdfs:subclassOf cyber:Asset ;
+rdfs:subClassOf cyber:Asset ;
 rdfs:label ":AuditLog" .
 
 
@@ -182,7 +182,7 @@ cyber:NetworkSegment rdf:type owl:Class ;
                 rdfs:label ":NetworkSegment" .
 
 cyber:Device rdf:type owl:Class ;
-        rdfs:subclassOf s223:Equipment ;
+        rdfs:subClassOf s223:Equipment ;
         rdfs:label ":Device" .
 
 
