@@ -33,7 +33,7 @@ psm:HVACZone1TemperatureSetpoint
 :SandyPassword123 
     a d3f:Credential .
 
-cyber:ModifySetpoints 
+cyber:ModifySetPoints 
     cyber:appliesTo psm:HVACZone1TemperatureSetpoint .
 
 cyber:ViewSensorData 
@@ -51,7 +51,7 @@ cyber:ModifyAccountDetails
       
 
 :BuildingAuthenticationServer 
-  a d3f:AuthenticationServer ;
+  a d3f:AuthenticationServer , cyber:Asset ;
     cyber:hosts :BuildingAuthenticationService ;
     cyber:protects 
         psm:VAVBox1DamperActuator ,
@@ -80,4 +80,4 @@ cyber:ModifyAccountDetails
     cyber:generatedBy psm:HVACZone1Thermostat .
 
 :BuildingServer 
-    a d3f:Database .
+    a d3f:Database , cyber:Asset .
