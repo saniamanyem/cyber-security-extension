@@ -218,12 +218,3 @@ rdf:type owl:NamedIndividual ,
                 sh:targetNode cyber:Vendor . 
 
 
-:CredentialShape rdf:type owl:NamedIndividual, sh:NodeShape ; 
-    sh:property [
-      sh:path [ sh:inversePath cyber:hasCredential ] ;
-      sh:minCount 1 ;
-      sh:maxCount 1 ;
-    ] ;
-    sh:targetClass d3f:Credential .
-
-
