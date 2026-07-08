@@ -40,7 +40,7 @@ cyber:ViewSensorData
     cyber:appliesTo psm:HVACZone1TemperatureSensor .
 
 cyber:MonitorBuildingServer 
-    cyber:appliesTo :BuildingServer .
+    cyber:appliesTo :BuildingAuthenticationServer .
 
 cyber:ModifyAccountDetails 
     cyber:appliesTo :BuildingAuthenticationServer .
@@ -51,11 +51,10 @@ cyber:ModifyAccountDetails
       
 
 :BuildingAuthenticationServer 
-  a d3f:AuthenticationServer , cyber:Asset ;
+  a d3f:AuthenticationServer , d3f:Database ;
     cyber:hosts :BuildingAuthenticationService ;
     cyber:protects 
         psm:VAVBox1DamperActuator ,
-        :BuildingServer ,
         psm:HVACZone1Thermostat .
 
 :BuildingAuthenticationService 
@@ -78,6 +77,3 @@ cyber:ModifyAccountDetails
     a cyber:AuditLog ;
     cyber:recordsEvent :ModifySetpointEvent ;
     cyber:generatedBy psm:HVACZone1Thermostat .
-
-:BuildingServer 
-    a d3f:Database , cyber:Asset .

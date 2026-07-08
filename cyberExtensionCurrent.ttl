@@ -37,6 +37,32 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
+cyber:EmergencyResponder rdfs:subClassOf d3f:User ;
+  rdfs:label ":EmergencyResponder" ;
+  cyber:hasPermission 
+       cyber:OverrideDoorLocks ,
+       cyber:ControlAlarms ,
+       cyber:EmergencyOverride ,
+       cyber:ViewSensorData ,
+       cyber:ViewCameraFeeds .
+
+cyber:Vendor rdfs:subClassOf d3f:User ;
+  rdfs:label ":Vendor" ;
+  cyber:hasPermission
+    cyber:ViewCameraFeeds ,
+    cyber:ConfigureControllers ,
+    cyber:ViewSensorData ,
+    cyber:ApplySoftwareUpdates ,
+    cyber:ViewLogs .
+
+cyber:Operator rdfs:subClassOf d3f:User ;
+  rdfs:label ":Operator" ;
+  cyber:hasPermission 
+    cyber:ModifySetPoints ,
+    cyber:ControlAlarms ,
+    cyber:MonitorBuildingServer ,
+    cyber:ViewSensorData ,
+    cyber:ModifyAccountDetails .
 
 d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 :hosts d3f:AuthenticationService ;
@@ -55,8 +81,8 @@ rdfs:label "d3f:Database" .
 s223:Equipment rdfs:subClassOf cyber:Asset ;
 rdfs:label "s223:Equipment" .
 
-:role rdf:type owl:Class ;
-rdfs:label ":role" . 
+:Role rdf:type owl:Class ;
+rdfs:label ":Role" . 
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
@@ -145,35 +171,6 @@ cyber:write rdf:type d3f:Action ;
 cyber:control rdf:type d3f:Action ; 
   rdfs:label "cyber:control " .
 
-cyber:EmergencyResponder rdf:type cyber:role ;
-  rdfs:subClassOf d3f:User ;
-  rdfs:label ":EmergencyResponder" ;
-  cyber:hasPermission 
-       cyber:OverrideDoorLocks ,
-       cyber:ControlAlarms ,
-       cyber:EmergencyOverride ,
-       cyber:ViewSensorData ,
-       cyber:ViewCameraFeeds .
-
-cyber:Vendor rdf:type cyber:role ;
-  rdfs:subClassOf d3f:User ;
-  rdfs:label ":Vendor" ;
-  cyber:hasPermission
-    cyber:ViewCameraFeeds ,
-    cyber:ConfigureControllers ,
-    cyber:ViewSensorData ,
-    cyber:ApplySoftwareUpdates ,
-    cyber:ViewLogs .
-
-cyber:Operator rdf:type cyber:role ;
-  rdfs:subClassOf d3f:User ;
-  rdfs:label ":Operator" ;
-  cyber:hasPermission 
-    cyber:ModifySetPoints ,
-    cyber:ControlAlarms ,
-    cyber:MonitorBuildingServer ,
-    cyber:ViewSensorData ,
-    cyber:ModifyAccountDetails .
 
 
 
@@ -207,11 +204,11 @@ rdfs:label ":EnterpriseNetwork" .
 
 cyber:hasRole rdf:type owl:NamedIndividual, s223:Relation ;
         rdfs:domain d3f:User ;
-        rdfs:range cyber:role ;
+        rdfs:range cyber:Role ;
         rdfs:label ":hasRole" .
 
 cyber:grantedPermission rdf:type owl:NamedIndividual, s223:Relation ; 
-                  rdfs:domain cyber:role ;
+                  rdfs:domain cyber:Role ;
                   rdfs:range cyber:Permission ;
                   rdfs:label ":grantedPermission" .
   
