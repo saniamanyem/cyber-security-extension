@@ -46,7 +46,7 @@ cyber:ModifyAccountDetails
     cyber:appliesTo :BuildingAuthenticationServer .
 
 :OperatorWorkstation  
-  a cyber:Device , cyber:Asset ;
+  a cyber:Device ;
     s223:cnx cyber:EnterpriseNetwork .
       
 
