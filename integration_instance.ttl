@@ -47,7 +47,10 @@ cyber:ModifyAccountDetails
 
 :OperatorWorkstation  
   a cyber:Device ;
-    s223:cnx cyber:EnterpriseNetwork .
+    s223:cnx :EnterpriseNetwork .
+
+:EnterpriseNetwork
+    a cyber:NetworkSegment .
       
 
 :BuildingAuthenticationServer 

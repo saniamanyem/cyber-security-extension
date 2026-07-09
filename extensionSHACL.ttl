@@ -104,29 +104,6 @@ rdf:type owl:NamedIndividual ,
           sh:path cyber:hasRole ;
           sh:minCount 1 ;
           ] ;
-
-        sh:sparql [
-          sh:message "Vendor users must use a Device connected to DMZ Network" ;
-
-          sh:select """
-          PREFIX cyber: <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/>
-          PREFIX s223: <http://data.ashrae.org/standard223#>
-
-
-          SELECT $this 
-          WHERE {
-            $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasRole>
-            <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Vendor> .
-
-            FILTER NOT EXISTS {
-              $this <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/usesDevice> ?Device .
-              ?Device <http://data.ashrae.org/standard223#cnx>
-               <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/DMZNetwork> .
-            }
-          }
-
-          """ ;
-        ] ;
            sh:targetClass d3f:User .
 
 
@@ -136,27 +113,6 @@ rdf:type owl:NamedIndividual ,
                              sh:path d3f:filters
                            ] ;
                sh:targetClass d3f:Firewall .
-
-:SensorShape rdf:type owl:NamedIndividual ,
-                        sh:NodeShape ;
-               sh:property [sh:hasValue cyber:ControlNetwork ;
-                             sh:path s223:cnx ;
-                           ] ;
-               sh:targetClass s223:Sensor .
-
-:ControllerShape rdf:type owl:NamedIndividual ,
-                        sh:NodeShape ;
-               sh:property [sh:hasValue cyber:ControlNetwork ;
-                             sh:path s223:cnx ;
-                           ] ;
-               sh:targetClass s223:controller .
-
-:ActuatorShape rdf:type owl:NamedIndividual ,
-                        sh:NodeShape ;
-               sh:property [sh:hasValue cyber:ControlNetwork ;
-                             sh:path s223:cnx ;
-                           ] ;
-               sh:targetClass s223:Actuator .
 
 :DeviceShape rdf:type owl:NamedIndividual ,
                       sh:NodeShape ;
@@ -216,5 +172,3 @@ rdf:type owl:NamedIndividual ,
                 ] ;
 
                 sh:targetNode cyber:Vendor . 
-
-

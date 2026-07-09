@@ -77,7 +77,7 @@ rdfs:label "d3f:AuthenticationService" ;
 d3f:Database rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:Database" .
 
-###  http://data.ashrae.org/standard223#Equipment
+###  http://data.ashrae.org/standard223# 
 s223:Equipment rdfs:subClassOf cyber:Asset ;
 rdfs:label "s223:Equipment" .
 
@@ -93,15 +93,6 @@ rdfs:label ":Asset" .
 cyber:Condition rdf:type owl:Class ;
 rdfs:label ":Condition" .
 
-cyber:EmergencyCondition rdf:type cyber:Condition ; 
-  rdfs:label ":EmergencyCondition" . 
-
-cyber:MaintenanceWindow rdf:type cyber:Condition ;
-  rdfs:label ":MaintenanceWindow" . 
-
-cyber:NormalOperations rdf:type cyber:Condition ;
-  rdfs:label ":NormalOperations" .
-
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
 cyber:EnforcementPoint rdf:type owl:Class ;
 rdfs:subClassOf cyber:Asset ;
@@ -112,29 +103,33 @@ rdfs:subClassOf cyber:Asset ;
 rdfs:label ":AuditLog" .
 
 
+#################################################################
+#    Instance Individuals
+#################################################################
+
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Permission
 cyber:Permission rdf:type s223:EnumerationKind ;
 rdfs:label ":Permission" .
 
 :OverrideDoorLocks rdf:type cyber:Permission ;
   rdfs:label ":OverrideDoorLocks " ;
-  :allowsAction cyber:control ;
+  :allowsAction cyber:Control ;
   :validDuring cyber:EmergencyCondition .
 
 cyber:ViewCameraFeeds rdf:type cyber:Permission ;
-  :allowsAction cyber:read ;
+  :allowsAction cyber:Read ;
   rdfs:label ":ViewCameraFeeds " .
 
 cyber:ModifySetPoints rdf:type cyber:Permission ;
-  :allowsAction cyber:write ;
+  :allowsAction cyber:Write ;
   rdfs:label ":ModifySetPoints " .
 
 cyber:ControlAlarms rdf:type cyber:Permission ;
-  :allowsAction cyber:control ;
+  :allowsAction cyber:Control ;
   rdfs:label ":ControlAlarms " .
 
 cyber:ConfigureControllers rdf:type cyber:Permission ;
-  :allowsAction cyber:write ;
+  :allowsAction cyber:Write ;
   rdfs:label ":ConfigureControllers " .
 
 cyber:MonitorBuildingServer rdf:type cyber:Permission ;
@@ -142,36 +137,34 @@ cyber:MonitorBuildingServer rdf:type cyber:Permission ;
   rdfs:label ":MonitorBuildingServer " .
 
 cyber:ViewSensorData rdf:type cyber:Permission ;
-  :allowsAction cyber:read ;
+  :allowsAction cyber:Read ;
   rdfs:label ":ViewSensorData " .
 
 cyber:ApplySoftwareUpdates rdf:type cyber:Permission ;
-  :allowsAction cyber:write ;
+  :allowsAction cyber:Write ;
   rdfs:label "cyber:ApplySoftwareUpdates " .
 
 cyber:ModifyAccountDetails rdf:type cyber:Permission ;
-  :allowsAction cyber:control ;
+  :allowsAction cyber:Control ;
   rdfs:label "cyber:ModifyAccountDetails " .
 
 cyber:EmergencyOverride rdf:type cyber:Permission ;
   rdfs:label "cyber:EmergencyOverride " ;
-  :allowsAction cyber:control ;
+  :allowsAction cyber:Control ;
   :validDuring cyber:EmergencyCondition .
 
 cyber:ViewLogs rdf:type cyber:Permission ;
-  :allowsAction cyber:read ;
+  :allowsAction cyber:Read ;
   rdfs:label "cyber:ViewLogs " .
 
-cyber:read rdf:type d3f:Action ; 
-  rdfs:label "cyber:read " .
+cyber:Read rdf:type d3f:Action ; 
+  rdfs:label "cyber:Read " .
 
-cyber:write rdf:type d3f:Action ; 
-  rdfs:label "cyber:write " .
+cyber:Write rdf:type d3f:Action ; 
+  rdfs:label "cyber:Write " .
 
-cyber:control rdf:type d3f:Action ; 
-  rdfs:label "cyber:control " .
-
-
+cyber:Control rdf:type d3f:Action ; 
+  rdfs:label "cyber:Control " .
 
 
 cyber:NetworkSegment rdf:type owl:Class ;
@@ -186,18 +179,6 @@ cyber:Device rdf:type owl:Class ;
 cyber:Event rdf:type owl:Class ; 
 rdfs:label ":Event" . 
 
-cyber:ControlNetwork rdf:type cyber:NetworkSegment ;
-rdfs:label ":ControlNetwork" .
-
-cyber:RemoteAccessNetwork rdf:type cyber:NetworkSegment , d3f:Network ;
-rdfs:label "RemoteAccessNetwork" .
-
-cyber:DMZNetwork rdf:type cyber:NetworkSegment ;
-rdfs:label ":DMZNetwork" .
-
-cyber:EnterpriseNetwork rdf:type cyber:NetworkSegment ;
-rdfs:label ":EnterpriseNetwork" .
-
 #################################################################
 #    Individuals
 #################################################################
@@ -206,29 +187,11 @@ cyber:hasRole rdf:type owl:NamedIndividual, s223:Relation ;
         rdfs:domain d3f:User ;
         rdfs:range cyber:Role ;
         rdfs:label ":hasRole" .
-
-cyber:grantedPermission rdf:type owl:NamedIndividual, s223:Relation ; 
-                  rdfs:domain cyber:Role ;
-                  rdfs:range cyber:Permission ;
-                  rdfs:label ":grantedPermission" .
   
 cyber:hosts rdf:type owl:NamedIndividual , s223:Relation ;
        rdfs:domain d3f:AuthenticationServer ;
        rdfs:range d3f:AuthenticationService ; 
        rdfs:label ":hosts" . 
-
-cyber:requestedBy rdf:type owl:NamedIndividual, s223:Relation ;
-  rdfs:label ":requestedBy" ;
-  rdfs:domain cyber:Permission ; 
-  rdfs:range d3f:User . 
-
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/affectedBy
-cyber:affectedBy rdf:type owl:NamedIndividual ,
-                     s223:Relation ;
-            rdfs:comment "A Permission is affected by a Condition" ;
-            rdfs:label ":affectedBy" ;
-            rdfs:domain cyber:Asset ; 
-            rdfs:range cyber:Event .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
 cyber:allowsAction rdf:type owl:NamedIndividual ,
@@ -272,13 +235,6 @@ cyber:hasCredential rdf:type owl:NamedIndividual ,
                rdfs:comment "A User has credential Credential" ;
                rdfs:label ":hasCredential" .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/modifies
-cyber:modifies rdf:type owl:NamedIndividual ,
-                   s223:Relation ;
-                   rdfs:label ":modifies" ;
-                   rdfs:domain d3f:Action ;
-                   rdfs:range cyber:Asset .
-
 cyber:protects rdf:type owl:NamedIndividual ,
                    s223:Relation ;
           rdfs:label ":protects" ;
@@ -294,26 +250,11 @@ cyber:requestsAccessTo rdf:type owl:NamedIndividual ,
                   rdfs:comment "A User requests access to an Asset" ;
                   rdfs:label ":requestsAccessTo" .
 
-
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/validDuring
-cyber:validDuring rdf:type owl:NamedIndividual ,
-                      s223:Relation ;
-             rdfs:comment "A Permission is valid during a Condition" ;
-             rdfs:label ":validDuring" ;
-             rdfs:domain cyber:Permission ; 
-             rdfs:range cyber:Condition .
-
-
 cyber:validates rdf:type owl:NamedIndividual ,
                    s223:Relation ;
                    rdfs:label ":validates" ;
                    rdfs:domain d3f:AuthenticationService ;
                    rdfs:range cyber:Credential .
-
-
-
-
-
               
 cyber:usesDevice rdf:type owl:NamedIndividual ,
                       s223:Relation ;
