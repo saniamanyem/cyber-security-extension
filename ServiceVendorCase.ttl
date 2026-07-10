@@ -9,58 +9,59 @@
 
 :Dan
     a d3f:User ;
-    :hasRole :Vendor ;
-    :usesDevice :Laptop;
-    :hasCredential :DanPassword123 ; 
-    :requestsAccessTo :Skybox .
+    cyber:hasRole cyber:Vendor ;
+    cyber:usesDevice :VendorLaptop;
+    cyber:hasCredential :DanPassword123 ; 
+    cyber:requestsAccessTo 
+        :Skybox 
+        :MaintenanceSystem
+    .
 
-:Vendor
-  a :Role ;
-    :grantedPermission :ApplySoftwareUpdates ;
-    :grantedPermission :ViewLogs ; 
-    :grantedPermission :ViewSensorData ;
-    :grantedPermission :ConfigureControllers ;
-    :grantedPermission :ViewCameraFeeds .
+:ApplySoftwareUpdates   
+     cyber:appliesTo :MaintenanceSystem .
+
+:ViewSensorData 
+    cyber:appliesTo :Skybox .
 
 :Skybox 
-    a :Asset . 
+    a cyber:Asset . 
 
-:SkyboxMFAService
-    a :EnforcementPoint , d3f:AuthenticationService ;
-    s223:cnx :ControlNetwork ;
-    :protects :Skybox ;
-    s223:hasProperty :MFARequirement ;
-    :validates :DanPassword123 ;
-    d3f:authenticates :Dan .
+:MaintenanceSystem 
+    a cyber:Asset .
 
-:MFARequirement
-    a s223:Property .
+:VendorLaptop
+    a cyber:Device ;
+    s223:cnx :VendorNetwork .
 
-:Laptop
-    a :Device ;
-    s223:cnx :DMZNetwork .
-
-:RemoteAccessNetwork 
-    a :NetworkSegment , d3f:Network .
-
-:ControlNetwork 
-    a :NetworkSegment, d3f:Network .
-
-:DMZNetwork 
-    a :NetworkSegment, d3f:Network . 
+:VendorNetwork
+    a cyber:NetworkSegment .
 
 :DanPassword123 
-    a d3f:Credential . 
+    a d3f:Credential .
 
-:Skybox 
-    a :Asset ;
-    s223:cnx :SkyboxNetwork . 
-
-:SkyboxNetwork 
-    a d3f:Network .
-
-:BuildingServer
+:BuildingAuthenticationServer
     a d3f:AuthenticationServer ;
-    :hosts :SkyboxMFAService ;
-    :protects :Skybox ;
-    s223:cnx :ControlNetwork .
+    cyber:hosts :BuildingAuthenticationService ;
+    cyber:protects 
+        :Skybox ,
+        :MaintenanceSystem .
+
+:BuildingAuthenticationService 
+    a d3f:AuthenticationService ;
+    cyber:validates :DanPassword123 ;
+    d3f:authenticates :Dan ;
+    cyber:enforcedBy :BuildingGateway .
+
+:BuildingGateway 
+    a cyber:EnforcementPoint .        
+
+:AccessSkyboxDataEvent
+    a cyber:Event .
+
+:ApplySoftwareUpdatesEvent
+    a cyber:Event .
+
+:BuildingAuditLog 
+    cyber:recordsEvent 
+        :AccessSkyboxDataEvent ,
+        :ApplySoftwareUpdatesEvent .

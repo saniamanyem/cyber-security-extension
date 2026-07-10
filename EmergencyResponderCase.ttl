@@ -62,11 +62,7 @@ cyber:ViewCameraFeeds
     cyber:enforcedBy :AccessGateway .
 
 :AccessGateway
-    a cyber:EnforcementPoint ;
-    cyber:protects 
-        :DoorController ,
-        :OccupancySensor ,
-        :LobbyCameras .
+    a cyber:EnforcementPoint .
 
 :AccessDoorControllerEvent
     a cyber:Event .
@@ -76,4 +72,12 @@ cyber:ViewCameraFeeds
 
 :AccessLobbyCamerasEvent
     a cyber:Event .
+
+:BuildingAuditLog  
+    a cyber:AuditLog ;
+    cyber:recordsEvent 
+        :AccessDoorControllerEvent ,
+        :AccessOccupancySensorEvent ,
+        :AccessLobbyCamerasEvent .
+
 
