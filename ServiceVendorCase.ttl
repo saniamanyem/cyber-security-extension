@@ -13,9 +13,8 @@
     cyber:usesDevice :VendorLaptop;
     cyber:hasCredential :DanPassword123 ; 
     cyber:requestsAccessTo 
-        :Skybox 
-        :MaintenanceSystem
-    .
+        :Skybox ,
+        :MaintenanceSystem .
 
 :ApplySoftwareUpdates   
      cyber:appliesTo :MaintenanceSystem .
@@ -62,6 +61,10 @@
     a cyber:Event .
 
 :BuildingAuditLog 
+    a cyber:AuditLog ;
     cyber:recordsEvent 
         :AccessSkyboxDataEvent ,
-        :ApplySoftwareUpdatesEvent .
+        :ApplySoftwareUpdatesEvent ;
+    cyber:generatedBy
+        :Skybox ,
+        :MaintenanceSystem .

@@ -78,6 +78,9 @@ cyber:ViewCameraFeeds
     cyber:recordsEvent 
         :AccessDoorControllerEvent ,
         :AccessOccupancySensorEvent ,
-        :AccessLobbyCamerasEvent .
-
+        :AccessLobbyCamerasEvent ;
+    cyber:generatedBy 
+        :DoorController ,
+        :OccupancySensor ,
+        :LobbyCameras .
 

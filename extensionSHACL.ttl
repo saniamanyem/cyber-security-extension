@@ -72,10 +72,6 @@
                         sh:property [ sh:class s223:Property ;
                                       sh:path s223:hasProperty 
                                     ] ;
-                        sh:property [ sh:path cyber:protects ;
-                                      sh:minCount 1 ;
-                                      sh:class cyber:Asset ;
-                                    ] ;
                         sh:targetClass cyber:EnforcementPoint .         
 
 
