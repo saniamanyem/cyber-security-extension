@@ -10,52 +10,70 @@
 
 
 :Alice
-    a :EmergencyResponder , d3f:User ;
-    :hasPermission :OverrideDoorLocks ;
-    :hasPermission :ControlAlarms ;
-    :hasPermission :ViewSensorData ;
-    :hasPermission :EmergencyOverride ;
-    :hasPermission :ViewCameraFeeds ;
-    :hasCredential :AlicePassword123 ;
-    :requestsAccessTo :Door ;
-    :usesDevice :Monitor .
+   a d3f:User ; 
+   cyber:hasRole cyber:EmergencyResponder ;
+   cyber:hasCredential :AlicePassword123 ;
+   cyber:requestsAccessTo 
+    :DoorController ,
+    :OccupancySensor ,
+    :LobbyCameras ;
+   cyber:usesDevice :EmergencyMonitor .
 
-:DoorController 
-    a :EnforcementPoint ;
-    s223:cnx :ControlNetwork . 
-
-:Monitor 
-    a :Device ;
-    s223:cnx :RemoteAccessNetwork .
-
-:RemoteAccessNetwork 
-    a :NetworkSegment , d3f:Network .
-
-:ControlNetwork 
-    a :NetworkSegment, d3f:Network .
-
-:Door 
-    a :Asset .
-
-:Window 
-    a :Asset .
-
-:Elevator 
-    a :Asset .
-
-:BuildingServer
-    a d3f:AuthenticationServer ;
-    :hosts :MFA ;
-    :protects :Door ;
-    :protects :Window ;
-    :protects :Elevator .
-
-:MFA
-    a d3f:AuthenticationService ;
-    :validates :AlicePassword123 ;
-    d3f:authenticates :Alice .
-
-
-:AlicePassword123 
+:AlicePassword123
     a d3f:Credential .
+
+:DoorController
+    a d3f:OTController .
+
+:OccupancySensor 
+    a d3f:Sensor .
+
+:LobbyCameras 
+    a s223:Equipment .
+
+:EmergencyMonitor
+    a cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment . 
+
+:CriticalInfrastructureSegment
+    a cyber:NetworkSegment .
+
+cyber:OverrideDoorLocks
+    cyber:appliesTo :DoorController .
+
+cyber:ViewSensorData 
+    cyber:appliesTo :OccupancySensor .
+
+cyber:ViewCameraFeeds 
+    :appliesTo :LobbyCameras .
+
+:BuildingAuthenticationServer 
+    a d3f:AuthenticationServer ;
+    cyber:hosts :BuildingAuthenticationService ;
+    cyber:protects 
+        :DoorController ,
+        :LobbyCameras ,
+        :OccupancySensor .
+
+:BuildingAuthenticationService 
+    a d3f:AuthenticationService ;
+    cyber:validates :AlicePassword123 ;
+    d3f:authenticates :Alice ;
+    cyber:enforcedBy :AccessGateway .
+
+:AccessGateway
+    a cyber:EnforcementPoint ;
+    cyber:protects 
+        :DoorController ,
+        :OccupancySensor ,
+        :LobbyCameras .
+
+:AccessDoorControllerEvent
+    a cyber:Event .
+
+:AccessOccupancySensorEvent
+    a cyber:Event .
+
+:AccessLobbyCamerasEvent
+    a cyber:Event .
 
