@@ -23,10 +23,10 @@
     a d3f:Credential .
 
 :DoorController
-    a d3f:OTController .
+    a s223:Controller .
 
 :OccupancySensor 
-    a d3f:Sensor .
+    a s223:Sensor .
 
 :LobbyCameras 
     a s223:Equipment .

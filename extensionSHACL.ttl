@@ -29,14 +29,6 @@
                                ] ;
                    sh:targetClass s223:Function .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AssetShape
-:AssetShape rdf:type owl:NamedIndividual ,
-                     sh:NodeShape ;
-            sh:property [ sh:class d3f:Network ;
-                          sh:path s223:cnx 
-                        ] ; 
-            sh:targetClass cyber:Asset .
-
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AuthenticationServiceShape
 :AuthenticationServiceShape rdf:type owl:NamedIndividual ,
