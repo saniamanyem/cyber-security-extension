@@ -98,10 +98,6 @@ cyber:EnforcementPoint rdf:type owl:Class ;
 rdfs:subClassOf cyber:Asset ;
 rdfs:label ":EnforcementPoint " .
 
-cyber:AuditLog rdf:type owl:Class ;
-rdfs:subClassOf cyber:Asset ;
-rdfs:label ":AuditLog" .
-
 
 #################################################################
 #    Instance Individuals
@@ -202,12 +198,12 @@ cyber:allowsAction rdf:type owl:NamedIndividual ,
 
 cyber:recordsEvent rdf:type owl:NamedIndividual, s223:Relation ;
               rdfs:label ":recordsEvent" ;
-              rdfs:domain cyber:AuditLog ; 
+              rdfs:domain d3f:EventLog ; 
               rdfs:range cyber:Event .
 
 cyber:generatedBy rdf:type owl:NamedIndividual, s223:Relation ;
              rdfs:label ":generatedBy" ;
-             rdfs:domain cyber:AuditLog ; 
+             rdfs:domain d3f:EventLog ; 
              rdfs:range cyber:Asset .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo

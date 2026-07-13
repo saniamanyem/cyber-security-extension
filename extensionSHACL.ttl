@@ -6,7 +6,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 
-:AuditLogShape rdf:type owl:NamedIndividual, sh:NodeShape ;
+:EventLogShape rdf:type owl:NamedIndividual, sh:NodeShape ;
               sh:property [ 
                 sh:path cyber:recordsEvent ;
                 sh:class cyber:Event ; 
@@ -17,7 +17,7 @@
                 sh:class cyber:Asset ; 
                 sh:minCount 1;
               ] ;
-              sh:targetClass cyber:AuditLog .
+              sh:targetClass d3f:EventLog .
 
 
 

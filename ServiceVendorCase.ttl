@@ -61,7 +61,7 @@
     a cyber:Event .
 
 :BuildingAuditLog 
-    a cyber:AuditLog ;
+    a d3f:EventLog ;
     cyber:recordsEvent 
         :AccessSkyboxDataEvent ,
         :ApplySoftwareUpdatesEvent ;
