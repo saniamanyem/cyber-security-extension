@@ -65,12 +65,10 @@ cyber:Operator rdfs:subClassOf d3f:User ;
     cyber:ModifyAccountDetails .
 
 d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
-cyber:hosts d3f:AuthenticationService ;
 rdfs:label "d3f:AuthenticationServer" .
 
 d3f:AuthenticationService 
 rdfs:label "d3f:AuthenticationService" ;
-cyber:validates d3f:Credential .
 
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
@@ -214,7 +212,7 @@ cyber:appliesTo a s223:Relation, rdf:Property , owl:ObjectProperty ;
 
 
 
-cyber:uses a s223:Relation, rdf:Property , owl:ObjectProperty ;
+cyber:uses a s223:Relation, rdf:Property , owl:ObjectProperty .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
 cyber:hasCredential a s223:Relation, rdf:Property , owl:ObjectProperty ;

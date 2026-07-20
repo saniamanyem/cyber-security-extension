@@ -34,14 +34,12 @@
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AuthenticationServiceShape
 :AuthenticationServiceShape rdf:type owl:NamedIndividual ,
                                      sh:NodeShape ;
-                            sh:property [ 
-                                            sh:path d3f:authenticates ;
-                                            sh:minCount 1 ;
-                                            sh:or (
-                                                [ sh:class d3f:User ]
-                                                [ sh:class d3f:Host ]
-                                            ) ;
-                                           sh:message "Authentication error: d3f:authenticates must point to a d3f:User or d3f:Host." ;
+                           sh:property [ 
+                                          sh:path d3f:authenticates ;
+                                          sh:or (
+                                              [ sh:class d3f:User ]
+                                              [ sh:class d3f:Host ]
+                                          ) ;
                                         ] ;
                             sh:property [ sh:class d3f:Credential ;
                                           sh:path cyber:validates;

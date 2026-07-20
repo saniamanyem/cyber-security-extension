@@ -33,7 +33,7 @@
 
 
 :LobbyCameras 
-    a s223:Equipment , cyber:Device 
+    a s223:Equipment , cyber:Device ;
     s223:cnx :CriticalInfrastructureSegment . 
 
 
