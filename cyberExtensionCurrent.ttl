@@ -215,7 +215,6 @@ cyber:appliesTo a s223:Relation, rdf:Property , owl:ObjectProperty ;
 
 
 cyber:uses a s223:Relation, rdf:Property , owl:ObjectProperty ;
-            rdfs:range d3f:AuthenticationService .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
 cyber:hasCredential a s223:Relation, rdf:Property , owl:ObjectProperty ;

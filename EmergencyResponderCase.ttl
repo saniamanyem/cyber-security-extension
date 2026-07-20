@@ -23,13 +23,19 @@
     a d3f:Credential .
 
 :DoorController
-    a s223:Controller , cyber:Device .
+    a s223:Controller , cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment . 
+
 
 :OccupancySensor 
-    a s223:Sensor , cyber:Device .
+    a s223:Sensor , cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment . 
+
 
 :LobbyCameras 
-    a s223:Equipment , cyber:Device .
+    a s223:Equipment , cyber:Device 
+    s223:cnx :CriticalInfrastructureSegment . 
+
 
 :EmergencyMonitor
     a cyber:Device ;
