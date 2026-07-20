@@ -68,7 +68,7 @@ d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 :hosts d3f:AuthenticationService ;
 rdfs:label "d3f:AuthenticationServer" .
 
-d3f:AuthenticationService rdfs:subClassOf d3f:Action ;
+d3f:AuthenticationService 
 rdfs:label "d3f:AuthenticationService" ;
 :validates d3f:Credential .
 
@@ -81,8 +81,8 @@ rdfs:label "d3f:Database" .
 s223:Equipment rdfs:subClassOf cyber:Asset ;
 rdfs:label "s223:Equipment" .
 
-:Role rdf:type owl:Class ;
-rdfs:label ":Role" . 
+cyber:Role rdf:type owl:Class ;
+rdfs:label "cyber:Role" . 
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
@@ -179,79 +179,71 @@ rdfs:label ":Event" .
 #    Individuals
 #################################################################
 
-cyber:hasRole rdf:type owl:NamedIndividual, s223:Relation ;
+cyber:hasRole a s223:Relation ;
         rdfs:domain d3f:User ;
         rdfs:range cyber:Role ;
         rdfs:label ":hasRole" .
   
-cyber:hosts rdf:type owl:NamedIndividual , s223:Relation ;
+cyber:hosts a s223:Relation ;
        rdfs:domain d3f:AuthenticationServer ;
        rdfs:range d3f:AuthenticationService ; 
        rdfs:label ":hosts" . 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
-cyber:allowsAction rdf:type owl:NamedIndividual ,
-                       s223:Relation ;
+cyber:allowsAction a s223:Relation ;
               rdfs:label ":allowsAction" ;
               rdfs:domain cyber:Permission ;
               rdfs:range d3f:Action . 
 
-cyber:recordsEvent rdf:type owl:NamedIndividual, s223:Relation ;
+cyber: a s223:Relation ;
               rdfs:label ":recordsEvent" ;
               rdfs:domain d3f:EventLog ; 
               rdfs:range cyber:Event .
 
-cyber:generatedBy rdf:type owl:NamedIndividual, s223:Relation ;
+cyber:generatedBy a s223:Relation ;
              rdfs:label ":generatedBy" ;
              rdfs:domain d3f:EventLog ; 
              rdfs:range cyber:Asset .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/appliesTo
-cyber:appliesTo rdf:type owl:NamedIndividual ,
-                    s223:Relation ;
+cyber:appliesTo a s223:Relation ;
                     rdfs:label ":appliesTo" ;
                     rdfs:domain cyber:Permission ; 
                     rdfs:range cyber:Asset .
 
 
 
-cyber:uses rdf:type owl:NamedIndividual ,
-                     s223:Relation ;
+cyber:uses rdf:type a s223:Relation ;
             rdfs:label "uses" ;
             rdfs:domain cyber:EnforcementPoint ;
             rdfs:range d3f:AuthenticationService .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
-cyber:hasCredential rdf:type owl:NamedIndividual ,
-                        s223:Relation ;
+cyber:hasCredential a s223:Relation ;
                rdfs:domain d3f:User ;
                rdfs:range d3f:Credential ;
                rdfs:comment "A User has credential Credential" ;
                rdfs:label ":hasCredential" .
 
-cyber:protects rdf:type owl:NamedIndividual ,
-                   s223:Relation ;
+cyber:protects a s223:Relation ;
           rdfs:label ":protects" ;
           rdfs:domain cyber:EnforcementPoint ;
           rdfs:range cyber:Asset .
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/requestsAccessTo
-cyber:requestsAccessTo rdf:type owl:NamedIndividual ,
-                           s223:Relation ;
+cyber:requestsAccessTo a s223:Relation ;
                   rdfs:domain d3f:User ;
                   rdfs:range cyber:Asset ;
                   rdfs:comment "A User requests access to an Asset" ;
                   rdfs:label ":requestsAccessTo" .
 
-cyber:validates rdf:type owl:NamedIndividual ,
-                   s223:Relation ;
+cyber:validates a s223:Relation ;
                    rdfs:label ":validates" ;
                    rdfs:domain d3f:AuthenticationService ;
                    rdfs:range cyber:Credential .
               
-cyber:usesDevice rdf:type owl:NamedIndividual ,
-                      s223:Relation ;
+cyber:usesDevice a s223:Relation ;
               rdfs:comment "A User uses a Device" ;
               rdfs:label ":usesDevice" ;
               rdfs:domain d3f:User ;
