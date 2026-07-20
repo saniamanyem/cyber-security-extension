@@ -66,6 +66,12 @@
                                     ] ;
                         sh:targetClass cyber:EnforcementPoint .         
 
+:AssetShape rdf:type owl:NamedIndividual, sh:NodeShape ;
+  sh:property [ sh:class s223:PhysicalSpace ;
+                sh:path s223:hasPhysicalLocation 
+              ] ;
+            sh:targetClass cyber:Asset .            
+
 
 
 

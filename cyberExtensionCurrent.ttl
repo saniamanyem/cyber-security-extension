@@ -214,14 +214,12 @@ cyber:appliesTo rdf:type owl:NamedIndividual ,
                     rdfs:range cyber:Asset .
 
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/enforcedBy
-cyber:enforcedBy rdf:type owl:NamedIndividual ,
-                     s223:Relation ;
-            rdfs:comment "A Permission is enforced by an Enforcement Point" ;
-            rdfs:label "enforcedBy" ;
-            rdfs:domain d3f:AuthenticationService ;
-            rdfs:range cyber:EnforcementPoint .
 
+cyber:uses rdf:type owl:NamedIndividual ,
+                     s223:Relation ;
+            rdfs:label "uses" ;
+            rdfs:domain cyber:EnforcementPoint ;
+            rdfs:range d3f:AuthenticationService .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
 cyber:hasCredential rdf:type owl:NamedIndividual ,

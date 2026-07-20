@@ -49,7 +49,7 @@
     a d3f:AuthenticationService ;
     cyber:validates :DanPassword123 ;
     d3f:authenticates :Dan ;
-    cyber:enforcedBy :BuildingGateway .
+    cyber:uses :BuildingGateway .
 
 :BuildingGateway 
     a cyber:EnforcementPoint .        

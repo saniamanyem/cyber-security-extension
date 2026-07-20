@@ -59,7 +59,7 @@ cyber:ViewCameraFeeds
     a d3f:AuthenticationService ;
     cyber:validates :AlicePassword123 ;
     d3f:authenticates :Alice ;
-    cyber:enforcedBy :AccessGateway .
+    cyber:uses :AccessGateway .
 
 :AccessGateway
     a cyber:EnforcementPoint .
