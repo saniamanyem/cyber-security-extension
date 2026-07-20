@@ -4,6 +4,7 @@
 @prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .  
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 
 
 :EventLogShape rdf:type owl:NamedIndividual, sh:NodeShape ;
@@ -33,16 +34,21 @@
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/AuthenticationServiceShape
 :AuthenticationServiceShape rdf:type owl:NamedIndividual ,
                                      sh:NodeShape ;
-                            sh:property [ sh:class d3f:User ;
-                                        sh:path d3f:authenticates ;
-                                        sh:minCount 1 ;
+                            sh:property [ 
+                                            sh:path d3f:authenticates ;
+                                            sh:minCount 1 ;
+                                            sh:or (
+                                                [ sh:class d3f:User ]
+                                                [ sh:class d3f:Host ]
+                                            ) ;
+                                           sh:message "Authentication error: d3f:authenticates must point to a d3f:User or d3f:Host." ;
                                         ] ;
                             sh:property [ sh:class d3f:Credential ;
                                           sh:path cyber:validates;
                                           sh:minCount 1 ;
                                         ] ;
                             sh:property [
-                              sh:path [sh:inversePath cyber:hosts ] ;
+                              sh:path [ sh:inversePath cyber:hosts ] ;
                               sh:minCount 1 ;      
                                         ] ; 
                             sh:targetClass d3f:AuthenticationService .
@@ -63,6 +69,12 @@
                                 sh:NodeShape ;
                         sh:property [ sh:class s223:Property ;
                                       sh:path s223:hasProperty 
+                                    ] ;
+                        sh:property [ sh:path cyber:controlsAccessTo ;
+                                      sh:class s223:Equipment 
+                                    ] ;
+                        sh:property [ sh:path cyber:protects ;
+                                      sh:class cyber:Asset 
                                     ] ;
                         sh:targetClass cyber:EnforcementPoint .         
 

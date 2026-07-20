@@ -23,13 +23,13 @@
     a d3f:Credential .
 
 :DoorController
-    a s223:Controller .
+    a s223:Controller , cyber:Device .
 
 :OccupancySensor 
-    a s223:Sensor .
+    a s223:Sensor , cyber:Device .
 
 :LobbyCameras 
-    a s223:Equipment .
+    a s223:Equipment , cyber:Device .
 
 :EmergencyMonitor
     a cyber:Device ;
@@ -45,7 +45,7 @@ cyber:ViewSensorData
     cyber:appliesTo :OccupancySensor .
 
 cyber:ViewCameraFeeds 
-    :appliesTo :LobbyCameras .
+    cyber:appliesTo :LobbyCameras .
 
 :BuildingAuthenticationServer 
     a d3f:AuthenticationServer ;
@@ -62,7 +62,7 @@ cyber:ViewCameraFeeds
     cyber:uses :AccessGateway .
 
 :AccessGateway
-    a cyber:EnforcementPoint .
+    a cyber:EnforcementPoint , cyber:Device .
 
 :AccessDoorControllerEvent
     a cyber:Event .

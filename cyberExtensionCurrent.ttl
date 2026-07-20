@@ -168,8 +168,9 @@ cyber:NetworkSegment rdf:type owl:Class ;
                 rdfs:label ":NetworkSegment" .
 
 cyber:Device rdf:type owl:Class ;
-        rdfs:subClassOf s223:Equipment ;
-        rdfs:label ":Device" .
+        rdfs:subClassOf s223:Equipment, d3f:Host ;
+        rdfs:label ":Device" ;
+        rdfs:comment "A networked building asset that is both physical equipment (223) and an active computing host (D3FEND)." .
 
 
 cyber:Event rdf:type owl:Class ; 
@@ -214,8 +215,6 @@ cyber:appliesTo a s223:Relation, rdf:Property , owl:ObjectProperty ;
 
 
 cyber:uses a s223:Relation, rdf:Property , owl:ObjectProperty ;
-            rdfs:label "uses" ;
-            rdfs:domain cyber:EnforcementPoint ;
             rdfs:range d3f:AuthenticationService .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/hasCredential
