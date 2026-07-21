@@ -55,7 +55,7 @@ cyber:ViewCameraFeeds
 
 :BuildingAuthenticationServer 
     a d3f:AuthenticationServer ;
-    cyber:hosts :BuildingAuthenticationService ;
+    d3f:manages :BuildingAuthenticationService ;
     cyber:protects 
         :DoorController ,
         :LobbyCameras ,

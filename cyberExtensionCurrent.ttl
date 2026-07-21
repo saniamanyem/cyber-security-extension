@@ -37,32 +37,6 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-cyber:EmergencyResponder rdfs:subClassOf d3f:User ;
-  rdfs:label ":EmergencyResponder" ;
-  cyber:hasPermission 
-       cyber:OverrideDoorLocks ,
-       cyber:ControlAlarms ,
-       cyber:EmergencyOverride ,
-       cyber:ViewSensorData ,
-       cyber:ViewCameraFeeds .
-
-cyber:Vendor rdfs:subClassOf d3f:User ;
-  rdfs:label ":Vendor" ;
-  cyber:hasPermission
-    cyber:ViewCameraFeeds ,
-    cyber:ConfigureControllers ,
-    cyber:ViewSensorData ,
-    cyber:ApplySoftwareUpdates ,
-    cyber:ViewLogs .
-
-cyber:Operator rdfs:subClassOf d3f:User ;
-  rdfs:label ":Operator" ;
-  cyber:hasPermission 
-    cyber:ModifySetPoints ,
-    cyber:ControlAlarms ,
-    cyber:MonitorBuildingServer ,
-    cyber:ViewSensorData ,
-    cyber:ModifyAccountDetails .
 
 d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:AuthenticationServer" .
@@ -79,8 +53,7 @@ rdfs:label "d3f:Database" .
 s223:Equipment rdfs:subClassOf cyber:Asset ;
 rdfs:label "s223:Equipment" .
 
-cyber:Role rdf:type owl:Class ;
-rdfs:label "cyber:Role" . 
+
 
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
@@ -100,6 +73,37 @@ rdfs:label ":EnforcementPoint " .
 #################################################################
 #    Instance Individuals
 #################################################################
+
+cyber:Role rdf:type s223:EnumerationKind ;
+rdfs:label "cyber:Role" . 
+
+cyber:EmergencyResponder rdf:type cyber:Role ;
+  rdfs:label ":EmergencyResponder" ;
+  cyber:hasPermission 
+       cyber:OverrideDoorLocks ,
+       cyber:ControlAlarms ,
+       cyber:EmergencyOverride ,
+       cyber:ViewSensorData ,
+       cyber:ViewCameraFeeds .
+
+cyber:Vendor rdf:type cyber:Role ;
+  rdfs:label ":Vendor" ;
+  cyber:hasPermission
+    cyber:ViewCameraFeeds ,
+    cyber:ConfigureControllers ,
+    cyber:ViewSensorData ,
+    cyber:ApplySoftwareUpdates ,
+    cyber:ViewLogs .
+
+cyber:Operator rdf:type cyber:Role ;
+  rdfs:label ":Operator" ;
+  cyber:hasPermission 
+    cyber:ModifySetPoints ,
+    cyber:ControlAlarms ,
+    cyber:MonitorBuildingServer ,
+    cyber:ViewSensorData ,
+    cyber:ModifyAccountDetails .
+
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Permission
 cyber:Permission rdf:type s223:EnumerationKind ;
@@ -170,6 +174,9 @@ cyber:Device rdf:type owl:Class ;
         rdfs:label ":Device" ;
         rdfs:comment "A networked building asset that is both physical equipment (223) and an active computing host (D3FEND)." .
 
+cyber:UserDirectory rdf:type owl:Class ;
+    rdfs:label "cyber:UserDirectory" .
+
 
 cyber:Event rdf:type owl:Class ; 
 rdfs:label ":Event" . 
@@ -182,11 +189,22 @@ cyber:hasRole a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:domain d3f:User ;
         rdfs:range cyber:Role ;
         rdfs:label ":hasRole" .
-  
-cyber:hosts a s223:Relation, rdf:Property , owl:ObjectProperty ;
-       rdfs:domain d3f:AuthenticationServer ;
-       rdfs:range d3f:AuthenticationService ; 
-       rdfs:label ":hosts" . 
+
+cyber:usesDirectory a s223:Relation, rdf:Property , owl:ObjectProperty ;
+        rdfs:domain d3f:AuthenticationService ;
+        rdfs:range cyber:UserDirectory ;
+        rdfs:label ":hasRole" .
+
+cyber:containsUser a s223:Relation, rdf:Property , owl:ObjectProperty ;
+        rdfs:domain d3f:UserDirectory ;
+        rdfs:range d3f:User ;
+        rdfs:label ":hasRole" .
+
+cyber:hasACL a s223:Relation, rdf:Property , owl:ObjectProperty ;
+        rdfs:label ":hasACL" .
+
+cyber:allowsRole a s223:Relation, rdf:Property , owl:ObjectProperty ;
+        rdfs:label ":allowsRole" .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/allowsAction
 cyber:allowsAction a s223:Relation, rdf:Property , owl:ObjectProperty ;
@@ -257,6 +275,7 @@ d3f:Database rdfs:label "d3f:Database" .
 d3f:AuthenticationService rdfs:label "d3f:AuthenticationService" .
 d3f:Network rdfs:label "d3f:Network" .
 d3f:Action rdfs:label "d3f:Action" .
+d3f:AccessControlList rdfs:label "d3f:AccessControlList" .
 
 s223:cnx rdfs:label "s223:cnx" .
 s223:controller rdfs:label "s223:controller" .
