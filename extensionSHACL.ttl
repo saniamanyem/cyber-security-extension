@@ -54,7 +54,7 @@
 :AuthenticationServerShape rdf:type owl:NamedIndividual ,
                                      sh:NodeShape ;
                             sh:property [ sh:class d3f:AuthenticationService ;
-                                          sh:path cyber:hosts 
+                                          sh:path d3f:manages 
                                         ] ;
                             sh:property [ sh:class cyber:Asset ;
                                           sh:path cyber:protects 

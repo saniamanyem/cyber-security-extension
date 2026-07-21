@@ -53,9 +53,6 @@ rdfs:label "d3f:Database" .
 s223:Equipment rdfs:subClassOf cyber:Asset ;
 rdfs:label "s223:Equipment" .
 
-
-
-
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
 cyber:Asset rdf:type owl:Class ;
 rdfs:label ":Asset" .
@@ -164,8 +161,7 @@ cyber:Control rdf:type d3f:Action ;
 
 
 cyber:NetworkSegment rdf:type owl:Class ;
-                rdfs:subClassOf d3f:Network ;
-                rdfs:label ":NetworkSegment" .
+      rdfs:label ":NetworkSegment" .
 
 cyber:Device rdf:type owl:Class ;
         rdfs:subClassOf s223:Equipment, d3f:Host ;
@@ -188,6 +184,11 @@ cyber:hasRole a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:range cyber:Role ;
         rdfs:label "cyber:hasRole" .
 
+cyber:hasSegment a s223:Relation, rdf:Property , owl:ObjectProperty ;
+        rdfs:domain d3f:Network ;
+        rdfs:range cyber:NetworkSegment ;
+        rdfs:label "cyber:hasSegment" .
+
 cyber:hasPermission a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:domain d3f:User ;
         rdfs:range cyber:Permission ;
@@ -204,7 +205,9 @@ cyber:containsUser a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:label "cyber:containsUser" .
 
 cyber:hasACL a s223:Relation, rdf:Property , owl:ObjectProperty ;
-        rdfs:label ":hasACL" .
+        rdfs:label ":hasACL" ;
+        rdfs:domain cyber:Asset ;
+        rdfs:range d3f:AccessControlList .
 
 cyber:allowsRole a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:label ":allowsRole" .
