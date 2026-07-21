@@ -41,7 +41,7 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:AuthenticationServer" .
 
-d3f:AuthenticationService 
+d3f:AuthenticationService rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:AuthenticationService" .
 
 
@@ -109,10 +109,9 @@ cyber:Operator rdf:type cyber:Role ;
 cyber:Permission rdf:type s223:EnumerationKind ;
 rdfs:label ":Permission" .
 
-:OverrideDoorLocks rdf:type cyber:Permission ;
+cyber:OverrideDoorLocks rdf:type cyber:Permission ;
   rdfs:label ":OverrideDoorLocks " ;
   cyber:allowsAction cyber:Control ;
-  :validDuring cyber:EmergencyCondition .
 
 cyber:ViewCameraFeeds rdf:type cyber:Permission ;
   cyber:allowsAction cyber:Read ;
@@ -131,7 +130,7 @@ cyber:ConfigureControllers rdf:type cyber:Permission ;
   rdfs:label ":ConfigureControllers " .
 
 cyber:MonitorBuildingServer rdf:type cyber:Permission ;
-  cyber:allowsAction cyber:View ;
+  cyber:allowsAction cyber:Read ;
   rdfs:label ":MonitorBuildingServer " .
 
 cyber:ViewSensorData rdf:type cyber:Permission ;
@@ -149,7 +148,6 @@ cyber:ModifyAccountDetails rdf:type cyber:Permission ;
 cyber:EmergencyOverride rdf:type cyber:Permission ;
   rdfs:label "cyber:EmergencyOverride " ;
   cyber:allowsAction cyber:Control ;
-  :validDuring cyber:EmergencyCondition .
 
 cyber:ViewLogs rdf:type cyber:Permission ;
   cyber:allowsAction cyber:Read ;
@@ -188,17 +186,22 @@ rdfs:label ":Event" .
 cyber:hasRole a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:domain d3f:User ;
         rdfs:range cyber:Role ;
-        rdfs:label ":hasRole" .
+        rdfs:label "cyber:hasRole" .
+
+cyber:hasPermission a s223:Relation, rdf:Property , owl:ObjectProperty ;
+        rdfs:domain d3f:User ;
+        rdfs:range cyber:Permission ;
+        rdfs:label "cyber:hasPermission" .
 
 cyber:usesDirectory a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:domain d3f:AuthenticationService ;
         rdfs:range cyber:UserDirectory ;
-        rdfs:label ":hasRole" .
+        rdfs:label "cyber:usesDirectory" .
 
 cyber:containsUser a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:domain d3f:UserDirectory ;
         rdfs:range d3f:User ;
-        rdfs:label ":hasRole" .
+        rdfs:label "cyber:containsUser" .
 
 cyber:hasACL a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:label ":hasACL" .
@@ -260,7 +263,7 @@ cyber:requestsAccessTo a s223:Relation, rdf:Property , owl:ObjectProperty ;
 cyber:validates a s223:Relation, rdf:Property , owl:ObjectProperty ;
                    rdfs:label ":validates" ;
                    rdfs:domain d3f:AuthenticationService ;
-                   rdfs:range cyber:Credential .
+                   rdfs:range d3f:Credential .
               
 cyber:usesDevice a s223:Relation, rdf:Property , owl:ObjectProperty  ;
               rdfs:comment "A User uses a Device" ;
