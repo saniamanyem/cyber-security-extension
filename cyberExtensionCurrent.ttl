@@ -68,7 +68,7 @@ d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:AuthenticationServer" .
 
 d3f:AuthenticationService 
-rdfs:label "d3f:AuthenticationService" ;
+rdfs:label "d3f:AuthenticationService" .
 
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
@@ -93,7 +93,7 @@ rdfs:label ":Condition" .
 
 ###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
 cyber:EnforcementPoint rdf:type owl:Class ;
-rdfs:subClassOf cyber:Asset ;
+cyber:protects cyber:Asset ;
 rdfs:label ":EnforcementPoint " .
 
 

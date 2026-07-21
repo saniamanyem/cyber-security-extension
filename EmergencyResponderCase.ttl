@@ -68,7 +68,9 @@ cyber:ViewCameraFeeds
     cyber:uses :AccessGateway .
 
 :AccessGateway
-    a cyber:EnforcementPoint , cyber:Device .
+    a cyber:EnforcementPoint , cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment . 
+
 
 :AccessDoorControllerEvent
     a cyber:Event .
