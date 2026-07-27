@@ -44,7 +44,6 @@ rdfs:label "d3f:AuthenticationServer" .
 d3f:AuthenticationService rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:AuthenticationService" .
 
-
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
 d3f:Database rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:Database" .
@@ -53,17 +52,13 @@ rdfs:label "d3f:Database" .
 s223:Equipment rdfs:subClassOf cyber:Asset ;
 rdfs:label "s223:Equipment" .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Asset
 cyber:Asset rdf:type owl:Class ;
 rdfs:label ":Asset" .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/Condition
 cyber:Condition rdf:type owl:Class ;
 rdfs:label ":Condition" .
 
-###  http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/EnforcementPoint
 cyber:EnforcementPoint rdf:type owl:Class ;
-cyber:protects cyber:Asset ;
 rdfs:label ":EnforcementPoint " .
 
 
