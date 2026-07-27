@@ -1,0 +1,67 @@
+@prefix : <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+@prefix d3f: <http://d3fend.mitre.org/ontologies/d3fend.owl#> .
+@prefix s223: <http://data.ashrae.org/standard223#> .
+@base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
+
+<http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> rdf:type owl:Ontology ;
+                                                                     owl:imports <http://d3fend.mitre.org/ontologies/d3fend/1.4.0/d3fend.owl> ,
+                                                                                 <http://data.ashrae.org/standard223/1.0/model/all> .
+
+
+
+:Alice
+   a d3f:User ; 
+   cyber:hasRole cyber:EmergencyResponder ;
+   cyber:hasCredential :AlicePassword123 ;
+   cyber:requestsAccessTo 
+    :OccupancySensor ,
+   cyber:usesDevice :EmergencyMonitor .
+
+:AlicePassword123
+    a d3f:Credential . 
+
+:OccupancySensor 
+    a s223:Sensor , cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment .
+
+:EmergencyMonitor
+    a cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment . 
+
+:CriticalInfrastructureSegment
+    a cyber:NetworkSegment .
+
+cyber:ViewSensorData 
+    cyber:appliesTo :OccupancySensor .
+
+:BuildingAuthenticationServer 
+    a d3f:AuthenticationServer ;
+    d3f:manages :BuildingAuthenticationService ;
+    cyber:protects 
+        :OccupancySensor .
+
+:BuildingAuthenticationService 
+    a d3f:AuthenticationService ;
+    cyber:validates :AlicePassword123 ;
+    d3f:authenticates :Alice ;
+    cyber:uses :AccessGateway .
+
+:AccessGateway
+    a cyber:EnforcementPoint , cyber:Device ;
+    s223:cnx :CriticalInfrastructureSegment . 
+
+:AccessDoorControllerEvent
+    a cyber:Event .
+
+:AccessOccupancySensorEvent
+    a cyber:Event .
+
+:AccessLobbyCamerasEvent
+    a cyber:Event .
+
+:BuildingAuditLog  
+    a d3f:EventLog ;
+    cyber:recordsEvent 
+        :AccessOccupancySensorEvent ,
+    cyber:generatedBy 
+        :OccupancySensor .
