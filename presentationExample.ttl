@@ -14,25 +14,15 @@
    cyber:hasRole cyber:EmergencyResponder ;
    cyber:hasCredential :AlicePassword123 ;
    cyber:requestsAccessTo 
-    :DoorController ,
     :OccupancySensor ,
-    :LobbyCameras ;
    cyber:usesDevice :EmergencyMonitor .
 
 :AlicePassword123
-    a d3f:Credential .
-
-:DoorController
-    a s223:Controller , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
+    a d3f:Credential . 
 
 :OccupancySensor 
     a s223:Sensor , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
-
-:LobbyCameras 
-    a s223:Equipment , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
+    s223:cnx :CriticalInfrastructureSegment .
 
 :EmergencyMonitor
     a cyber:Device ;
@@ -41,21 +31,13 @@
 :CriticalInfrastructureSegment
     a cyber:NetworkSegment .
 
-cyber:OverrideDoorLocks
-    cyber:appliesTo :DoorController .
-
 cyber:ViewSensorData 
     cyber:appliesTo :OccupancySensor .
-
-cyber:ViewCameraFeeds 
-    cyber:appliesTo :LobbyCameras .
 
 :BuildingAuthenticationServer 
     a d3f:AuthenticationServer ;
     d3f:manages :BuildingAuthenticationService ;
     cyber:protects 
-        :DoorController ,
-        :LobbyCameras ,
         :OccupancySensor .
 
 :BuildingAuthenticationService 
@@ -67,7 +49,6 @@ cyber:ViewCameraFeeds
 :AccessGateway
     a cyber:EnforcementPoint , cyber:Device ;
     s223:cnx :CriticalInfrastructureSegment . 
-
 
 :AccessDoorControllerEvent
     a cyber:Event .
@@ -81,11 +62,6 @@ cyber:ViewCameraFeeds
 :BuildingAuditLog  
     a d3f:EventLog ;
     cyber:recordsEvent 
-        :AccessDoorControllerEvent ,
         :AccessOccupancySensorEvent ,
-        :AccessLobbyCamerasEvent ;
     cyber:generatedBy 
-        :DoorController ,
-        :OccupancySensor ,
-        :LobbyCameras .
-
+        :OccupancySensor .
