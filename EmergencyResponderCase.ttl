@@ -3,6 +3,7 @@
 @prefix s223: <http://data.ashrae.org/standard223#> .
 @base <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 
 <http://www.semanticweb.org/snm49/ontologies/2026/5/cyberExtension> rdf:type owl:Ontology ;
