@@ -46,7 +46,7 @@
                                           sh:minCount 1 ;
                                         ] ;
                             sh:property [
-                              sh:path [ sh:inversePath cyber:hosts ] ;
+                              sh:path [ sh:inversePath d3f:manages ] ;
                               sh:minCount 1 ;      
                                         ] ; 
                             sh:targetClass d3f:AuthenticationService .
@@ -100,7 +100,8 @@ rdf:type owl:NamedIndividual ,
           sh:minCount 1 ;
         ] ;
 
-        sh:property [sh:class cyber:Device ;
+        sh:property [
+          sh:class cyber:Device ;
           sh:path cyber:usesDevice ;
         ] ;
           
