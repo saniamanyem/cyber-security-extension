@@ -26,23 +26,16 @@
     a d3f:Credential .
 
 :DoorController
-    a s223:Controller , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
+    a s223:Controller , cyber:Device .
 
 :OccupancySensor 
-    a s223:Sensor , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
+    a s223:Sensor , cyber:Device .
 
 :LobbyCameras 
-    a s223:Equipment , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
+    a s223:Equipment , cyber:Device .
 
 :EmergencyMonitor
-    a cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
-
-:CriticalInfrastructureSegment
-    a cyber:NetworkSegment .
+    a cyber:Device .
 
 cyber:OverrideDoorLocks
     cyber:appliesTo :DoorController .
@@ -68,8 +61,11 @@ cyber:ViewCameraFeeds
     cyber:uses :AccessGateway .
 
 :AccessGateway
-    a cyber:EnforcementPoint , cyber:Device ;
-    s223:cnx :CriticalInfrastructureSegment . 
+    a cyber:EnforcementPoint , d3f:Host ;
+    d3f:connected-to :ExampleNetwork .
+
+:ExampleNetwork 
+    a d3f:Network .
 
 
 :AccessDoorControllerEvent

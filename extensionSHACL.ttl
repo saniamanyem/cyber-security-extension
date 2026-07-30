@@ -63,6 +63,12 @@
                                         ] ;
                             sh:targetClass d3f:AuthenticationServer .
 
+:HostShape rdf:type owl:NamedIndividual, sh:NodeShape ; 
+                            sh:property [ sh: class d3f:Network ;
+                                          sh: path d3f:connected-to ;
+                                          sh:minCount 1 ;
+                                        ] ;
+                            sh:targetClass d3f:Host .
 
 
 :EnforcementPointShape rdf:type owl:NamedIndividual ,
@@ -119,15 +125,7 @@ rdf:type owl:NamedIndividual ,
                sh:property [sh:class d3f:NetworkTraffic ;
                              sh:path d3f:filters
                            ] ;
-               sh:targetClass d3f:Firewall .
-
-:DeviceShape rdf:type owl:NamedIndividual ,
-                      sh:NodeShape ;
-              sh:property [sh:class cyber:NetworkSegment ;
-                            sh:path s223:cnx ;
-                            sh:minCount 1 ;
-                            ] ;
-              sh:targetClass cyber:Device .
+               sh:targetClass d3f:Firewall .n 
 
 :OperatorShape rdf:type owl:NamedIndividual ,
                         sh:NodeShape ;

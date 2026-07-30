@@ -41,8 +41,9 @@ sh:targetClass rdf:type owl:AnnotationProperty .
 d3f:AuthenticationServer rdfs:subClassOf cyber:Asset ;
 rdfs:label "d3f:AuthenticationServer" .
 
-d3f:AuthenticationService rdfs:subClassOf cyber:Asset ;
-rdfs:label "d3f:AuthenticationService" .
+d3f:Host rdfs:subClassOf cyber:Host ; 
+rdfs:label "d3f:Host" . 
+
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#Database
 d3f:Database rdfs:subClassOf cyber:Asset ;
@@ -152,9 +153,6 @@ cyber:Write rdf:type d3f:Action ;
 cyber:Control rdf:type d3f:Action ; 
   rdfs:label "cyber:Control " .
 
-cyber:NetworkSegment rdf:type owl:Class ;
-      rdfs:label ":NetworkSegment" .
-
 cyber:Device rdf:type owl:Class ;
         rdfs:subClassOf s223:Equipment, d3f:Host ;
         rdfs:label ":Device" ;
@@ -175,10 +173,6 @@ cyber:hasRole a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:range cyber:Role ;
         rdfs:label "cyber:hasRole" .
 
-cyber:hasSegment a s223:Relation, rdf:Property , owl:ObjectProperty ;
-        rdfs:domain d3f:Network ;
-        rdfs:range cyber:NetworkSegment ;
-        rdfs:label "cyber:hasSegment" .
 
 cyber:hasPermission a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:range cyber:Permission ;
@@ -260,7 +254,7 @@ cyber:usesDevice a s223:Relation, rdf:Property , owl:ObjectProperty  ;
               rdfs:comment "A User uses a Device" ;
               rdfs:label ":usesDevice" ;
               rdfs:domain d3f:User ;
-              rdfs:range cyber:Device .
+              rdfs:range d3f:Host .
             
 
 d3f:User rdfs:label "d3f:User" .
