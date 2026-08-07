@@ -186,7 +186,7 @@ cyber:usesDirectory a s223:Relation, rdf:Property , owl:ObjectProperty ;
 cyber:containsUser a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:domain d3f:UserDirectory ;
         rdfs:range d3f:User ;
-        rdfs:label "cyber:containsUser" .
+          rdfs:label "cyber:containsUser" .
 
 cyber:hasACL a s223:Relation, rdf:Property , owl:ObjectProperty ;
         rdfs:label ":hasACL" ;
